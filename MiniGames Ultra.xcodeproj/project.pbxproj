@@ -12,6 +12,9 @@
 		2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2432302B1AC865D600F2CCC3 /* Images.xcassets */; };
 		2432302F1AC865D600F2CCC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2432302D1AC865D600F2CCC3 /* Main.storyboard */; };
 		2432303B1AC865D600F2CCC3 /* MiniGames_UltraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432303A1AC865D600F2CCC3 /* MiniGames_UltraTests.swift */; };
+		243230451AC868B400F2CCC3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230441AC868B400F2CCC3 /* MainController.swift */; };
+		243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230461AC8696400F2CCC3 /* MinesweeperMain.swift */; };
+		243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		243230341AC865D600F2CCC3 /* MiniGames UltraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MiniGames UltraTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		243230391AC865D600F2CCC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2432303A1AC865D600F2CCC3 /* MiniGames_UltraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGames_UltraTests.swift; sourceTree = "<group>"; };
+		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
+		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 				243230291AC865D600F2CCC3 /* ViewController.swift */,
 				2432302B1AC865D600F2CCC3 /* Images.xcassets */,
 				2432302D1AC865D600F2CCC3 /* Main.storyboard */,
+				243230441AC868B400F2CCC3 /* MainController.swift */,
+				2432304A1AC869A800F2CCC3 /* Games */,
 				243230251AC865D600F2CCC3 /* Supporting Files */,
 			);
 			path = "MiniGames Ultra";
@@ -107,6 +115,23 @@
 				243230391AC865D600F2CCC3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2432304A1AC869A800F2CCC3 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				2432304B1AC869B300F2CCC3 /* Minesweeper */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		2432304B1AC869B300F2CCC3 /* Minesweeper */ = {
+			isa = PBXGroup;
+			children = (
+				243230461AC8696400F2CCC3 /* MinesweeperMain.swift */,
+				243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */,
+			);
+			name = Minesweeper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2432302A1AC865D600F2CCC3 /* ViewController.swift in Sources */,
+				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
+				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
+				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

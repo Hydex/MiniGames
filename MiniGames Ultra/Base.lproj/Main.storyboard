@@ -756,6 +756,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="helpButtonPressed:" target="fQ5-eu-iXW" id="YIC-Yb-7IF"/>
+                                </connections>
                             </button>
                             <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="baN-he-ruC">
                                 <rect key="frame" x="18" y="168" width="158" height="64"/>
@@ -771,6 +774,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="donePressed:" target="fQ5-eu-iXW" id="1HS-aA-gPD"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-Vm-7JS">
                                 <rect key="frame" x="235" y="168" width="49" height="17"/>
@@ -814,6 +820,13 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="hardnessPopUp" destination="pjB-Ik-MS8" id="Y1a-cP-O8S"/>
+                        <outlet property="heightLabel" destination="LhR-Wi-Hci" id="TAX-aE-yXH"/>
+                        <outlet property="helpLabel" destination="baN-he-ruC" id="jNq-FQ-Wpv"/>
+                        <outlet property="testLabel" destination="MoD-6O-eqE" id="ipD-Ok-MjV"/>
+                        <outlet property="widthLabel" destination="Sdz-Vx-UQb" id="0g4-eK-RJG"/>
+                    </connections>
                 </viewController>
                 <customObject id="ubz-RP-Ww0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

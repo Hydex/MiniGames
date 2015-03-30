@@ -72,6 +72,7 @@ class MinesweeperHardness : NSViewController {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
         self.view.window?.title = "Сапер"
+        self.view.window?.orderFront(self)
     }
     
     

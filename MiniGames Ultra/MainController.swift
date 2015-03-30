@@ -28,6 +28,7 @@ class MainController : NSViewController {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         self.view.window?.title = "MiniGames"
+        self.view.window?.orderFront(self)
     }
     
     

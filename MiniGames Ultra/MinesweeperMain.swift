@@ -31,6 +31,8 @@ class MinesweeperMain: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         
+        self.view.window?.orderFront(self)
+        
         self.view.window?.title = "Сапер"
         
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask

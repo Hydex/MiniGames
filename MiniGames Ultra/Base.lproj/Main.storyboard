@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -714,11 +714,25 @@
                     <connections>
                         <outlet property="gameChoose" destination="fmS-6I-qKq" id="bSr-Zu-dWD"/>
                         <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
+                        <segue destination="AVw-sc-8Yt" kind="modal" identifier="ballGame" id="Lkt-bE-Lyk"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="242.5" y="431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Xfq-xu-Pws">
+            <objects>
+                <viewController id="AVw-sc-8Yt" sceneMemberID="viewController">
+                    <view key="view" id="HQs-9l-7Ro">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="m0F-wE-eAy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="936"/>
         </scene>
         <!--Minesweeper Hardness-->
         <scene sceneID="rM5-bq-e1A">

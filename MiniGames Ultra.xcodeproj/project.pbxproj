@@ -15,6 +15,7 @@
 		243230451AC868B400F2CCC3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230441AC868B400F2CCC3 /* MainController.swift */; };
 		243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230461AC8696400F2CCC3 /* MinesweeperMain.swift */; };
 		243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */; };
+		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		2432304A1AC869A800F2CCC3 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				92A46B341AC9591500B2050E /* BallGame */,
 				2432304B1AC869B300F2CCC3 /* Minesweeper */,
 			);
 			name = Games;
@@ -132,6 +135,14 @@
 				243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */,
 			);
 			name = Minesweeper;
+			sourceTree = "<group>";
+		};
+		92A46B341AC9591500B2050E /* BallGame */ = {
+			isa = PBXGroup;
+			children = (
+				92A46B321AC958E400B2050E /* Ball.swift */,
+			);
+			name = BallGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A46B331AC958E400B2050E /* Ball.swift in Sources */,
 				2432302A1AC865D600F2CCC3 /* ViewController.swift in Sources */,
 				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
 				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
@@ -425,6 +437,7 @@
 				243230401AC865D600F2CCC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		243230411AC865D600F2CCC3 /* Build configuration list for PBXNativeTarget "MiniGames UltraTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +446,7 @@
 				243230431AC865D600F2CCC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

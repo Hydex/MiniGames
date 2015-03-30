@@ -66,5 +66,10 @@ class MinesweeperHardness : NSViewController {
         timer.invalidate()
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
+    }
+    
     
 }

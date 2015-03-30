@@ -22,6 +22,11 @@ class MainController : NSViewController {
         }
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

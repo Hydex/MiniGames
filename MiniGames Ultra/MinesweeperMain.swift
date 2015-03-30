@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import AppKit
+
+class MinesweeperMain: NSViewController {
+    
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
+    }
+    
+    
+}

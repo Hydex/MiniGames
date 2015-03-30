@@ -37,13 +37,14 @@ class MinesweeperHardness : NSViewController {
         return !(countElements(label.stringValue) > 0 && (label.integerValue < 4 || label.integerValue > 32))
     }
     
-    func check(sender : AnyObject?) {
+    func check(sender : NSTimer) {
         if checkLabel(heightLabel) && checkLabel(widthLabel) {
             testLabel.hidden = true
         }
         else {
             testLabel.hidden = false
         }
+        
     }
     
     @IBAction func donePressed(sender: AnyObject) {
@@ -52,6 +53,8 @@ class MinesweeperHardness : NSViewController {
             storage.setInteger(heightLabel.integerValue, forKey: "mwHeight")
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")
             storage.synchronize()
+            self.performSegueWithIdentifier("startGame", sender: self)
+            println(1)
         }
     }
     
@@ -63,12 +66,12 @@ class MinesweeperHardness : NSViewController {
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        timer.invalidate()
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
+//        self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
+        
     }
     
     

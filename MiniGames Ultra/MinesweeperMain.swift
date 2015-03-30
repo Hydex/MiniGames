@@ -11,10 +11,50 @@ import AppKit
 
 class MinesweeperMain: NSViewController {
     
+    var height = 0
+    var width = 0
+    
+    var ar : Array<NSButton> = []
+    
+    var storage = NSUserDefaults.standardUserDefaults()
+    
+    func buttonPressed(sender : NSButton) {
+        
+    }
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
+        height = storage.integerForKey("mwHeight")
+        width = storage.integerForKey("mwWidth")
+        
+        var frame = self.view.window?.frame
+        var newHeight = CGFloat(height * 30 + 100)
+        var newWidth = CGFloat(width * 30)
+        frame?.size = NSMakeSize(newWidth, newHeight)
+        self.view.window?.setFrame(frame!, display: true)
+
+        var x = 0
+        var y = 0
+        var k = 1
+        for i in 1...height {
+            for j in 1...width {
+                var but = NSButton(frame: NSRect(x: x, y: y + 78, width: 30, height: 30))
+                but.tag = k
+                but.title = ""
+                but.action = Selector("buttonPressed:")
+                but.target = self
+                but.bezelStyle = NSBezelStyle(rawValue: 6)!
+                ar.append(but)
+                self.view.addSubview(but)
+                x += 30
+                k++
+            }
+            y += 30
+            x = 0
+        }
+        
     }
     
     

@@ -15,6 +15,8 @@
 		243230451AC868B400F2CCC3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230441AC868B400F2CCC3 /* MainController.swift */; };
 		243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230461AC8696400F2CCC3 /* MinesweeperMain.swift */; };
 		243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */; };
+		54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 54704AF41AC9BAAD009C09ED /* Bomb.png */; };
+		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
 		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		54704AF41AC9BAAD009C09ED /* Bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb.png; sourceTree = "<group>"; };
+		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
 		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,8 @@
 		243230251AC865D600F2CCC3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				54A07A381AC9BF9A00217F0F /* Flag.png */,
+				54704AF41AC9BAAD009C09ED /* Bomb.png */,
 				243230261AC865D600F2CCC3 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -225,6 +231,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */,
+				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
 				2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */,
 				2432302F1AC865D600F2CCC3 /* Main.storyboard in Resources */,
 			);

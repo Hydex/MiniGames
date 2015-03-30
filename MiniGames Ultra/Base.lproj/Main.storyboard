@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
@@ -662,22 +662,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-na-x7x">
-                                <rect key="frame" x="18" y="20" width="187" height="24"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Это окно потом доработаем" id="giz-vD-VVF">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQJ-Sb-Tb8">
-                                <rect key="frame" x="18" y="52" width="617" height="24"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Создай 1-2 новых контроллера для своей игры, я скажу, как правильно их связать с основным" id="tIJ-lZ-Ooi">
-                                    <font key="font" metaFont="cellTitle"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-uk-GlF">
                                 <rect key="frame" x="237" y="315" width="138" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Choose game:" id="y0R-Sw-a8W">
@@ -709,11 +693,20 @@
                                     <action selector="donePressed:" target="XfG-lQ-9wD" id="Lxu-jm-EpT"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQ5-eu-Vaf">
+                                <rect key="frame" x="60" y="32" width="526" height="55"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Оставляй здесь коммментарии" id="cai-mz-grR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="gameChoose" destination="fmS-6I-qKq" id="bSr-Zu-dWD"/>
-                        <segue destination="fQ5-eu-iXW" kind="show" identifier="minesweeper" id="9u8-oy-B35"/>
+                        <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
+                        <segue destination="fRy-uY-dsn" kind="modal" identifier="ballGame" id="asg-nk-lA8"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -844,7 +837,7 @@
                 </viewController>
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528" y="680"/>
+            <point key="canvasLocation" x="1635" y="647"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cTr-AH-ADo">
@@ -857,7 +850,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="981"/>
+            <point key="canvasLocation" x="175" y="1154"/>
         </scene>
     </scenes>
 </document>

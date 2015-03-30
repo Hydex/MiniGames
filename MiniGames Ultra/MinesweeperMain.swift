@@ -22,8 +22,16 @@ class MinesweeperMain: NSViewController {
         
     }
     
+    func addFlag(sender : NSGestureRecognizer) {
+        if let but = sender.view as? NSButton {
+            but.image = NSImage(named: "Flag.png")
+        }
+    }
+    
     override func viewDidAppear() {
         super.viewDidAppear()
+        
+        self.view.window?.title = "Сапер"
         
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         height = storage.integerForKey("mwHeight")
@@ -46,6 +54,14 @@ class MinesweeperMain: NSViewController {
                 but.action = Selector("buttonPressed:")
                 but.target = self
                 but.bezelStyle = NSBezelStyle(rawValue: 6)!
+                
+                var ges = NSClickGestureRecognizer()
+                ges.target = self
+                ges.buttonMask = 0x2
+                ges.numberOfClicksRequired = 1
+                ges.action = Selector("addFlag:")
+                but.addGestureRecognizer(ges)
+                
                 ar.append(but)
                 self.view.addSubview(but)
                 x += 30

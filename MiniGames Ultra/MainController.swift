@@ -17,6 +17,8 @@ class MainController : NSViewController {
         switch gameChoose.indexOfSelectedItem {
         case 0:
             self.performSegueWithIdentifier("minesweeper", sender: self)
+        case 1:
+            self.performSegueWithIdentifier("ballGame", sender: self)
         default:
             break
         }
@@ -25,6 +27,7 @@ class MainController : NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
+        self.view.window?.title = "MiniGames"
     }
     
     

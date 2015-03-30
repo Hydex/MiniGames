@@ -53,6 +53,7 @@ class MinesweeperHardness : NSViewController {
             storage.setInteger(heightLabel.integerValue, forKey: "mwHeight")
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")
             storage.synchronize()
+            self.dismissController(MinesweeperHardness)
             self.performSegueWithIdentifier("startGame", sender: self)
         }
     }
@@ -70,7 +71,7 @@ class MinesweeperHardness : NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
-        
+        self.view.window?.title = "Сапер"
     }
     
     

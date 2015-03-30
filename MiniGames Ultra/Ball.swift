@@ -14,4 +14,9 @@ import Cocoa
 
 class BallGame: NSViewController {
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window?.title = "BallGame"
+    }
+    
 }

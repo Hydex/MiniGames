@@ -714,25 +714,11 @@
                     <connections>
                         <outlet property="gameChoose" destination="fmS-6I-qKq" id="bSr-Zu-dWD"/>
                         <segue destination="fQ5-eu-iXW" kind="show" identifier="minesweeper" id="9u8-oy-B35"/>
-                        <segue destination="AVw-sc-8Yt" kind="modal" identifier="ballGame" id="Lkt-bE-Lyk"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="242.5" y="431"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Xfq-xu-Pws">
-            <objects>
-                <viewController id="AVw-sc-8Yt" sceneMemberID="viewController">
-                    <view key="view" id="HQs-9l-7Ro">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="m0F-wE-eAy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="242" y="936"/>
         </scene>
         <!--Minesweeper Hardness-->
         <scene sceneID="rM5-bq-e1A">
@@ -859,6 +845,19 @@
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1528" y="680"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cTr-AH-ADo">
+            <objects>
+                <viewController id="fRy-uY-dsn" sceneMemberID="viewController">
+                    <view key="view" id="tp3-21-s4J">
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="981"/>
         </scene>
     </scenes>
 </document>

@@ -54,7 +54,8 @@ class MinesweeperHardness : NSViewController {
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")
             storage.synchronize()
             self.dismissController(MinesweeperHardness)
-            self.performSegueWithIdentifier("startGame", sender: self)
+            self.performSegueWithIdentifier("startGameMinesweeper", sender: self)
+            
         }
     }
     
@@ -66,6 +67,7 @@ class MinesweeperHardness : NSViewController {
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
+        self.dismissController(MinesweeperHardness)
     }
     
     override func viewDidAppear() {

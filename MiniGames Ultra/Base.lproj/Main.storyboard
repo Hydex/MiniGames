@@ -819,12 +819,12 @@
                         <outlet property="helpLabel" destination="baN-he-ruC" id="jNq-FQ-Wpv"/>
                         <outlet property="testLabel" destination="MoD-6O-eqE" id="ipD-Ok-MjV"/>
                         <outlet property="widthLabel" destination="Sdz-Vx-UQb" id="0g4-eK-RJG"/>
-                        <segue destination="NRA-qk-7a4" kind="show" identifier="startGame" id="2Zm-1A-4xG"/>
+                        <segue destination="NRA-qk-7a4" kind="show" identifier="startGameMinesweeper" id="2Zm-1A-4xG"/>
                     </connections>
                 </viewController>
                 <customObject id="ubz-RP-Ww0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028.5" y="450"/>
+            <point key="canvasLocation" x="1242.5" y="802"/>
         </scene>
         <!--Minesweeper Main-->
         <scene sceneID="j2A-Pa-LtX">
@@ -834,10 +834,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
+                    <connections>
+                        <segue destination="fQ5-eu-iXW" kind="show" identifier="changeHardness" id="tIe-UZ-lgm"/>
+                    </connections>
                 </viewController>
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1635" y="647"/>
+            <point key="canvasLocation" x="1657" y="343"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cTr-AH-ADo">
@@ -853,4 +856,7 @@
             <point key="canvasLocation" x="175" y="1154"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tIe-UZ-lgm"/>
+    </inferredMetricsTieBreakers>
 </document>

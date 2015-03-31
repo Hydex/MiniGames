@@ -23,6 +23,7 @@ class BallGame: NSViewController {
     var pg = CGFloat(-5)
     var pk = CGFloat(2)
     var rand = 0
+    var tr = false
     
     @IBOutlet weak var ball: NSButton!
     @IBOutlet weak var lin: NSBox!
@@ -35,7 +36,6 @@ class BallGame: NSViewController {
     @IBOutlet weak var ender: NSTextField!
    
     @IBAction func stb(sender: AnyObject) {
-        
         if (stb.title == "Stop") {
             pg = CGFloat(g)
             pk = CGFloat(k)
@@ -50,9 +50,8 @@ class BallGame: NSViewController {
         }
     }
     
-    
     @IBAction func sb(sender: AnyObject) {
-        g = CGFloat(-5)
+        g = CGFloat(-4)
         k = CGFloat(2)
         stb.title = "Stop"
         sb.enabled = false
@@ -62,11 +61,11 @@ class BallGame: NSViewController {
         switch theEvent.character {
         case NSRightArrowFunctionKey:
             if (bita.frame.origin.x < (self.view.frame.width-100)) {
-                bita.frame.origin.x += 49
+                bita.frame.origin.x += 69
             }
         case NSLeftArrowFunctionKey:
             if (bita.frame.origin.x > 0) {
-                bita.frame.origin.x -= 50
+                bita.frame.origin.x -= 70
             }
         default:
             super.mouseDown(theEvent)
@@ -88,7 +87,27 @@ class BallGame: NSViewController {
         }
     }
     
+    func checkobj(sender: AnyObject) {
+        if ((ball.frame.origin.x < (sender.frame.origin.x - 37)) && (sender.frame.maxX > ball.frame.origin.x) && (sender.frame.maxY > ball.frame.minY) && (sender.frame.minY < ball.frame.maxY)) {
+            tr = true
+        }
+        
+    }
+    
+    
+    func bigbitafunc() {
+        bigbita.frame.origin.y = 11
+        bigbita.frame.origin.x = 100
+        bigbita.hidden = true
+    }
+    
     func flyfunc(timer : NSTimer) {
+        
+        checkobj(bigbita)
+        if (tr) {
+           bigbitafunc()
+            tr = false
+        }
         
         lin.frame.size = CGSize(width: self.view.frame.width, height: lin.frame.origin.y-65)
         bita.frame.origin.y = 60

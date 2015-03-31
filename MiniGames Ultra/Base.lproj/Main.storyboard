@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
@@ -672,16 +672,19 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmS-6I-qKq">
                                 <rect key="frame" x="237" y="262" width="100" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="523-G8-apn">
+                                <popUpButtonCell key="cell" type="push" title="Ball Game" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="P9d-Ih-Rjn" id="523-G8-apn">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="5nB-fY-Si1">
                                         <items>
                                             <menuItem title="Minesweeper" id="cDd-fH-8hD"/>
-                                            <menuItem title="Ball Game" id="P9d-Ih-Rjn"/>
+                                            <menuItem title="Ball Game" state="on" id="P9d-Ih-Rjn"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="vhY-pj-whs"/>
+                                </connections>
                             </popUpButton>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iRH-kQ-FOB">
                                 <rect key="frame" x="217" y="118" width="156" height="48"/>
@@ -706,7 +709,6 @@
                     <connections>
                         <outlet property="gameChoose" destination="fmS-6I-qKq" id="bSr-Zu-dWD"/>
                         <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
-                        <segue destination="fRy-uY-dsn" kind="modal" identifier="ballGame" id="asg-nk-lA8"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -842,21 +844,122 @@
             </objects>
             <point key="canvasLocation" x="1657" y="343"/>
         </scene>
-        <!--View Controller-->
+        <!--Ball Game-->
         <scene sceneID="cTr-AH-ADo">
             <objects>
-                <viewController id="fRy-uY-dsn" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="fRy-uY-dsn" customClass="BallGame" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tp3-21-s4J">
                         <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9Z-Ue-Ch3" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="298" y="60" width="100" height="21"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f3g-UV-wk5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeo-fC-Khf">
+                                <rect key="frame" x="578" y="9" width="100" height="45"/>
+                                <buttonCell key="cell" type="smallSquare" title="Start" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3df-Yc-heO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUA-t2-NqY">
+                                <rect key="frame" x="468" y="9" width="100" height="45"/>
+                                <buttonCell key="cell" type="smallSquare" title="Stop" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uzh-vc-z5I">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-EW-Gmh">
+                                <rect key="frame" x="100" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" title="-----" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LcZ-6p-ddn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-YU-JWK">
+                                <rect key="frame" x="144" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" title="--" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxb-SW-3uz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-KI-ifC">
+                                <rect key="frame" x="188" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Uc-Zc-dRU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="gGt-id-7rK">
+                                <rect key="frame" x="232" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uu9-ll-GkL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="zda-xB-HD3">
+                                <rect key="frame" x="276" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L2w-uj-5s1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-RB-nhM">
+                                <rect key="frame" x="320" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mGN-nG-1c5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="cal-WY-J7K">
+                                <rect key="frame" x="408" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cro-7W-ZMi">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="52s-3J-A6Q">
+                                <rect key="frame" x="364" y="11" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOW-45-rsx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="10"/>
+                                </buttonCell>
+                            </button>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8br-LQ-pWb">
+                                <rect key="frame" x="12" y="445" width="39" height="38"/>
+                                <buttonCell key="cell" type="round" bezelStyle="circular" imagePosition="above" alignment="left" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" id="f3J-iA-ITm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vuR-C2-q0b">
+                                <rect key="frame" x="0.0" y="70" width="700" height="5"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ball" destination="8br-LQ-pWb" id="d9w-Z7-O9T"/>
+                        <outlet property="bigbita" destination="pIF-EW-Gmh" id="Ogd-Qi-aBr"/>
+                        <outlet property="bita" destination="j9Z-Ue-Ch3" id="wzE-eA-YaD"/>
+                        <outlet property="lin" destination="vuR-C2-q0b" id="roW-hU-KhA"/>
+                        <outlet property="sb" destination="qeo-fC-Khf" id="hdL-ez-F4L"/>
+                        <outlet property="smallbita" destination="UHa-YU-JWK" id="9ad-Kd-fxU"/>
+                        <outlet property="stb" destination="tUA-t2-NqY" id="O6j-N6-u9R"/>
+                    </connections>
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="1154"/>
+            <point key="canvasLocation" x="634" y="1123"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tIe-UZ-lgm"/>
+        <segue reference="9u8-oy-B35"/>
     </inferredMetricsTieBreakers>
 </document>

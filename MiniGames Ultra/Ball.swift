@@ -10,23 +10,7 @@ import Cocoa
 import AppKit
 import Foundation
 
-
-extension NSEvent {
-    
-    var character: Int {
-        // Note that you could also use Int(keyCode)
-        return Int(charactersIgnoringModifiers!.utf16[0])
-    }
-    
-}
-
-extension Character {
-    
-    var keyCode: Int {
-        return Int(String(self).utf16[0])
-    }
-    
-}
+// Эти расширения есть в файле
 
 class BallGame: NSViewController {
     

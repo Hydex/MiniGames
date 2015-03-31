@@ -9,21 +9,6 @@
 import Foundation
 import AppKit
 
-func /(left: Int, right : Int) -> Int {
-    return Int(Double(left) / Double(right))
-}
-
-extension String {
-    func addOne() -> String {
-        if self.isEmpty {
-            return "1"
-        }
-        else {
-            return "\(self.toInt()! + 1)"
-        }
-    }
-}
-
 class MinesweeperMain: NSViewController {
     
     var height = 0
@@ -31,20 +16,49 @@ class MinesweeperMain: NSViewController {
     var bombAmount = 0
     var bombsLeft = 0
     var curMoves = 0
+    var time = 0
+    var elapsedTime = 0
+    
+    var level = ""
+    
+    var timer = NSTimer()
+    
+    var storage = NSUserDefaults.standardUserDefaults()
     
     var bombImage = NSImage(named: "Bomb.png")
+    var flagImage = NSImage(named: "Flag.png")
     
     var ar : Array<NSButton> = []
     
-    var storage = NSUserDefaults.standardUserDefaults()
+    func incTime(sender : AnyObject) {
+        elapsedTime++
+        time = elapsedTime / 10
+    }
+    
+    func replaceBomb(but : NSButton) {
+        but.alternateImage = nil
+        var l = 0
+        var pos = Int(arc4random_uniform(UInt32(width * height - bombAmount)))
+        for but in ar {
+            if but.alternateImage != bombImage {
+                l++
+            }
+            if l == pos + 1 {
+                but.alternateImage = bombImage
+                break
+            }
+        }
+    }
     
     func buttonPressed(sender : NSButton) {
         curMoves++
         println(sender.tag)
         if curMoves == 1 && sender.alternateImage == bombImage {
             while sender.alternateImage == bombImage {
-                placeBombs()
+                replaceBomb(sender)
             }
+            press(sender)
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
         }
         else if sender.alternateImage == bombImage {
             for button in ar {
@@ -56,18 +70,97 @@ class MinesweeperMain: NSViewController {
         }
         else {
             press(sender)
+            var pressed = 0
+            for but in ar {
+                if but.alternateImage != bombImage && but.enabled == false {
+                    pressed++
+                }
+            }
+            if pressed == countElements(ar) - bombAmount {
+                win()
+            }
+        }
+    }
+    
+    func win() {
+        var al = NSAlert()
+        al.showsHelp = false
+        al.messageText = "Вы победили!"
+        var congr = ""
+        var key = level + "mwHighscore"
+        if storage.integerForKey(key) == 0 {
+            storage.setInteger(time, forKey: key)
+            congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
+        }
+        else if time < storage.integerForKey("mwHighscore") {
+            congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
+        }
+        else {
+            congr = "Вы справились за \(time) секунд, ваш рекорд - \(storage.integerForKey(key)) секунд"
+        }
+        
+        al.informativeText = congr
+        al.addButtonWithTitle("Новая игра")
+        al.addButtonWithTitle("Сменить уровень сложности")
+        al.addButtonWithTitle("Выйти из приложения")
+        var responseTag = NSModalResponse()
+        responseTag = al.runModal()
+        switch responseTag {
+        case NSAlertFirstButtonReturn:
+            newGame()
+        case NSAlertSecondButtonReturn:
+            self.dismissController(MinesweeperMain)
+            self.performSegueWithIdentifier("changeHardness", sender: self)
+        case NSAlertThirdButtonReturn:
+            exit(0)
+        default:
+            break
         }
     }
     
     func press(butToPress : NSButton) {
         butToPress.enabled = false
         butToPress.title = butToPress.alternateTitle
+        butToPress.image = nil
+        println("pressed")
     }
     
     func addFlag(sender : NSGestureRecognizer) {
         if let but = sender.view as? NSButton {
-            but.image = NSImage(named: "Flag.png")
+            if but.image == flagImage {
+                but.image = nil
+                bombsLeft++
+                var res = 0
+                for each in ar {
+                    if each.image == flagImage && each.alternateImage == bombImage {
+                        res++
+                    }
+                }
+                if res == bombAmount {
+                    win()
+                }
+            }
+            else {
+                but.image = flagImage
+                bombsLeft--
+            }
         }
+    }
+    
+    func newGame() {
+        for but in ar {
+            but.enabled = true
+            but.title = ""
+            but.image = nil
+            but.alternateTitle = ""
+            but.alternateImage = nil
+        }
+        timer.invalidate()
+        placeBombs()
+        curMoves = 0
+        time = 0
+        elapsedTime = 0
+        bombsLeft = bombAmount
     }
     
     func lose() {
@@ -82,27 +175,15 @@ class MinesweeperMain: NSViewController {
         responseTag = al.runModal()
         switch responseTag {
         case NSAlertFirstButtonReturn:
-            for but in ar {
-                but.enabled = true
-                but.title = ""
-                but.image = nil
-                but.alternateTitle = ""
-                but.alternateImage = nil
-            }
-            placeBombs()
-            curMoves = 0
+            newGame()
         case NSAlertSecondButtonReturn:
             self.dismissController(MinesweeperMain)
             self.performSegueWithIdentifier("changeHardness", sender: self)
-            
         case NSAlertThirdButtonReturn:
             exit(0)
         default:
             break
         }
-        
-        
-        
     }
     
     override func viewDidAppear() {
@@ -120,10 +201,16 @@ class MinesweeperMain: NSViewController {
         switch storage.integerForKey("mwHardness") {
         case 0:
             k = 8
+            level = "easy"
         case 1:
             k = 5
+            level = "meduim"
         case 2:
             k = 3
+            level = "hard"
+        case 3:
+            k = 2
+            level = "extreme"
         default:
             var al = NSAlert()
             al.showsHelp = false
@@ -167,21 +254,25 @@ class MinesweeperMain: NSViewController {
             x = 0
         }
         placeBombs()
+        bombsLeft = bombAmount
     }
+    
+    var i = 0
     
     func placeBombs() {
         var test = 0
-        println(bombAmount)
+        println(i)
+        i++
         while test < bombAmount {
             var pos = Int(arc4random_uniform(UInt32(width * height)))
             while ar[pos].alternateImage == bombImage {
                 pos = Int(arc4random_uniform(UInt32(width * height)))
             }
             ar[pos].alternateImage = bombImage
-            println(bombAmount)
             
             var nBut = ar[pos]
             for but in ar {
+                println("freezes")
                 if (but.tag == nBut.tag + 1 && nBut.tag % width != 0) || (but.tag == nBut.tag - 1 && nBut.tag % width != 1) || (but.tag == nBut.tag + width) || (but.tag == nBut.tag + width - 1 && nBut.tag % width != 1) || (but.tag == nBut.tag + width + 1 && nBut.tag % width != 0) || (but.tag == nBut.tag - width) || (but.tag == nBut.tag - width - 1 && nBut.tag % width != 1) || (but.tag == nBut.tag - width + 1 && nBut.tag % width != 0) {
                     but.alternateTitle = but.alternateTitle.addOne()
                 }
@@ -192,7 +283,6 @@ class MinesweeperMain: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     

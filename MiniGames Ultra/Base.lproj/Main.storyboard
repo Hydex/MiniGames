@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
@@ -682,9 +682,6 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
-                                <connections>
-                                    <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="vhY-pj-whs"/>
-                                </connections>
                             </popUpButton>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iRH-kQ-FOB">
                                 <rect key="frame" x="217" y="118" width="156" height="48"/>
@@ -709,6 +706,7 @@
                     <connections>
                         <outlet property="gameChoose" destination="fmS-6I-qKq" id="bSr-Zu-dWD"/>
                         <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
+                        <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="6S3-Sb-WOm"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -741,6 +739,7 @@
                                             <menuItem title="Easy" state="on" keyEquivalent="e" id="yfp-gx-EBK"/>
                                             <menuItem title="Medium" keyEquivalent="m" id="AVv-iD-nHU"/>
                                             <menuItem title="Hard" keyEquivalent="s" id="s4j-cS-EVY"/>
+                                            <menuItem title="Extreme" keyEquivalent="x" id="0kv-TK-Yms"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -865,6 +864,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="sb:" target="fRy-uY-dsn" id="iua-l5-b3n"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUA-t2-NqY">
                                 <rect key="frame" x="468" y="9" width="100" height="45"/>
@@ -956,7 +958,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="1123"/>
+            <point key="canvasLocation" x="601" y="1112"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

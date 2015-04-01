@@ -15,6 +15,7 @@
 		243230451AC868B400F2CCC3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230441AC868B400F2CCC3 /* MainController.swift */; };
 		243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230461AC8696400F2CCC3 /* MinesweeperMain.swift */; };
 		243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */; };
+		544646711ACC5F6B003F1B25 /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544646701ACC5F6B003F1B25 /* GameClass.swift */; };
 		54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 54704AF41AC9BAAD009C09ED /* Bomb.png */; };
 		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
 		54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */; };
@@ -44,6 +45,7 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		544646701ACC5F6B003F1B25 /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		54704AF41AC9BAAD009C09ED /* Bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb.png; sourceTree = "<group>"; };
 		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
 		54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Classes, functions and extensions.swift"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				243230291AC865D600F2CCC3 /* ViewController.swift */,
 				2432302B1AC865D600F2CCC3 /* Images.xcassets */,
 				2432302D1AC865D600F2CCC3 /* Main.storyboard */,
+				544646701ACC5F6B003F1B25 /* GameClass.swift */,
 				243230441AC868B400F2CCC3 /* MainController.swift */,
 				2432304A1AC869A800F2CCC3 /* Games */,
 				243230251AC865D600F2CCC3 /* Supporting Files */,
@@ -257,6 +260,7 @@
 			files = (
 				92A46B331AC958E400B2050E /* Ball.swift in Sources */,
 				2432302A1AC865D600F2CCC3 /* ViewController.swift in Sources */,
+				544646711ACC5F6B003F1B25 /* GameClass.swift in Sources */,
 				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
 				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
 				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,

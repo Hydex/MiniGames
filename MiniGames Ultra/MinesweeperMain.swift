@@ -28,11 +28,10 @@ class MinesweeperMain: NSViewController {
     var timer = NSTimer()
     
     var storage = NSUserDefaults.standardUserDefaults()
-    var bombImage = NSImage(named: "Bomb.png")
-    var flagImage = NSImage(named: "Flag.png")
+    var bombImage = NSImage(named: "Bomb.png")!
+    var flagImage = NSImage(named: "Flag.png")!
     
     var ar : Array<NSButton> = []
-    
     
     /// Main timer function
     func incTime(sender : AnyObject) {
@@ -47,8 +46,8 @@ class MinesweeperMain: NSViewController {
         :param: but The button that is pressed
     */
     
-    func replaceBomb(but : NSButton) {
-        but.alternateImage = nil
+    func replaceBomb(button : NSButton) {
+        button.alternateImage = nil
         var l = 0
         var pos = Int(arc4random_uniform(UInt32(width * height - bombAmount)))
         for but in ar {
@@ -57,6 +56,7 @@ class MinesweeperMain: NSViewController {
             }
             if l == pos + 1 {
                 but.alternateImage = bombImage
+                loadMines(but, desk: true, butToDesk: button)
                 break
             }
         }
@@ -65,7 +65,6 @@ class MinesweeperMain: NSViewController {
     /// One of buttons was pressed with left mouse button
     func buttonPressed(sender : NSButton) {
         curMoves++
-        println(sender.tag)
         if curMoves == 1 && sender.alternateImage == bombImage {
             while sender.alternateImage == bombImage {
                 replaceBomb(sender)
@@ -138,7 +137,6 @@ class MinesweeperMain: NSViewController {
         butToPress.enabled = false
         butToPress.title = butToPress.alternateTitle
         butToPress.image = nil
-        println("pressed")
     }
     
     /**
@@ -148,7 +146,6 @@ class MinesweeperMain: NSViewController {
     */
     
     func addFlag(sender : NSGestureRecognizer) {
-        println(delay)
         if let but = sender.view as? NSButton {
             if delay > 1 || flagMoves == 0 && but.enabled {
                 if elapsedTime == 0 {
@@ -183,7 +180,6 @@ class MinesweeperMain: NSViewController {
     
     func deleteFlag(but : NSButton) {
         but.image = nil
-        println("deleteFlag")
         bombsLeft++
     }
     

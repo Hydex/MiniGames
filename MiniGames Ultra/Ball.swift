@@ -10,8 +10,6 @@ import Cocoa
 import AppKit
 import Foundation
 
-// Эти расширения есть в файле
-
 class BallGame: NSViewController {
     
     var g = CGFloat(0)
@@ -23,7 +21,7 @@ class BallGame: NSViewController {
     var pg = CGFloat(-5)
     var pk = CGFloat(2)
     var rand = 0
-    var tr = false
+    var tr = false, gr = true
     
     @IBOutlet weak var ball: NSButton!
     @IBOutlet weak var lin: NSBox!
@@ -34,7 +32,7 @@ class BallGame: NSViewController {
     @IBOutlet weak var smallbita: NSButton!
     
     @IBOutlet weak var ender: NSTextField!
-   
+    
     @IBAction func stb(sender: AnyObject) {
         if (stb.title == "Stop") {
             pg = CGFloat(g)
@@ -70,43 +68,65 @@ class BallGame: NSViewController {
         default:
             super.mouseDown(theEvent)
         }
-        super.keyDown(theEvent)
     }
     
-    
+    func bonalign(sender: NSButton) {
+        sender.hidden = false
+        sender.frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
+        sender.frame.origin.y = CGFloat(arc4random_uniform(350)+100)
+    }
     
     func bonfunc(timer: AnyObject?) {
-       rand = Int(arc4random_uniform(8) + 1)
+        rand = Int(arc4random_uniform(8) + 1)
         switch rand {
-          case 1:
-            bigbita.hidden = false
-            bigbita.frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
-            bigbita.frame.origin.y = CGFloat(arc4random_uniform(350)+100)
-          default:
+        case 1:
+            bonalign(bigbita)
+        case 2:
+            bonalign(smallbita)
+        default:
             break
         }
     }
     
     func checkobj(sender: AnyObject) {
-        if ((ball.frame.origin.x < (sender.frame.origin.x - 37)) && (sender.frame.maxX > ball.frame.origin.x) && (sender.frame.maxY > ball.frame.minY) && (sender.frame.minY < ball.frame.maxY)) {
+        if ((ball.frame.maxX > sender.frame.minX) && (sender.frame.maxX > ball.frame.minX) && (sender.frame.maxY > ball.frame.minY) && (sender.frame.minY < ball.frame.maxY)) {
             tr = true
         }
         
     }
     
     
+    func backalign(sender: NSButton) {
+        sender.hidden = false
+        sender.frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
+        sender.frame.origin.y = CGFloat(arc4random_uniform(350)+100)
+        tr = false
+    }
+    
+    
     func bigbitafunc() {
-        bigbita.frame.origin.y = 11
-        bigbita.frame.origin.x = 100
-        bigbita.hidden = true
+        backalign(bigbita)
+        bita.frame = NSRect(x: bita.frame.origin.x, y: bita.frame.origin.y, width: 175, height: bita.frame.height)
+    }
+    
+    func smallbitafunc() {
+        backalign(smallbita)
+        bita.frame = NSRect(x: bita.frame.origin.x, y: bita.frame.origin.y, width: 75, height: bita.frame.height)
     }
     
     func flyfunc(timer : NSTimer) {
         
         checkobj(bigbita)
         if (tr) {
-           bigbitafunc()
-            tr = false
+            bigbitafunc()
+        }
+        checkobj(smallbita)
+        if (tr) {
+            smallbitafunc()
+        }
+        
+        if (gr) {
+          g = CGFloat(g - 0.125)
         }
         
         lin.frame.size = CGSize(width: self.view.frame.width, height: lin.frame.origin.y-65)
@@ -119,11 +139,11 @@ class BallGame: NSViewController {
         if (ball.frame.origin.y > (self.view.frame.height-29)) {
             g = CGFloat(-g)
         }
-        if (((bita.frame.origin.x - 30)<ball.frame.origin.x)&&((bita.frame.origin.x + bita.frame.width + 30)>ball.frame.origin.x)&&((bita.frame.origin.y+10)>ball.frame.origin.y)) {
-            g = CGFloat(-g)
+        if ((bita.frame.minX < ball.frame.maxX)&&(bita.frame.maxX > ball.frame.minX)&&(bita.frame.maxY > ball.frame.minY)) {
+            g = CGFloat(4)
             k = CGFloat(-((bita.frame.origin.x+((bita.frame.width)/3)-ball.frame.origin.x)/3.5))
         }
-        if ((ball.frame.origin.x)<0)||((ball.frame.origin.x+39)>self.view.frame.width) {
+        if ((ball.frame.origin.x)<0)||((ball.frame.origin.x+39) > self.view.frame.width) {
             k = CGFloat(-k)
         }
         if ((ball.frame.origin.y)<65) {

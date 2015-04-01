@@ -33,12 +33,17 @@ class MinesweeperHardness : NSViewController {
     
     @IBOutlet weak var testLabel: NSTextField!
     
-    func checkLabel(label : NSTextField) -> Bool {
-        return !(countElements(label.stringValue) > 0 && (label.integerValue < 4 || label.integerValue > 32))
+    func checkLabel(label : NSTextField, pattern : Int) -> Bool {
+        if pattern == 1 {
+            return !(countElements(label.stringValue) > 0 && (label.integerValue < 4 || label.integerValue > 24))
+        }
+        else {
+            return !(countElements(label.stringValue) > 0 && (label.integerValue < 4 || label.integerValue > 40))
+        }
     }
     
     func check(sender : NSTimer) {
-        if checkLabel(heightLabel) && checkLabel(widthLabel) {
+        if checkLabel(heightLabel, pattern: 1) && checkLabel(widthLabel, pattern: 2) {
             testLabel.hidden = true
         }
         else {
@@ -48,7 +53,7 @@ class MinesweeperHardness : NSViewController {
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        if checkLabel(heightLabel) && checkLabel(widthLabel) {
+        if checkLabel(heightLabel, pattern: 1) && checkLabel(widthLabel, pattern: 2) {
             storage.setInteger(hardnessPopUp.indexOfSelectedItem, forKey: "mwHardness")
             storage.setInteger(heightLabel.integerValue, forKey: "mwHeight")
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")

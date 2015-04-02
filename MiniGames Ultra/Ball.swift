@@ -234,6 +234,11 @@ class BallGame: NSViewController {
         
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        println(lin.boxType)
+    }
+    
     override var representedObject: AnyObject? {
         didSet {
             // Update the view, if already loaded.

@@ -165,16 +165,18 @@ class MinesweeperMain: NSViewController {
     }
     
     func putFlag(but : NSButton) {
-        but.image = flagImage
-        bombsLeft--
-        var res = 0
-        for each in ar {
-            if each.image == flagImage && each.alternateImage == bombImage {
-                res++
+        if but.enabled {
+            but.image = flagImage
+            bombsLeft--
+            var res = 0
+            for each in ar {
+                if each.image == flagImage && each.alternateImage == bombImage {
+                    res++
+                }
             }
-        }
-        if res == bombAmount {
-            win()
+            if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
+                win()
+            }
         }
     }
     
@@ -227,7 +229,6 @@ class MinesweeperMain: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        
         self.view.window?.orderFront(self)
         
         self.view.window?.title = "Сапер"
@@ -277,11 +278,9 @@ class MinesweeperMain: NSViewController {
                 but.target = self
                 but.bezelStyle = NSBezelStyle(rawValue: 6)!
                 
-                var ges = NSClickGestureRecognizer()
-                ges.target = self
+                var ges = NSClickGestureRecognizer(target: self, action: Selector("addFlag:"))
                 ges.buttonMask = 0x2
                 ges.numberOfClicksRequired = 1
-                ges.action = Selector("addFlag:")
                 but.addGestureRecognizer(ges)
                 
                 ar.append(but)
@@ -340,6 +339,9 @@ class MinesweeperMain: NSViewController {
                 var deskIfFour = (but.tag == deskTag - width - 1 && deskTag % width != 1) || (but.tag == deskTag - width + 1 && deskTag % width != 0)
                 if deskIfOne || deskIfTwo || deskIfThree || deskIfFour {
                     but.alternateTitle = but.alternateTitle.addN(-1)
+                }
+                if but.alternateTitle == "0" {
+                    but.alternateTitle = ""
                 }
             }
         }

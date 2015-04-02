@@ -12,52 +12,72 @@ import AppKit
 
 class Game {
     
-    required init(num : CGFloat, picName : String, gameName : String, description : String) {
+    init(num : CGFloat, picName : String, gameName : String, description : String, windowHeight : CGFloat, sender : NSViewController) {
         self.number = num
         self.pictureName = picName
         self.name = gameName
         self.desc = description
+        self.height = windowHeight
+        imageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
+        nameField = NSTextField(frame: NSRect(x: 110, y: 60, width: 300, height: 30))
+        descField = NSTextField(frame: NSRect(x: 110, y: 0, width: 300, height: 60))
+        
+        nameField.font = NSFont(name: "System", size: 15.0)
+        nameField.stringValue = self.name
+        nameField.alignment = NSTextAlignment(rawValue: 2)!
+        nameField.selectable = false
+        nameField.editable = false
+        nameField.backgroundColor = sender.view.window?.backgroundColor
+        nameField.bordered = false
+        
+        descField.selectable = false
+        descField.editable = false
+        descField.stringValue = desc
+        descField.font = NSFont(name: "System", size: 11.0)
+        descField.backgroundColor = NSColor.controlColor()
+        descField.bordered = true
+        descField.backgroundColor = sender.view.window?.backgroundColor
+        
+        imageView.image = NSImage(named: self.pictureName)!
+        
+        gameView = NSView(frame: NSRect(x: 0, y: height - (110 * num) - 10, width: 600, height: 100))
+        
+        button = NSButton(frame: NSRect(x: 0, y: 0, width: 600, height: 100))
+        button.tag = Int(number)
+        button.action = nil
+        
+        var gesture = NSClickGestureRecognizer(target: sender, action: Selector("buttonPressed:"))
+        gesture.numberOfClicksRequired = 1
+        gesture.buttonMask = 0x1
+        button.addGestureRecognizer(gesture)
+        
+        button.bezelStyle = NSBezelStyle(rawValue: 6)!
+        button.transparent = true
+        
+        box = NSBox(frame: NSRect(x: 5, y: 5, width: 590, height: 90))
+        box.boxType = NSBoxType(rawValue: 3)!
+        box.borderColor = NSColor.blackColor()
+        box.borderWidth = 2.5
+        
+        gameView.addSubview(box)
+        gameView.addSubview(nameField)
+        gameView.addSubview(imageView)
+        gameView.addSubview(descField)
+        gameView.addSubview(button)
+        
     }
     
     var number : CGFloat
     var pictureName : String
     var name : String
     var desc : String
+    var height : CGFloat
     
-    var image : NSImage {
-        return NSImage(named: pictureName)!
-    }
-    
-    var imageView : NSImageView {
-        return NSImageView(frame: NSRect(x: 0, y: 100 * (number - 1), width: 100, height: 100))
-    }
-    
-    var nameField : NSTextField {
-        return NSTextField(frame: NSRect(x: 110, y: 100 * (number - 1), width: 300, height: 30))
-    }
-    
-    var descField : NSTextField {
-        return NSTextField(frame: NSRect(x: 110, y: 100 * (number - 1) - 40, width: 300, height: 60))
-    }
-    
-    
-    func setImage() {
-        imageView.image = image
-    }
-    
-    func setNameField() {
-        nameField.font = NSFont(name: "System", size: 15.0)
-        nameField.stringValue = "Name"
-        nameField.alignment = NSTextAlignment(rawValue: 2)!
-        nameField.selectable = false
-        nameField.editable = false
-    }
-    
-    func setDescField() {
-        descField.selectable = false
-        descField.editable = false
-        descField.stringValue = desc
-        descField.font = NSFont(name: "System", size: 11.0)
-    }
+    lazy var button : NSButton = NSButton()
+    lazy var imageView : NSImageView = NSImageView()
+    lazy var nameField : NSTextField = NSTextField()
+    lazy var descField : NSTextField = NSTextField()
+    lazy var gameView : NSView = NSView()
+    lazy var box : NSBox = NSBox()
     
 }

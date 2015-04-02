@@ -109,6 +109,16 @@ extension NSEvent {
     }
 }
 
+extension NSImage {
+    class func swatchWithColor(color: NSColor, size: NSSize) -> NSImage {
+        let image = NSImage(size: size)
+        image.lockFocus()
+        color.drawSwatchInRect(NSMakeRect(0, 0, size.width, size.height))
+        image.unlockFocus()
+        return image
+    }
+}
+
 extension Character {
     var keyCode: Int {
         return Int(String(self).utf16[0])

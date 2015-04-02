@@ -14,16 +14,15 @@ class BallGame: NSViewController {
     
     var g = CGFloat(0)
     var k = CGFloat(0)
-    var lfs = 0
+    var lfs = 0, i = 0
     var lc = 0
     var r = UInt32(0)
     var fly = NSTimer(), bon = NSTimer()
     var pg = CGFloat(-5)
     var pk = CGFloat(2)
     var pgr = 0
-    var rand = 0
-    var tr = false, gr = false, techr = false, lightr = false, invr = false
-    var grn = 0, techn = 0, lightn = 0, invn = 0
+    var rand = 0, tr = false
+    var n : Array<Int> = [], nr : Array<Bool> = [false], btn: Array<NSButton> = []
     
     @IBOutlet weak var ball: NSButton!
     @IBOutlet weak var lin: NSBox!
@@ -37,23 +36,25 @@ class BallGame: NSViewController {
     @IBOutlet weak var light: NSButton!
     @IBOutlet weak var tech: NSButton!
     @IBOutlet weak var inv: NSButton!
+    @IBOutlet weak var wind: NSButton!
+    @IBOutlet weak var ran: NSButton!
     
     @IBAction func stb(sender: AnyObject) {
         if (stb.title == "Stop") {
             pg = CGFloat(g)
             pk = CGFloat(k)
-            pgr = grn
+            pgr = n[3]
             stb.title = "Resume"
             g = 0
             k = 0
-            grn = 1001
+            n[3] = 1001
         }
         else {
             stb.title = "Stop"
             g = pg
             k = pk
-            grn = pgr
-            gr = true
+            n[3] = pgr
+            nr[3] = true
         }
     }
     
@@ -67,16 +68,16 @@ class BallGame: NSViewController {
     override func keyDown(theEvent: NSEvent) {
         switch theEvent.character {
         case NSRightArrowFunctionKey:
-            if (bita.frame.origin.x < (self.view.frame.width-100)) {
-                if (invr) {
-                  bita.frame.origin.x -= 69
+                if (nr[6]) {
+                    if (bita.frame.minX > 70) {
+                        bita.frame.origin.x = CGFloat(bita.frame.origin.x - 70)
+                    }
                 } else {
                     bita.frame.origin.x += 69
                 }
-            }
         case NSLeftArrowFunctionKey:
             if (bita.frame.origin.x > 0) {
-                if (invr) {
+                if (nr[6]) {
                     bita.frame.origin.x += 69
                 } else {
                     bita.frame.origin.x -= 69
@@ -95,29 +96,17 @@ class BallGame: NSViewController {
     
     func bonfunc(timer: AnyObject?) {
         rand = Int(arc4random_uniform(8) + 1)
-        switch rand {
-        case 1:
-            bonalign(bigbita)
-        case 2:
-            bonalign(smallbita)
-        case 3:
-            bonalign(grav)
-        case 4:
-            bonalign(light)
-        case 5:
-            bonalign(tech)
-        case 6:
-            bonalign(inv)
-        default:
-            break
-        }
+        bonalign(btn[rand])
     }
     
-    func checkobj(sender: AnyObject) {
+    func checkobj(sender: NSButton) {
         if ((ball.frame.maxX > sender.frame.minX) && (sender.frame.maxX > ball.frame.minX) && (sender.frame.maxY > ball.frame.minY) && (sender.frame.minY < ball.frame.maxY)) {
             tr = true
         }
-        
+        if (tr) {
+            backalign(sender)
+            nr[sender.tag] = true
+        }
     }
     
     
@@ -126,6 +115,41 @@ class BallGame: NSViewController {
         sender.frame.origin.x = CGFloat(100)
         sender.frame.origin.y = CGFloat(11)
         tr = false
+    }
+    
+    
+    func timefunc(sender: NSButton) {
+        var t = sender.tag
+        if (nr[t])&&(n[t]<1001) {
+            n[t]++
+            switch t {
+            case 3:
+               g = CGFloat(g - 0.275)
+            case 4:
+               g = CGFloat(10)
+            case 5:
+                if ((ball.frame.minY) < CGFloat(2 + ball.frame.maxY)) {
+                    bita.frame.origin.x = ball.frame.midX - (bita.frame.width / CGFloat(arc4random_uniform(30)))
+                } else {
+                    bita.frame.origin.x = ball.frame.midX - (bita.frame.width / 3)
+                }
+            case 7:
+                if (((Double(n[t]) / Double(100)) - (Double(n[t]) / Double(100))) < 0.2) {
+                    g = CGFloat(g*2)
+                } else {
+                    g = CGFloat(g/2)
+                }
+            default:
+                break
+            }
+        } else {
+            if (t == 4) {
+                g = CGFloat(5)
+            }
+            nr[t] = false
+            n[t] = 0
+        }
+        
     }
     
     
@@ -139,22 +163,6 @@ class BallGame: NSViewController {
         backalign(smallbita)
         bita.frame = NSRect(x: bita.frame.origin.x, y: bita.frame.origin.y, width: 75, height: bita.frame.height)
     }
-    func gravfunc() {
-        backalign(grav)
-        gr = true
-    }
-    func lightfunc() {
-        backalign(light)
-        lightr = true
-    }
-    func techfunc() {
-        backalign(tech)
-        techr = true
-    }
-    func invfunc() {
-        backalign(inv)
-        invr = true
-    }
     
     func flyfunc(timer : NSTimer) {
         
@@ -166,43 +174,13 @@ class BallGame: NSViewController {
         if (tr) {
             smallbitafunc()
         }
-        checkobj(grav)
-        if (tr) {
-           gravfunc()
-        }
-        checkobj(light)
-        if (tr) {
-           lightfunc()
-        }
-        checkobj(tech)
-        if (tr) {
-            techfunc()
-        }
-        checkobj(inv)
-        if (tr) {
-            invfunc()
+        for (i=3; i < 9; i++) {
+            checkobj(btn[i])
         }
         
-        if (invr)&&(invn<1001) {
-            invn++
-        } else {
-            invr = false
-            invn = 0
-        }
-        if (gr)&&(grn<1001) {
-          g = CGFloat(g - 0.175)
-          grn++
-        } else {
-            gr = false
-            grn = 0
-        }
-        if (techr)&&(techn<1001) {
-            bita.frame.origin.x = ball.frame.midX - (bita.frame.width / 3)
-            techn++
-        } else {
-            techr = false
-            techn = 0
-        }
+        timefunc(inv)
+        timefunc(grav)
+        timefunc(tech)
         
         lin.frame.size = CGSize(width: self.view.frame.width, height: lin.frame.origin.y-65)
         bita.frame.origin.y = 60
@@ -215,14 +193,7 @@ class BallGame: NSViewController {
             g = CGFloat(-g)
         }
         if ((bita.frame.minX < ball.frame.maxX)&&(bita.frame.maxX > ball.frame.minX)&&(bita.frame.maxY > ball.frame.minY)) {
-            if (lightr)&&(lightn<40) {
-                g = CGFloat(10)
-                lightn++
-            } else {
-                g = CGFloat(5)
-                lightr = false
-                lightn = 0
-            }
+            timefunc(light)
             k = CGFloat(-((bita.frame.origin.x+((bita.frame.width)/3)-ball.frame.origin.x)/3.5))
         }
         if ((ball.frame.origin.x)<0)||((ball.frame.origin.x+39) > self.view.frame.width) {
@@ -246,6 +217,18 @@ class BallGame: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for (i = 0; i<9; i++) {
+            nr.append(false)
+            n.append(0)
+            btn.append(bigbita)
+        }
+        btn[2] = smallbita
+        btn[3] = grav
+        btn[4] = light
+        btn[5] = tech
+        btn[6] = inv
+        btn[7] = wind
+        btn[8] = ran
         fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
         bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
         

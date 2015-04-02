@@ -94,7 +94,7 @@ extension String {
     }
 }
 
-func /(left: Int, right : Int) -> Int {
+func div(left: Int, right : Int) -> Int {
     return Int(Double(left) / Double(right))
 }
 

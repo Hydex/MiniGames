@@ -94,7 +94,12 @@ extension String {
     }
 }
 
-func div(left: Int, right : Int) -> Int {
+infix operator ~~ {
+    associativity right
+    precedence 155
+}
+
+func ~~ (left: Int, right : Int) -> Int  {
     return Int(Double(left) / Double(right))
 }
 

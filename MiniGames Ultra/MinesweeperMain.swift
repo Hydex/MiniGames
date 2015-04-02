@@ -36,7 +36,7 @@ class MinesweeperMain: NSViewController {
     /// Main timer function
     func incTime(sender : AnyObject) {
         elapsedTime++
-        time = elapsedTime / 10
+        time = elapsedTime ~~ 100
         delay++
     }
     
@@ -69,10 +69,15 @@ class MinesweeperMain: NSViewController {
             while sender.alternateImage == bombImage {
                 replaceBomb(sender)
             }
+            println("firstBomb!")
             press(sender)
             if elapsedTime == 0 {
-                timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+                timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
             }
+        }
+        else if elapsedTime == 0 && curMoves == 1 {
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+            press(sender)
         }
         else if sender.alternateImage == bombImage {
             for button in ar {
@@ -131,6 +136,7 @@ class MinesweeperMain: NSViewController {
         default:
             break
         }
+        println("player won")
     }
     
     func press(butToPress : NSButton) {
@@ -147,15 +153,24 @@ class MinesweeperMain: NSViewController {
     
     func addFlag(sender : NSGestureRecognizer) {
         if let but = sender.view as? NSButton {
-            if delay > 1 || flagMoves == 0 && but.enabled {
+            if (delay > 1 || flagMoves == 0) && but.enabled {
                 if elapsedTime == 0 {
-                    timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+                    timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
                 }
                 if but.image == flagImage {
                     deleteFlag(but)
                 }
                 else {
                     putFlag(but)
+                }
+                var res = 0
+                for each in ar {
+                    if each.image == flagImage && each.alternateImage == bombImage {
+                        res++
+                    }
+                }
+                if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
+                    win()
                 }
             }
             delay = 0
@@ -168,16 +183,9 @@ class MinesweeperMain: NSViewController {
         if but.enabled {
             but.image = flagImage
             bombsLeft--
-            var res = 0
-            for each in ar {
-                if each.image == flagImage && each.alternateImage == bombImage {
-                    res++
-                }
-            }
-            if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
-                win()
-            }
+            
         }
+        println("flag put")
     }
     
     func deleteFlag(but : NSButton) {
@@ -200,7 +208,9 @@ class MinesweeperMain: NSViewController {
         time = 0
         elapsedTime = 0
         bombsLeft = bombAmount
-        flagMoves = 0
+        flagMoves = -1
+        delay = 0
+        println("new game started")
     }
     
     /// Function that's called after lose
@@ -277,6 +287,7 @@ class MinesweeperMain: NSViewController {
                 but.action = Selector("buttonPressed:")
                 but.target = self
                 but.bezelStyle = NSBezelStyle(rawValue: 6)!
+                but.layer?.backgroundColor = NSColor.blackColor().CGColor
                 
                 var ges = NSClickGestureRecognizer(target: self, action: Selector("addFlag:"))
                 ges.buttonMask = 0x2

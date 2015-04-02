@@ -40,7 +40,7 @@ class Game {
         
         imageView.image = NSImage(named: self.pictureName)!
         
-        gameView = NSView(frame: NSRect(x: 0, y: height - (110 * num) - 10, width: 600, height: 100))
+        gameView = NSView(frame: NSRect(x: 0, y: /*height - (100 * num)*/ height - (120 * num), width: 600, height: 100))
         
         button = NSButton(frame: NSRect(x: 0, y: 0, width: 600, height: 100))
         button.tag = Int(number)
@@ -54,12 +54,6 @@ class Game {
         button.bezelStyle = NSBezelStyle(rawValue: 6)!
         button.transparent = true
         
-        box = NSBox(frame: NSRect(x: 5, y: 5, width: 590, height: 90))
-        box.boxType = NSBoxType(rawValue: 3)!
-        box.borderColor = NSColor.blackColor()
-        box.borderWidth = 2.5
-        
-        gameView.addSubview(box)
         gameView.addSubview(nameField)
         gameView.addSubview(imageView)
         gameView.addSubview(descField)
@@ -78,6 +72,5 @@ class Game {
     lazy var nameField : NSTextField = NSTextField()
     lazy var descField : NSTextField = NSTextField()
     lazy var gameView : NSView = NSView()
-    lazy var box : NSBox = NSBox()
     
 }

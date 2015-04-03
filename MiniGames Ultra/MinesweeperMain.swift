@@ -19,24 +19,26 @@ class MinesweeperMain: NSViewController {
     /// Time to add as highscore
     var time = 0
     var elapsedTime = 0
-    var delay = 0
+    var delay = 1
     var flagMoves = 0
     
     /// Hardness level
     var level = ""
     
     var timer = NSTimer()
+    var flagTimer = NSTimer()
     
     var storage = NSUserDefaults.standardUserDefaults()
     var bombImage = NSImage(named: "Bomb.png")!
     var flagImage = NSImage(named: "Flag.png")!
+    var pressedImage = NSImage.swatchWithColor(NSColor.lightGrayColor(), size: NSSize(width: 30, height: 30))
     
     var ar : Array<NSButton> = []
     
     /// Main timer function
     func incTime(sender : AnyObject) {
         elapsedTime++
-        time = elapsedTime ~~ 100
+        time = elapsedTime ~~ 10
         delay++
     }
     
@@ -72,11 +74,11 @@ class MinesweeperMain: NSViewController {
             println("firstBomb!")
             press(sender)
             if elapsedTime == 0 {
-                timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+                timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
             }
         }
         else if elapsedTime == 0 && curMoves == 1 {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
             press(sender)
         }
         else if sender.alternateImage == bombImage {
@@ -112,7 +114,7 @@ class MinesweeperMain: NSViewController {
             storage.setInteger(time, forKey: key)
             congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
         }
-        else if time < storage.integerForKey("mwHighscore") {
+        else if time < storage.integerForKey(key) {
             congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
         }
         else {
@@ -141,8 +143,8 @@ class MinesweeperMain: NSViewController {
     
     func press(butToPress : NSButton) {
         butToPress.enabled = false
+        butToPress.image = pressedImage
         butToPress.title = butToPress.alternateTitle
-        butToPress.image = nil
     }
     
     /**
@@ -155,7 +157,7 @@ class MinesweeperMain: NSViewController {
         if let but = sender.view as? NSButton {
             if (delay > 1 || flagMoves == 0) && but.enabled {
                 if elapsedTime == 0 {
-                    timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+                    timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
                 }
                 if but.image == flagImage {
                     deleteFlag(but)
@@ -170,6 +172,7 @@ class MinesweeperMain: NSViewController {
                     }
                 }
                 if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
+                    print("fcking")
                     win()
                 }
             }
@@ -281,12 +284,12 @@ class MinesweeperMain: NSViewController {
         k = 1
         for i in 1...height {
             for j in 1...width {
-                var but = NSButton(frame: NSRect(x: x, y: y + 78, width: 30, height: 30))
+                var but = NSButton(frame: NSRect(x: x, y: y + 78, width: 30, height: 32))
                 but.tag = k
                 but.title = ""
                 but.action = Selector("buttonPressed:")
                 but.target = self
-                but.bezelStyle = NSBezelStyle(rawValue: 6)!
+                but.bezelStyle = NSBezelStyle(rawValue: 10)!
                 but.layer?.backgroundColor = NSColor.blackColor().CGColor
                 
                 var ges = NSClickGestureRecognizer(target: self, action: Selector("addFlag:"))

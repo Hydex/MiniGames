@@ -139,6 +139,13 @@ class MinesweeperMain: NSViewController {
             break
         }
         println("player won")
+        flagTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("delImages:"), userInfo: nil, repeats: false)
+    }
+    
+    func delImages(sender : AnyObject) {
+        for but in ar {
+            but.image = nil
+        }
     }
     
     func press(butToPress : NSButton) {
@@ -172,7 +179,6 @@ class MinesweeperMain: NSViewController {
                     }
                 }
                 if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
-                    print("fcking")
                     win()
                 }
             }

@@ -10,7 +10,6 @@ import Foundation
 import AppKit
 
 class MinesweeperMain: NSViewController {
-    
     var height = 0
     var width = 0
     var bombAmount = 0
@@ -21,32 +20,24 @@ class MinesweeperMain: NSViewController {
     var elapsedTime = 0
     var delay = 1
     var flagMoves = 0
-    
     /// Hardness level
     var level = ""
-    
     var timer = NSTimer()
     var flagTimer = NSTimer()
-    
     var storage = NSUserDefaults.standardUserDefaults()
-    var bombImage = NSImage(named: "Bomb.png")!
+    var bombImage = NSImage(named: "Button bomb.png")!
     var flagImage = NSImage(named: "Flag.png")!
-    var pressedImage = NSImage.swatchWithColor(NSColor.lightGrayColor(), size: NSSize(width: 30, height: 30))
-    
     var ar : Array<NSButton> = []
+    ///Label that show current time
+    var curTime = NSTextField()
     
     /// Main timer function
     func incTime(sender : AnyObject) {
         elapsedTime++
-        time = elapsedTime ~~ 10
+        time = elapsedTime ~~~ 10
         delay++
+        curTime.stringValue = "\(time)"
     }
-    
-    /**
-        Replace the bomb if the first button pressed is bomb
-        
-        :param: but The button that is pressed
-    */
     
     func replaceBomb(button : NSButton) {
         button.alternateImage = nil
@@ -71,7 +62,6 @@ class MinesweeperMain: NSViewController {
             while sender.alternateImage == bombImage {
                 replaceBomb(sender)
             }
-            println("firstBomb!")
             press(sender)
             if elapsedTime == 0 {
                 timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
@@ -91,15 +81,27 @@ class MinesweeperMain: NSViewController {
         }
         else {
             press(sender)
-            var pressed = 0
-            for but in ar {
-                if but.alternateImage != bombImage && but.enabled == false {
-                    pressed++
-                }
+            checkForWin()
+        }
+    }
+    
+    func checkForWin() {
+        var pressed = 0
+        var flags = 0
+        var corFlags = 0
+        for but in ar {
+            if !but.enabled {
+                pressed++
             }
-            if pressed == countElements(ar) - bombAmount {
-                win()
+            if but.image == flagImage {
+                flags++
             }
+            if but.image == flagImage && but.alternateImage == bombImage {
+                corFlags++
+            }
+        }
+        if pressed == height * width - bombAmount || (flags == bombAmount && flags == corFlags) {
+            win()
         }
     }
     
@@ -109,17 +111,19 @@ class MinesweeperMain: NSViewController {
         al.showsHelp = false
         al.messageText = "Вы победили!"
         var congr = ""
-        var key = level + "mwHighscore"
+        var key = level + "mwHighscore" + "\(height)" + "x" + "\(width)"
         if storage.integerForKey(key) == 0 {
             storage.setInteger(time, forKey: key)
             congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
         }
         else if time < storage.integerForKey(key) {
+            storage.setInteger(time, forKey: key)
             congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
         }
         else {
             congr = "Вы справились за \(time) секунд, ваш рекорд - \(storage.integerForKey(key)) секунд"
         }
+        storage.synchronize()
         
         al.informativeText = congr
         al.addButtonWithTitle("Новая игра")
@@ -131,14 +135,14 @@ class MinesweeperMain: NSViewController {
         case NSAlertFirstButtonReturn:
             newGame()
         case NSAlertSecondButtonReturn:
-            self.dismissController(MinesweeperMain)
+            clearView()
+            self.view.window?.close()
             self.performSegueWithIdentifier("changeHardness", sender: self)
         case NSAlertThirdButtonReturn:
             exit(0)
         default:
             break
         }
-        println("player won")
         flagTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("delImages:"), userInfo: nil, repeats: false)
     }
     
@@ -146,19 +150,43 @@ class MinesweeperMain: NSViewController {
         for but in ar {
             but.image = nil
         }
+        timer.invalidate()
     }
     
     func press(butToPress : NSButton) {
-        butToPress.enabled = false
-        butToPress.image = pressedImage
-        butToPress.title = butToPress.alternateTitle
+        if butToPress.enabled {
+            butToPress.enabled = false
+            var color = NSColor()
+            switch butToPress.alternateTitle {
+            case "1":
+               color = NSColor.blueColor()
+            case "2":
+               color = NSColor.redColor()
+             case "3":
+               color = NSColor.magentaColor()
+             case "4":
+               color = NSColor.orangeColor()
+             case "5":
+               color = NSColor.cyanColor()
+             default:
+               color = NSColor.greenColor()
+            }
+            butToPress.image = NSImage.swatchWithColor(color, size: NSSize(width: 30, height: 30))
+            butToPress.title = butToPress.alternateTitle
+            if butToPress.title == "" {
+                recOpen(butToPress)
+            }
+        }
     }
     
-    /**
-        Add flag to a button
-    
-        :param: sender The NSClickGestureRecognizer of clicked button
-    */
+    func recOpen(button : NSButton) {
+        var tag = button.tag
+        for but in ar {
+            if checkerUn(tag: tag, but: but) {
+                press(but)
+            }
+        }
+    }
     
     func addFlag(sender : NSGestureRecognizer) {
         if let but = sender.view as? NSButton {
@@ -172,15 +200,7 @@ class MinesweeperMain: NSViewController {
                 else {
                     putFlag(but)
                 }
-                var res = 0
-                for each in ar {
-                    if each.image == flagImage && each.alternateImage == bombImage {
-                        res++
-                    }
-                }
-                if res == bombAmount && (bombAmount - bombsLeft) == bombAmount {
-                    win()
-                }
+                checkForWin()
             }
             delay = 0
             flagMoves++
@@ -192,9 +212,7 @@ class MinesweeperMain: NSViewController {
         if but.enabled {
             but.image = flagImage
             bombsLeft--
-            
         }
-        println("flag put")
     }
     
     func deleteFlag(but : NSButton) {
@@ -204,22 +222,8 @@ class MinesweeperMain: NSViewController {
     
     /// Start new game
     func newGame() {
-        for but in ar {
-            but.enabled = true
-            but.title = ""
-            but.image = nil
-            but.alternateTitle = ""
-            but.alternateImage = nil
-        }
-        timer.invalidate()
+        clearView()
         placeBombs()
-        curMoves = 0
-        time = 0
-        elapsedTime = 0
-        bombsLeft = bombAmount
-        flagMoves = -1
-        delay = 0
-        println("new game started")
     }
     
     /// Function that's called after lose
@@ -237,7 +241,6 @@ class MinesweeperMain: NSViewController {
         case NSAlertFirstButtonReturn:
             newGame()
         case NSAlertSecondButtonReturn:
-            self.dismissController(MinesweeperMain)
             self.performSegueWithIdentifier("changeHardness", sender: self)
         case NSAlertThirdButtonReturn:
             exit(0)
@@ -246,12 +249,29 @@ class MinesweeperMain: NSViewController {
         }
     }
     
+    func clearView() {
+        for but in ar {
+            but.enabled = true
+            but.title = ""
+            but.image = nil
+            but.alternateTitle = ""
+            but.alternateImage = nil
+        }
+        timer.invalidate()
+        curMoves = 0
+        time = 0
+        elapsedTime = 0
+        bombsLeft = bombAmount
+        flagMoves = -1
+        delay = 0
+        curTime.stringValue = "0"
+    }
+    
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.orderFront(self)
-        
+        self.view.window?.makeKeyAndOrderFront(nil)
+        self.view.window?.center()
         self.view.window?.title = "Сапер"
-        
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         height = storage.integerForKey("mwHeight")
         width = storage.integerForKey("mwWidth")
@@ -271,11 +291,7 @@ class MinesweeperMain: NSViewController {
             k = 2
             level = "extreme"
         default:
-            var al = NSAlert()
-            al.showsHelp = false
-            al.informativeText = "Open the previous window again"
-            al.messageText = "Wrong hardness choose"
-            al.runModal()
+            break
         }
         bombAmount = height * width / k
         
@@ -284,7 +300,7 @@ class MinesweeperMain: NSViewController {
         var newWidth = CGFloat(width * 30)
         frame?.size = NSMakeSize(newWidth, newHeight)
         self.view.window?.setFrame(frame!, display: true)
-
+        
         var x = 0
         var y = 0
         k = 1
@@ -296,7 +312,6 @@ class MinesweeperMain: NSViewController {
                 but.action = Selector("buttonPressed:")
                 but.target = self
                 but.bezelStyle = NSBezelStyle(rawValue: 10)!
-                but.layer?.backgroundColor = NSColor.blackColor().CGColor
                 
                 var ges = NSClickGestureRecognizer(target: self, action: Selector("addFlag:"))
                 ges.buttonMask = 0x2
@@ -311,10 +326,20 @@ class MinesweeperMain: NSViewController {
             y += 30
             x = 0
         }
+        
+        curTime = NSTextField(frame: NSRect(x: (width * 30) ~~ 2 - 60, y: 0, width: 120, height: 70))
+        curTime.font = NSFont(name: "Helvetica", size: 30.0)
+        curTime.stringValue = "0"
+        curTime.alignment = NSTextAlignment(rawValue: 2)!
+        curTime.editable = false
+        curTime.selectable = false
+        curTime.backgroundColor = self.view.window?.backgroundColor
+        curTime.bordered = false
+        self.view.addSubview(curTime)
+        
         placeBombs()
         bombsLeft = bombAmount
     }
-    
     
     /// Place bombs on field
     func placeBombs() {
@@ -330,14 +355,7 @@ class MinesweeperMain: NSViewController {
         }
     }
     
-    /**
-        Load number of mines to all buttons around button with a bomb
-    
-        :param: button The button with the bomb
-        :param: desk Descrease number of bombs around butToDesk or not
-        :param: butToDesk Button, around which the number of bombs will be descreased
-    */
-    
+    ///Load number of bombs to all buttons around `button`
     func loadMines(button : NSButton, desk : Bool, butToDesk : NSButton?) {
         var tag = button.tag
         var deskTag = 0
@@ -345,19 +363,11 @@ class MinesweeperMain: NSViewController {
             deskTag = butToDesk!.tag
         }
         for but in ar {
-            var ifOne = (but.tag == tag + 1 && tag % width != 0) || (but.tag == tag - 1 && tag % width != 1)
-            var ifTwo = (but.tag == tag + width && tag <= width * (height - 1)) || (but.tag == tag + width - 1 && tag % width != 1)
-            var ifThree = (but.tag == tag + width + 1 && tag % width != 0) || (but.tag == tag - width && tag > width)
-            var ifFour = (but.tag == tag - width - 1 && tag % width != 1) || (but.tag == tag - width + 1 && tag % width != 0)
-            if ifOne || ifTwo || ifThree || ifFour {
+            if checkerUn(tag: tag, but: but) {
                 but.alternateTitle = but.alternateTitle.addOne()
             }
             if desk {
-                var deskIfOne = (but.tag == deskTag + 1 && deskTag % width != 0) || (but.tag == deskTag - 1 && deskTag % width != 1)
-                var deskIfTwo = (but.tag == deskTag + width) || (but.tag == deskTag + width - 1 && deskTag % width != 1)
-                var deskIfThree = (but.tag == deskTag + width + 1 && deskTag % width != 0) || (but.tag == deskTag - width)
-                var deskIfFour = (but.tag == deskTag - width - 1 && deskTag % width != 1) || (but.tag == deskTag - width + 1 && deskTag % width != 0)
-                if deskIfOne || deskIfTwo || deskIfThree || deskIfFour {
+                if checkerUn(tag: deskTag, but: but) {
                     but.alternateTitle = but.alternateTitle.addN(-1)
                 }
                 if but.alternateTitle == "0" {
@@ -365,12 +375,13 @@ class MinesweeperMain: NSViewController {
                 }
             }
         }
-
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func checkerUn(#tag : Int, but : NSButton) -> Bool {
+        var ifOne = (but.tag == tag + 1 && tag % width != 0) || (but.tag == tag - 1 && tag % width != 1)
+        var ifTwo = (but.tag == tag + width && tag <= width * (height - 1)) || (but.tag == tag + width - 1 && tag % width != 1)
+        var ifThree = (but.tag == tag + width + 1 && tag % width != 0) || (but.tag == tag - width && tag > width)
+        var ifFour = (but.tag == tag - width - 1 && tag % width != 1) || (but.tag == tag - width + 1 && tag % width != 0)
+        return ifOne || ifTwo || ifThree || ifFour
     }
-    
-    
 }

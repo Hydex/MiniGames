@@ -95,7 +95,7 @@ extension String {
 }
 
 infix operator ~~ {
-    associativity right
+    associativity left
     precedence 155
 }
 
@@ -103,6 +103,14 @@ func ~~ (left: Int, right : Int) -> Int  {
     return Int(Double(left) / Double(right))
 }
 
+infix operator ~~~ {
+    associativity left
+    precedence 155
+}
+
+func ~~~(left: Int, right: Int) -> Int {
+    return Int(llround(Double(left) / Double(right)))
+}
 extension NSEvent {
     var character: Int {
         return Int(charactersIgnoringModifiers!.utf16[0])

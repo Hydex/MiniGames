@@ -19,7 +19,7 @@ class MinesweeperMain: NSViewController {
     var time = 0
     var elapsedTime = 0
     var delay = 1
-    var flagMoves = 0
+    var flagMoves = -1
     /// Hardness level
     var level = ""
     var timer = NSTimer()
@@ -30,6 +30,7 @@ class MinesweeperMain: NSViewController {
     var ar : Array<NSButton> = []
     ///Label that show current time
     var curTime = NSTextField()
+    var locale = NSBundle.mainBundle()
     
     /// Main timer function
     func incTime(sender : AnyObject) {
@@ -37,6 +38,14 @@ class MinesweeperMain: NSViewController {
         time = elapsedTime ~~~ 10
         delay++
         curTime.stringValue = "\(time)"
+        if width > 7 {
+            var name = strLocal("ms")
+            var lang = 1
+            if name == "Minesweeper" {
+                lang = 2
+            }
+            self.view.window?.title = name + " - \(bombsLeft) " + strLocal("bomb") + "\(ending(bombsLeft, lang)) " + strLocal("left")
+        }
     }
     
     func replaceBomb(button : NSButton) {
@@ -57,31 +66,33 @@ class MinesweeperMain: NSViewController {
     
     /// One of buttons was pressed with left mouse button
     func buttonPressed(sender : NSButton) {
-        curMoves++
-        if curMoves == 1 && sender.alternateImage == bombImage {
-            while sender.alternateImage == bombImage {
-                replaceBomb(sender)
-            }
-            press(sender)
-            if elapsedTime == 0 {
-                timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
-            }
-        }
-        else if elapsedTime == 0 && curMoves == 1 {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
-            press(sender)
-        }
-        else if sender.alternateImage == bombImage {
-            for button in ar {
-                if button.alternateImage == bombImage {
-                    button.image = button.alternateImage
+        if sender.image != flagImage {
+            curMoves++
+            if curMoves == 1 && sender.alternateImage == bombImage {
+                while sender.alternateImage == bombImage {
+                    replaceBomb(sender)
+                }
+                press(sender)
+                if elapsedTime == 0 {
+                    timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
                 }
             }
-            lose()
-        }
-        else {
-            press(sender)
-            checkForWin()
+            else if elapsedTime == 0 && curMoves == 1 {
+                timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
+                press(sender)
+            }
+            else if sender.alternateImage == bombImage {
+                for button in ar {
+                    if button.alternateImage == bombImage {
+                        button.image = button.alternateImage
+                    }
+                }
+                lose()
+            }
+            else {
+                press(sender)
+                checkForWin()
+            }
         }
     }
     
@@ -109,26 +120,27 @@ class MinesweeperMain: NSViewController {
     func win() {
         var al = NSAlert()
         al.showsHelp = false
-        al.messageText = "Вы победили!"
-        var congr = ""
-        var key = level + "mwHighscore" + "\(height)" + "x" + "\(width)"
-        if storage.integerForKey(key) == 0 {
-            storage.setInteger(time, forKey: key)
-            congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
+        al.messageText = strLocal("won")
+        var congr = strLocal("time")
+        var lang = 1
+        if congr == "second" {
+            lang = 2
         }
-        else if time < storage.integerForKey(key) {
+        var key = level + "mwHighscore" + "\(height)" + "x" + "\(width)"
+        if storage.integerForKey(key) == 0 || time < storage.integerForKey(key) {
             storage.setInteger(time, forKey: key)
-            congr = "Поздравляю! Новый Рекорд!\nВаше время - \(time) секунд!\nХотите начать новую игру или сменить уровень сложности?"
+            congr = strLocal("congrPart1") + "\(time) " + "\(congr + ending(time, lang))" + strLocal("congrPart2")
         }
         else {
-            congr = "Вы справились за \(time) секунд, ваш рекорд - \(storage.integerForKey(key)) секунд"
+            congr = strLocal("succP1") +  "\(time) \(congr + ending(time, lang)), " + strLocal("succP2") + "\(storage.integerForKey(key)) \(congr + ending(storage.integerForKey(key), lang))"
         }
         storage.synchronize()
         
         al.informativeText = congr
-        al.addButtonWithTitle("Новая игра")
-        al.addButtonWithTitle("Сменить уровень сложности")
-        al.addButtonWithTitle("Выйти из приложения")
+        al.addButtonWithTitle(strLocal("newGame"))
+        al.addButtonWithTitle(strLocal("changeHardness"))
+        al.addButtonWithTitle(strLocal("quit"))
+        al.addButtonWithTitle(strLocal("anGame"))
         var responseTag = NSModalResponse()
         responseTag = al.runModal()
         switch responseTag {
@@ -141,7 +153,8 @@ class MinesweeperMain: NSViewController {
         case NSAlertThirdButtonReturn:
             exit(0)
         default:
-            break
+            clearView()
+            self.view.window?.close()
         }
         flagTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("delImages:"), userInfo: nil, repeats: false)
     }
@@ -158,18 +171,24 @@ class MinesweeperMain: NSViewController {
             butToPress.enabled = false
             var color = NSColor()
             switch butToPress.alternateTitle {
+            case "":
+                color = NSColor.greenColor()
             case "1":
-               color = NSColor.blueColor()
+                color = NSColor.brownColor()
             case "2":
-               color = NSColor.redColor()
-             case "3":
-               color = NSColor.magentaColor()
-             case "4":
-               color = NSColor.orangeColor()
-             case "5":
-               color = NSColor.cyanColor()
-             default:
-               color = NSColor.greenColor()
+                color = NSColor.redColor()
+            case "3":
+                color = NSColor.magentaColor()
+            case "4":
+                color = NSColor.orangeColor()
+            case "5":
+                color = NSColor.cyanColor()
+            case "6":
+                color = NSColor.purpleColor()
+            case "7":
+                color = NSColor.blueColor()
+            default:
+               color = NSColor.yellowColor()
             }
             butToPress.image = NSImage.swatchWithColor(color, size: NSSize(width: 30, height: 30))
             butToPress.title = butToPress.alternateTitle
@@ -230,22 +249,26 @@ class MinesweeperMain: NSViewController {
     func lose() {
         var al = NSAlert()
         al.showsHelp = false
-        al.messageText = "Вы проиграли!"
-        al.informativeText = "Вы хотите переиграть или начать новую игру?"
-        al.addButtonWithTitle("Новая игра")
-        al.addButtonWithTitle("Сменить уровень сложности")
-        al.addButtonWithTitle("Выйти из приложения")
+        al.messageText = strLocal("lost")
+        al.informativeText = strLocal("replay")
+        al.addButtonWithTitle(strLocal("newGame"))
+        al.addButtonWithTitle(strLocal("changeHardness"))
+        al.addButtonWithTitle(strLocal("quit"))
+        al.addButtonWithTitle(strLocal("anGame"))
         var responseTag = NSModalResponse()
         responseTag = al.runModal()
         switch responseTag {
         case NSAlertFirstButtonReturn:
             newGame()
         case NSAlertSecondButtonReturn:
+            clearView()
+            self.view.window?.close()
             self.performSegueWithIdentifier("changeHardness", sender: self)
         case NSAlertThirdButtonReturn:
             exit(0)
         default:
-            break
+            clearView()
+            self.view.window?.close()
         }
     }
     
@@ -265,13 +288,14 @@ class MinesweeperMain: NSViewController {
         flagMoves = -1
         delay = 0
         curTime.stringValue = "0"
+        self.view.window?.title = strLocal("ms")
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.makeKeyAndOrderFront(nil)
         self.view.window?.center()
-        self.view.window?.title = "Сапер"
+        self.view.window?.title = strLocal("ms")
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         height = storage.integerForKey("mwHeight")
         width = storage.integerForKey("mwWidth")

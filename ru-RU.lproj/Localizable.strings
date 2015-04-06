@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  MiniGames Ultra
+
+  Created by Roman Nikitin on 06.04.15.
+  Copyright (c) 2015 TheUnbelievable. All rights reserved.
+*/
+"ms" = "Сапер";
+"time" = "секунд";
+"bomb" = "бомб";
+"left" = "осталось";
+"congrPart1" = "Поздравляю! Новый рекорд! Ваше время - ";
+"congrPart2" = "!\nХотите начать новую игру или сменить уровень сложности?";
+"succP1" = "Вы справились за ";
+"succP2" = "ваш рекорд - ";
+"replay" = "Хотите начать новую игру или сменить уровень сложности?";
+"won" = "Вы победили!";
+"lost" = "Вы проиграли!";
+"newGame" = "Новая игра";
+"changeHardness" = "Сменить уровень сложности";
+"quit" = "Выйти из приложения";
+"anGame" = "Выбрать другую игру";

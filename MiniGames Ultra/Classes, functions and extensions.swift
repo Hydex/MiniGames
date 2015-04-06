@@ -132,3 +132,31 @@ extension Character {
         return Int(String(self).utf16[0])
     }
 }
+
+func strLocal(key : String) -> String {
+    return NSLocalizedString(key, comment: "")
+}
+
+func ending(num : Int, lang : Int) -> String {
+    if lang == 1 {
+        if num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
+            return ""
+        }
+        else {
+            if num % 10 == 1 {
+                return "а"
+            }
+            else {
+                return "ы"
+            }
+        }
+    }
+    else {
+        if num == 1 {
+            return ""
+        }
+        else {
+            return "s"
+        }
+    }
+}

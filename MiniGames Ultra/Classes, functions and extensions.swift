@@ -127,6 +127,19 @@ extension NSImage {
     }
 }
 
+extension Array {
+    func containsStr(el : String) -> Bool {
+        var u = false
+        for each in self {
+            if el == "\(each)" {
+                u = true
+                break
+            }
+        }
+        return u
+    }
+}
+
 extension Character {
     var keyCode: Int {
         return Int(String(self).utf16[0])

@@ -19,6 +19,8 @@ class MainController : NSViewController {
             self.performSegueWithIdentifier("minesweeper", sender: self)
         case 1:
             self.performSegueWithIdentifier("ballGame", sender: self)
+        case 2:
+            self.performSegueWithIdentifier("sudoku", sender: self)
         default:
             break
         }

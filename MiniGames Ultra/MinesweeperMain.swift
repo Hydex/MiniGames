@@ -294,7 +294,6 @@ class MinesweeperMain: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.makeKeyAndOrderFront(nil)
-        self.view.window?.center()
         self.view.window?.title = strLocal("ms")
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         height = storage.integerForKey("mwHeight")
@@ -363,6 +362,8 @@ class MinesweeperMain: NSViewController {
         
         placeBombs()
         bombsLeft = bombAmount
+        
+        self.view.window?.center()
     }
     
     /// Place bombs on field

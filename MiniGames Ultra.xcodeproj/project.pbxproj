@@ -53,6 +53,7 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		247A2F0C1AD302E000A516AA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		249D28421AD2CABE00693797 /* SudokuHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuHardness.swift; sourceTree = "<group>"; };
 		249D28441AD2CACD00693797 /* SudokuMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuMain.swift; sourceTree = "<group>"; };
 		543015201AD2A2BC00C5922B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -268,6 +269,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 243230191AC865D600F2CCC3;
 			productRefGroup = 243230231AC865D600F2CCC3 /* Products */;
@@ -356,6 +358,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				543015201AD2A2BC00C5922B /* en */,
+				247A2F0C1AD302E000A516AA /* ru */,
 			);
 			name = Localizable.strings;
 			path = ..;

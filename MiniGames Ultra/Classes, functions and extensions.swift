@@ -127,17 +127,26 @@ extension NSImage {
     }
 }
 
-extension Array {
-    func containsStr(el : String) -> Bool {
-        var u = false
-        for each in self {
-            if el == "\(each)" {
-                u = true
-                break
-            }
+func contStr(ar : Array<NSTextField>, str : String) -> Bool {
+    var u = false
+    for el in ar {
+        if el.stringValue == str {
+            u = true
+            break
         }
-        return u
     }
+    return u
+}
+
+func arContInt(ar : Array<Int>, t : Int) -> Bool {
+    var u = false
+    for el in ar {
+        if el == t {
+            u = true
+            break
+        }
+    }
+    return u
 }
 
 extension Character {

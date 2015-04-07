@@ -10,6 +10,7 @@ import Cocoa
 
 class SudokuHardness: NSViewController {
 
+    @IBOutlet weak var highlight: NSButton!
     @IBOutlet weak var hardnessInfo: NSTextField!
     @IBOutlet weak var HardnessPopUp: NSPopUpButton!
     @IBAction func showHardnessInfo(sender: AnyObject) {
@@ -23,12 +24,14 @@ class SudokuHardness: NSViewController {
     
     var storage = NSUserDefaults.standardUserDefaults()
     
+    ///TODO: - Add game continuation
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
     }
     @IBAction func donePressed(sender: AnyObject) {
         storage.setInteger(HardnessPopUp.indexOfSelectedItem, forKey: "sudokuHardness")
+        storage.setInteger(highlight.state, forKey: "highlight")
         storage.synchronize()
         self.dismissController(SudokuHardness)
         self.performSegueWithIdentifier("sudoku", sender: self)

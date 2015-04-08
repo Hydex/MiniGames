@@ -37,6 +37,7 @@ class SeaBattle: NSViewController {
                 lbl[q].bordered = false
                 lbl[q].alignment = NSTextAlignment.CenterTextAlignment
                 lbl[q].backgroundColor = NSColor.controlColor()
+                lbl[q].enabled = false
                 self.view.addSubview(lbl[q])
             }
             for j in 1...10 {
@@ -68,6 +69,7 @@ class SeaBattle: NSViewController {
                 btnc.append(btc)
                 self.view.addSubview(btp)
                 self.view.addSubview(btc)
+                x += 30
             }
             y += 30
             x = 50

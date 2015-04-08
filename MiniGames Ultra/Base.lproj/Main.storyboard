@@ -664,14 +664,17 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmS-6I-qKq">
                                 <rect key="frame" x="246" y="256" width="122" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="523-G8-apn">
+                                <popUpButtonCell key="cell" type="push" title="Minesweeper" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cDd-fH-8hD" id="523-G8-apn">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="5nB-fY-Si1">
                                         <items>
-                                            <menuItem title="Minesweeper" id="cDd-fH-8hD"/>
+                                            <menuItem title="Minesweeper" state="on" id="cDd-fH-8hD"/>
                                             <menuItem title="Ball Game" id="P9d-Ih-Rjn"/>
                                             <menuItem title="Sudoku" id="cdf-9A-nGb">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="SeaBattle" id="Zre-sx-Fe3">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
@@ -704,16 +707,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bJz-fn-Yq6">
-                                <rect key="frame" x="42" y="189" width="100" height="32"/>
-                                <buttonCell key="cell" type="push" title="SeaBattle" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e9P-Q6-K3y">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="HGg-dz-qo3" kind="show" id="xUd-HW-gxv"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -721,6 +714,7 @@
                         <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
                         <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="6S3-Sb-WOm"/>
                         <segue destination="xwz-BI-wLB" kind="modal" identifier="sudoku" id="F8H-dt-lYf"/>
+                        <segue destination="HGg-dz-qo3" kind="show" identifier="SeaBattle" id="xCP-Zj-yk8"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -959,6 +953,19 @@
             </objects>
             <point key="canvasLocation" x="1553" y="807"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="4id-Ta-vbX">
+            <objects>
+                <viewController id="GT4-9h-lkh" sceneMemberID="viewController">
+                    <view key="view" id="gvx-1w-8lw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="hM4-t6-5Vc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-419" y="457"/>
+        </scene>
         <!--Sea Battle-->
         <scene sceneID="bw3-FC-IMZ">
             <objects>
@@ -1044,14 +1051,14 @@
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="cal-WY-J7K">
                                 <rect key="frame" x="406" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cro-7W-ZMi">
+                                <buttonCell key="cell" type="bevel" title="O" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cro-7W-ZMi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
                             </button>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8br-LQ-pWb">
-                                <rect key="frame" x="338" y="365" width="25" height="25"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="circular" image="ball" imagePosition="only" alignment="left" alternateImage="ball" enabled="NO" allowsMixedState="YES" imageScaling="axesIndependently" id="f3J-iA-ITm">
+                                <rect key="frame" x="20" y="482" width="25" height="25"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="circular" image="ball" imagePosition="overlaps" alignment="left" alternateImage="ball" enabled="NO" allowsMixedState="YES" imageScaling="axesIndependently" id="f3J-iA-ITm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1070,7 +1077,7 @@
                             </box>
                             <button hidden="YES" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="52s-3J-A6Q">
                                 <rect key="frame" x="362" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="W" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOW-45-rsx">
+                                <buttonCell key="cell" type="bevel" title="life" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOW-45-rsx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
@@ -1130,7 +1137,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-9U-Mib">
-                                <rect key="frame" x="354" y="10" width="100" height="45"/>
+                                <rect key="frame" x="360" y="10" width="100" height="45"/>
                                 <buttonCell key="cell" type="smallSquare" title="Restart" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="inG-8k-xWw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1168,7 +1175,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="422" y="957"/>
+            <point key="canvasLocation" x="-165" y="991"/>
         </scene>
     </scenes>
     <resources>

@@ -142,9 +142,9 @@ class BallGame: NSViewController {
                 case 2:
                     bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 75, height: bts[i].frame.height)
                 case 3:
-                    g = CGFloat(g + (0.35 * ((CGFloat(i) * 2) - 1)))
+                    g = CGFloat(g + (0.3 * ((CGFloat(i) * 2) - 1)))
                 case 4:
-                    cg = CGFloat(13)
+                    cg = CGFloat(8)
                 case 5:
                     bts[i].frame.origin.x = CGFloat(ball.frame.origin.x - 48 - CGFloat(arc4random_uniform(5)))
                 case 6:

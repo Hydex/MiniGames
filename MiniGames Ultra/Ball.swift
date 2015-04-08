@@ -60,18 +60,20 @@ class BallGame: NSViewController {
     
     @IBAction func stb(sender: AnyObject) {
         if (stb.title == "Stop") {
+            pg = CGFloat(g)
+            pk = CGFloat(k)
+            pgr = n[3]
             stb.title = "Resume"
-            cbitat.invalidate()
-            fly.invalidate()
-            bmove.invalidate()
-            bon.invalidate()
+            g = 0
+            k = 0
+            n[3] = 601
         }
         else {
             stb.title = "Stop"
-            cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
-            fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
-            bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
-            bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
+            g = pg
+            k = pk
+            n[3] = pgr
+            nr[3] = true
         }
     }
     
@@ -82,10 +84,6 @@ class BallGame: NSViewController {
         ball.frame.origin.y = CGFloat(450)
         stb.title = "Stop"
         sb.enabled = false
-        cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
-        fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
-        bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
-        bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
     }
 
     var leftDown = false
@@ -142,9 +140,9 @@ class BallGame: NSViewController {
                 case 2:
                     bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 75, height: bts[i].frame.height)
                 case 3:
-                    g = CGFloat(g + (0.3 * ((CGFloat(i) * 2) - 1)))
+                    g = CGFloat(g + (0.35 * ((CGFloat(i) * 2) - 1)))
                 case 4:
-                    cg = CGFloat(8)
+                    cg = CGFloat(13)
                 case 5:
                     bts[i].frame.origin.x = CGFloat(ball.frame.origin.x - 48 - CGFloat(arc4random_uniform(5)))
                 case 6:
@@ -229,11 +227,6 @@ class BallGame: NSViewController {
                     scr[abs(i - 1)].integerValue = 5
                     result.stringValue = "WINNER: " + scr[abs(i - 1)+2].stringValue
                     sb.enabled = false
-                    cbitat.invalidate()
-                    fly.invalidate()
-                    bmove.invalidate()
-                    bon.invalidate()
-
                 }
         }
         }
@@ -275,6 +268,10 @@ class BallGame: NSViewController {
         scr.append(comp)
         scr.append(you)
         scr.append(computer)
+        cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
+        fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
+        bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
+        bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear() {

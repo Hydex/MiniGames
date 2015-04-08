@@ -24,6 +24,12 @@
 		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
 		54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */; };
 		54D3F5BD1ACD7C9B000D8214 /* Yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54D3F5BC1ACD7C9B000D8214 /* Yellow.jpg */; };
+		92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */; };
+		92092A801AD5B53C00E824EA /* green-arrows.gif in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7F1AD5B53C00E824EA /* green-arrows.gif */; };
+		92092A821AD5B63200E824EA /* icon-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A811AD5B63200E824EA /* icon-heart.png */; };
+		92092A841AD5B68D00E824EA /* arrow_down.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92092A831AD5B68D00E824EA /* arrow_down.jpg */; };
+		92092A861AD5B94000E824EA /* horizontal-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A851AD5B94000E824EA /* horizontal-line.png */; };
+		92092A881AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */; };
 		921632D61AD414C500A61088 /* Sea Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921632D51AD414C500A61088 /* Sea Battle.swift */; };
 		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
 		92B996731ACC8BDD008CF329 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B996721ACC8BDD008CF329 /* metal.png */; };
@@ -64,6 +70,12 @@
 		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
 		54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Classes, functions and extensions.swift"; sourceTree = "<group>"; };
 		54D3F5BC1ACD7C9B000D8214 /* Yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yellow.jpg; sourceTree = "<group>"; };
+		92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40px-Lightning_Bolt_on_Circle.svg.png"; sourceTree = "<group>"; };
+		92092A7F1AD5B53C00E824EA /* green-arrows.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "green-arrows.gif"; sourceTree = "<group>"; };
+		92092A811AD5B63200E824EA /* icon-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart.png"; sourceTree = "<group>"; };
+		92092A831AD5B68D00E824EA /* arrow_down.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arrow_down.jpg; sourceTree = "<group>"; };
+		92092A851AD5B94000E824EA /* horizontal-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizontal-line.png"; sourceTree = "<group>"; };
+		92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg"; sourceTree = "<group>"; };
 		921632D51AD414C500A61088 /* Sea Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sea Battle.swift"; sourceTree = "<group>"; };
 		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		92B996721ACC8BDD008CF329 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = ../metal.png; sourceTree = "<group>"; };
@@ -126,6 +138,12 @@
 		243230251AC865D600F2CCC3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */,
+				92092A851AD5B94000E824EA /* horizontal-line.png */,
+				92092A831AD5B68D00E824EA /* arrow_down.jpg */,
+				92092A811AD5B63200E824EA /* icon-heart.png */,
+				92092A7F1AD5B53C00E824EA /* green-arrows.gif */,
+				92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */,
 				549C839B1ACD72310091C132 /* BallGame */,
 				54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */,
 				549C839C1ACD723E0091C132 /* Minesweeper */,
@@ -292,12 +310,18 @@
 			files = (
 				54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */,
 				5430151F1AD2A2BC00C5922B /* Localizable.strings in Resources */,
+				92092A821AD5B63200E824EA /* icon-heart.png in Resources */,
 				547009851AD1B084003C8E66 /* Button bomb.png in Resources */,
+				92092A861AD5B94000E824EA /* horizontal-line.png in Resources */,
 				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
 				92B996771ACC8CA5008CF329 /* desk.jpg in Resources */,
 				92B996751ACC8BFC008CF329 /* ball.png in Resources */,
 				92B996731ACC8BDD008CF329 /* metal.png in Resources */,
+				92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */,
+				92092A841AD5B68D00E824EA /* arrow_down.jpg in Resources */,
+				92092A801AD5B53C00E824EA /* green-arrows.gif in Resources */,
 				2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */,
+				92092A881AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg in Resources */,
 				2432302F1AC865D600F2CCC3 /* Main.storyboard in Resources */,
 				54D3F5BD1ACD7C9B000D8214 /* Yellow.jpg in Resources */,
 			);

@@ -1009,49 +1009,42 @@
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-EW-Gmh">
                                 <rect key="frame" x="98" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="-----" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="LcZ-6p-ddn">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="horizontal-line" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="LcZ-6p-ddn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-YU-JWK">
                                 <rect key="frame" x="142" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="--" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxb-SW-3uz">
+                                <buttonCell key="cell" type="bevel" title="-" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxb-SW-3uz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="10"/>
+                                    <font key="font" metaFont="system" size="40"/>
                                 </buttonCell>
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-KI-ifC">
                                 <rect key="frame" x="186" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="P" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Uc-Zc-dRU">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="arrow_down" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Uc-Zc-dRU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="gGt-id-7rK">
                                 <rect key="frame" x="230" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="L" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uu9-ll-GkL">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="10"/>
-                                </buttonCell>
-                            </button>
-                            <button hidden="YES" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="zda-xB-HD3">
-                                <rect key="frame" x="274" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="T" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L2w-uj-5s1">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="40px-Lightning_Bolt_on_Circle.svg" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uu9-ll-GkL">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-RB-nhM">
                                 <rect key="frame" x="318" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="I" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mGN-nG-1c5">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="green-arrows" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mGN-nG-1c5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="cal-WY-J7K">
                                 <rect key="frame" x="406" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="O" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cro-7W-ZMi">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ball" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cro-7W-ZMi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
@@ -1070,14 +1063,14 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="fur-du-GPb">
-                                <rect key="frame" x="0.0" y="531" width="709" height="5"/>
+                                <rect key="frame" x="-6" y="597" width="709" height="5"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <button hidden="YES" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="52s-3J-A6Q">
                                 <rect key="frame" x="362" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="life" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOW-45-rsx">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="icon-heart" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOW-45-rsx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
@@ -1107,7 +1100,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zhm-Mp-3Mo">
-                                <rect key="frame" x="142" y="33" width="97" height="17"/>
+                                <rect key="frame" x="150" y="33" width="97" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="COMPUTER" id="yld-VY-tPg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1130,7 +1123,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="7nr-5q-2m6" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="288" y="515" width="125" height="20"/>
+                                <rect key="frame" x="280" y="581" width="125" height="20"/>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Bc-vT-B9B">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1145,6 +1138,13 @@
                                 <connections>
                                     <action selector="rstart:" target="fRy-uY-dsn" id="pHu-Z8-RTr"/>
                                 </connections>
+                            </button>
+                            <button hidden="YES" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="zda-xB-HD3">
+                                <rect key="frame" x="274" y="21" width="40" height="40"/>
+                                <buttonCell key="cell" type="bevel" title="T" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L2w-uj-5s1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="20"/>
+                                </buttonCell>
                             </button>
                         </subviews>
                     </view>
@@ -1179,7 +1179,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="40px-Lightning_Bolt_on_Circle.svg" width="40" height="40"/>
+        <image name="arrow_down" width="40" height="40"/>
         <image name="ball" width="40" height="40"/>
+        <image name="green-arrows" width="40" height="40"/>
+        <image name="horizontal-line" width="40" height="40"/>
+        <image name="icon-heart" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9u8-oy-B35"/>

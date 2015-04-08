@@ -24,7 +24,7 @@ class BallGame: NSViewController {
     var pgr = 0, bv = 3, cg = CGFloat(1.7)
     var rand = 0, kt = false, tf = false, tr = false
     var n : Array<Int> = [], nr : Array<Bool> = [], btn: Array<NSButton> = [], bts: Array<NSButton> = [], lns: Array<NSBox> = [], scr: Array<NSTextField!> = []
-    
+    var incer = 0
 
 
 
@@ -123,7 +123,8 @@ class BallGame: NSViewController {
     }
 
     func bonfunc(timer: AnyObject?) {
-        rand = Int(arc4random_uniform(7) + 1)
+        //rand = Int(arc4random_uniform(7) + 1)
+        rand = Int(7)
         btn[rand].hidden = false
         btn[rand].frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
         btn[rand].frame.origin.y = CGFloat(arc4random_uniform(350)+100)
@@ -150,7 +151,7 @@ class BallGame: NSViewController {
                         invrs = CGFloat(-10)
                     }
                 case 7:
-                    if (scr[abs(i - 1)].integerValue > 0)&&(n[i*10 + t] < 2) {
+                    if (scr[abs(i - 1)].integerValue > 0)&&(n[i*10 + 7] < 3) {
                         scr[abs(i - 1)].integerValue -= 1
                     }
                 case 8:
@@ -215,6 +216,9 @@ class BallGame: NSViewController {
             }
             checkobj(lns[i])
             if (tr) {
+                for j in 1...8 {
+                    n[i*10 + j] = 601
+                }
                 tr = false
                 ball.frame.origin.x = CGFloat(10)
                 ball.frame.origin.y = CGFloat(450)
@@ -271,7 +275,7 @@ class BallGame: NSViewController {
         cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
         fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
         bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
-        bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
+        bmove = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: bsel, userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear() {

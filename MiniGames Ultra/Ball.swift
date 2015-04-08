@@ -11,7 +11,8 @@ import AppKit
 import Foundation
 
 class BallGame: NSViewController {
-    
+
+    var invrs = CGFloat(10)
     var g = CGFloat(0)
     var k = CGFloat(0), kp = Int(0), w = 0
     var lfs = 0, i = 0, lst = 0
@@ -20,7 +21,7 @@ class BallGame: NSViewController {
     var fly = NSTimer(), bon = NSTimer(), bmove = NSTimer(), cbitat = NSTimer()
     var pg = CGFloat(-5)
     var pk = CGFloat(2)
-    var pgr = 0
+    var pgr = 0, bv = 3
     var rand = 0, tr = false, kt = false, tf = false
     var n : Array<Int> = [], nr : Array<Bool> = [], el : Array<Bool> = [], btn: Array<NSButton> = [], bts: Array<NSButton> = [], lns: Array<NSBox> = [], scr: Array<NSTextField!> = []
     
@@ -110,45 +111,44 @@ class BallGame: NSViewController {
 
     func bmovefunc(sender : AnyObject) {
         var al = bita.frame.origin.x
-        if (rightDown)&&(bita.frame.maxX < (self.view.frame.width - 10)) {
-                bita.frame.origin.x = al + 10
+        if (rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))|((bita.frame.minX > 10)&&(invrs<0))) {
+                bita.frame.origin.x = CGFloat(al + invrs)
         }
-        if (leftDown)&&(bita.frame.minX > 10) {
-                bita.frame.origin.x = al - 10
+        if (leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))|((bita.frame.minX > 10)&&(invrs>0))) {
+                bita.frame.origin.x = CGFloat(al - invrs)
         }
     }
 
     func bonfunc(timer: AnyObject?) {
-        rand = Int(arc4random_uniform(7) + 1)
+        //rand = Int(arc4random_uniform(7) + 1)
+        rand = 1
         btn[rand].hidden = false
         btn[rand].frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
         btn[rand].frame.origin.y = CGFloat(arc4random_uniform(350)+100)
     }
 
     func timefunc(sender: NSButton) {
-        var t = sender.tag, cg = -1
-        var sgn = -1
-        if (w == 1) {
-            sgn = 1
-        }
-        if (g > 0) {
-            cg = 1
-        }
-        if (nr[t])&&(n[t]<601) {
-            n[t]++
+        var t = sender.tag
+        for (i=0; i<2; i++) {
+            println(i)
+        if (nr[t + i*10])&&(n[i*10 + t]<601) {
+            n[t + 10*i]++
             switch t {
             case 1:
-                bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 175, height: bts[w].frame.height)
+                bts[i].frame = NSRect(x: bts[i].frame.origin.x,
+                y: bts[i].frame.origin.y, width: 175, height: bts[i].frame.height)
             case 2:
-                bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 75, height: bts[w].frame.height)
-            case 3:
-                g = CGFloat(CGFloat(sgn) * g)
-                g = CGFloat(g + CGFloat(Double(sgn) * 0.1))
-            case 4:
-                g =  CGFloat(cg * 8)
+                bts[i].frame = NSRect(x: bts[i].frame.origin.x,
+                y: bts[i].frame.origin.y, width: 75, height: bts[i].frame.height)
+            case 6:
+                    invrs = CGFloat(-10)
             case 7:
-                scr[w].integerValue -= 1
+                if (scr[abs(w-1)].integerValue > 0) {
+                  scr[abs(w-1)].integerValue -= 1
+                }
                 n[t] = 601
+            case 8:
+                invrs = CGFloat(arc4random_uniform(15)+5)
             default:
                 break
             }
@@ -156,13 +156,13 @@ class BallGame: NSViewController {
             if (t == 4)&&(el[4]) {
                 g = CGFloat(5)
             }
-            if ((t == 1)&&(el[1]))|((t == 2)&&(el[2])) {
+            if (t == 1)|(t == 2) {
                 bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 125, height: bts[w].frame.height)
             }
             nr[t] = false
             n[t] = 0
         }
-
+        }
     }
 
     func checkobj(sender: AnyObject) {
@@ -183,15 +183,14 @@ class BallGame: NSViewController {
 
     func flyfunc(timer : NSTimer) {
 
-        for (i=1; i < 9; i++) {
+        for (i=0; i < 8; i++) {
             checkobj(btn[i])
             if (tr) {
             btn[i].hidden = true
             btn[i].frame.origin.x = CGFloat(100)
             btn[i].frame.origin.y = CGFloat(11)
             tr = false
-            nr[i] = true
-            el[i] = true
+            nr[w*10 + i] = true
             }
             timefunc(btn[i])
         }
@@ -238,7 +237,7 @@ class BallGame: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for (i = 0; i<9; i++) {
+        for (i = 0; i<19; i++) {
             nr.append(false)
             n.append(0)
             btn.append(bigbita)
@@ -251,6 +250,13 @@ class BallGame: NSViewController {
         btn[6] = inv
         btn[7] = wind
         btn[8] = ran
+        btn[12] = smallbita
+        btn[13] = grav
+        btn[14] = light
+        btn[15] = tech
+        btn[16] = inv
+        btn[17] = wind
+        btn[18] = ran
         bts.append(bita)
         bts.append(cbita)
         lns.append(lin)

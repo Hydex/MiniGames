@@ -1141,7 +1141,7 @@
                             </button>
                             <button hidden="YES" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="zda-xB-HD3">
                                 <rect key="frame" x="274" y="21" width="40" height="40"/>
-                                <buttonCell key="cell" type="bevel" title="T" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L2w-uj-5s1">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="10451792_1007012445979844_2330471086718529051_n" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L2w-uj-5s1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="20"/>
                                 </buttonCell>
@@ -1175,10 +1175,11 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165" y="991"/>
+            <point key="canvasLocation" x="-294" y="807"/>
         </scene>
     </scenes>
     <resources>
+        <image name="10451792_1007012445979844_2330471086718529051_n" width="40" height="40"/>
         <image name="40px-Lightning_Bolt_on_Circle.svg" width="40" height="40"/>
         <image name="arrow_down" width="40" height="40"/>
         <image name="ball" width="40" height="40"/>

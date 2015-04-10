@@ -123,8 +123,7 @@ class BallGame: NSViewController {
     }
 
     func bonfunc(timer: AnyObject?) {
-        //rand = Int(arc4random_uniform(7) + 1)
-        rand = Int(7)
+        rand = Int(arc4random_uniform(8) + 1)
         btn[rand].hidden = false
         btn[rand].frame.origin.x = CGFloat(arc4random_uniform(500) + 100)
         btn[rand].frame.origin.y = CGFloat(arc4random_uniform(350)+100)
@@ -145,7 +144,7 @@ class BallGame: NSViewController {
                 case 4:
                     cg = CGFloat(13)
                 case 5:
-                    bts[i].frame.origin.x = CGFloat(ball.frame.origin.x - 48 - CGFloat(arc4random_uniform(5)))
+                    bts[i].frame.origin.x = CGFloat(ball.frame.origin.x - 50)
                 case 6:
                     if (i == 0) {
                         invrs = CGFloat(-10)
@@ -275,7 +274,7 @@ class BallGame: NSViewController {
         cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
         fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
         bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
-        bmove = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: bsel, userInfo: nil, repeats: true)
+        bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear() {

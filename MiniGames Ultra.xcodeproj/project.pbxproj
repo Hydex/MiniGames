@@ -178,7 +178,7 @@
 				249D28411AD2CA9E00693797 /* Sudoku */,
 				92A46B341AC9591500B2050E /* BallGame */,
 				2432304B1AC869B300F2CCC3 /* Minesweeper */,
-				921632D51AD414C500A61088 /* Sea Battle.swift */,
+				5405A8A01ADD68AD001C2A42 /* SeaBattle */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -199,6 +199,14 @@
 				249D28441AD2CACD00693797 /* SudokuMain.swift */,
 			);
 			name = Sudoku;
+			sourceTree = "<group>";
+		};
+		5405A8A01ADD68AD001C2A42 /* SeaBattle */ = {
+			isa = PBXGroup;
+			children = (
+				921632D51AD414C500A61088 /* Sea Battle.swift */,
+			);
+			name = SeaBattle;
 			sourceTree = "<group>";
 		};
 		549C839B1ACD72310091C132 /* BallGame */ = {

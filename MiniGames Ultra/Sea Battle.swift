@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppKit
 import Cocoa
 
 class SeaBattle: NSViewController {
@@ -17,7 +18,7 @@ class SeaBattle: NSViewController {
     var i = 0
     var j = 0
     var q = 0
-
+    
     var selp = Selector("ppress:"), selc = Selector("cpress:")
     var tr = false
     var rd = 0
@@ -25,7 +26,7 @@ class SeaBattle: NSViewController {
         super.viewDidLoad()
         fieldfunc()
     }
-
+    
     func fieldfunc() {
         var x = 50
         var y = 50
@@ -47,14 +48,13 @@ class SeaBattle: NSViewController {
                 self.view.addSubview(lbl[q])
             }
             for j in 1...10 {
-                cship.append(0)
                 var btp = NSButton(frame: NSRect(x: x, y: y , width: 30, height: 32))
                 var btc = NSButton(frame: NSRect(x: x+400, y: y , width: 30, height: 32))
                 btp.action = selp
                 btc.action = selc
                 btp.title = String(btp.tag)
                 btc.title = ""
-                if (i == 1)||(j == 1)||(i == 10)||(j == 10) {
+                if (i == 1)|(j == 1)|(i == 10)|(j == 10) {
                     btc.tag = 1
                 } else {btc.tag = 0}
                 btc.bezelStyle = NSBezelStyle(rawValue: 10)!
@@ -96,9 +96,9 @@ class SeaBattle: NSViewController {
         rand = Int(arc4random_uniform(4) + 1)
         var k = 0
         for i in 0...9 {
-        k++
-        switch rand {
-        case 1:
+            k++
+            switch rand {
+            case 1:
                 if (i % 2 == 0) {
                     btnc[i].tag = 5
                     btnc[i + 10].tag = 5
@@ -113,56 +113,57 @@ class SeaBattle: NSViewController {
                     btnc[i + 30].tag = 5
                     btnc[i + 40].tag = 5
                 }
-
-        case 2: if (i % 2 == 0) {
-                    btnc[i * 10].tag = 5
-                    btnc[i * 10 + 1].tag = 5
+                
+            case 2: if (i % 2 == 0) {
+                btnc[i * 10].tag = 5
+                btnc[i * 10 + 1].tag = 5
+            }
+            if (i % 4 == 0) {
+                btnc[i*10 + 2].tag = 5
+            }
+            if (i % 10 == 0) {
+                btnc[i * 10 + 3].tag = 5
+            }
+            if (i != 0)&&(i % 6 == 0) {
+                btnc[i * 10 + 3].tag = 5
+                btnc[i * 10 + 4].tag = 5
+                }
+            case 3:
+                if (i % 2 == 0) {
+                    btnc[90 + i].tag = 5
+                    btnc[80 + i].tag = 5
                 }
                 if (i % 4 == 0) {
-                    btnc[i*10 + 2].tag = 5
+                    btnc[70 + i].tag = 5
                 }
                 if (i % 10 == 0) {
-                    btnc[i * 10 + 3].tag = 5
+                    btnc[60 + i].tag = 5
                 }
                 if (i != 0)&&(i % 6 == 0) {
-                    btnc[i * 10 + 3].tag = 5
-                    btnc[i * 10 + 4].tag = 5
+                    btnc[60 + i].tag = 5
+                    btnc[50 + i].tag = 5
                 }
-        case 3:
-            if (i % 2 == 0) {
-                btnc[90 + i].tag = 5
-                btnc[80 + i].tag = 5
+            case 4:
+                if (i % 2 == 0) {
+                    btnc[i * 10 + 9].tag = 5
+                    btnc[i * 10 + 8].tag = 5
+                }
+                if (i % 4 == 0) {
+                    btnc[i*10 + 7].tag = 5
+                }
+                if (i % 10 == 0) {
+                    btnc[i * 10 + 6].tag = 5
+                }
+                if (i != 0)&&(i % 6 == 0) {
+                    btnc[i * 10 + 6].tag = 5
+                    btnc[i * 10 + 5].tag = 5
+                }
+            default: break
             }
-            if (i % 4 == 0) {
-                btnc[70 + i].tag = 5
-            }
-            if (i % 10 == 0) {
-                btnc[60 + i].tag = 5
-            }
-            if (i != 0)&&(i % 6 == 0) {
-                btnc[60 + i].tag = 5
-                btnc[50 + i].tag = 5
-            }
-        case 4:
-            if (i % 2 == 0) {
-                btnc[i * 10 + 9].tag = 5
-                btnc[i * 10 + 8].tag = 5
-            }
-            if (i % 4 == 0) {
-                btnc[i*10 + 7].tag = 5
-            }
-            if (i % 10 == 0) {
-                btnc[i * 10 + 6].tag = 5
-            }
-            if (i != 0)&&(i % 6 == 0) {
-                btnc[i * 10 + 6].tag = 5
-                btnc[i * 10 + 5].tag = 5
-            }
-        default: break
         }
+        
     }
-    }
-
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()

@@ -245,6 +245,7 @@ class MinesweeperMain: NSViewController {
         placeBombs()
     }
     
+    /// Function that's called after lose
     func lose() {
         var al = NSAlert()
         al.showsHelp = false
@@ -298,12 +299,6 @@ class MinesweeperMain: NSViewController {
         height = storage.integerForKey("mwHeight")
         width = storage.integerForKey("mwWidth")
         
-        var frame = self.view.window?.frame
-        var newHeight = CGFloat(height * 30 + 100)
-        var newWidth = CGFloat(width * 30)
-        frame?.size = NSMakeSize(newWidth, newHeight)
-        self.view.window?.setFrame(frame!, display: true)
-        
         var k = 0
         switch storage.integerForKey("mwHardness") {
         case 0:
@@ -322,7 +317,12 @@ class MinesweeperMain: NSViewController {
             break
         }
         bombAmount = height * width / k
-
+        
+        var frame = self.view.window?.frame
+        var newHeight = CGFloat(height * 30 + 100)
+        var newWidth = CGFloat(width * 30)
+        frame?.size = NSMakeSize(newWidth, newHeight)
+        self.view.window?.setFrame(frame!, display: true)
         
         var x = 0
         var y = 0

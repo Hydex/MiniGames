@@ -31,7 +31,7 @@ class File {
 
 extension String {
     func removeFromEnd(count : Int) -> String {
-        let stringLength = self.length
+        let stringLength = countElements(self)
         let substringIndex = (stringLength < count) ? 0 : stringLength - count
         return self.substringToIndex(advance(self.startIndex, substringIndex))
     }
@@ -54,7 +54,7 @@ extension String {
     }
     
     var length : Int {
-        return count(self)
+        return countElements(self)
     }
     
     func reverse() -> String {
@@ -111,11 +111,9 @@ infix operator ~~~ {
 func ~~~(left: Int, right: Int) -> Int {
     return Int(llround(Double(left) / Double(right)))
 }
-
 extension NSEvent {
     var character: Int {
-        let str = charactersIgnoringModifiers!.utf16
-        return Int(str[str.startIndex])
+        return Int(charactersIgnoringModifiers!.utf16[0])
     }
 }
 
@@ -153,8 +151,7 @@ func arContInt(ar : Array<Int>, t : Int) -> Bool {
 
 extension Character {
     var keyCode: Int {
-        let utf16view = String(self).utf16
-        return Int(utf16view[utf16view.startIndex])
+        return Int(String(self).utf16[0])
     }
 }
 

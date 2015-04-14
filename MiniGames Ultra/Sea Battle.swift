@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AppKIt
 import Cocoa
 
 class SeaBattle: NSViewController {
@@ -55,7 +54,7 @@ class SeaBattle: NSViewController {
                 btc.action = selc
                 btp.title = String(btp.tag)
                 btc.title = ""
-                if (i == 1)|(j == 1)|(i == 10)|(j == 10) {
+                if (i == 1)||(j == 1)||(i == 10)||(j == 10) {
                     btc.tag = 1
                 } else {btc.tag = 0}
                 btc.bezelStyle = NSBezelStyle(rawValue: 10)!

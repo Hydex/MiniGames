@@ -114,10 +114,10 @@ class BallGame: NSViewController {
 
     func bmovefunc(sender : AnyObject) {
         var al = bita.frame.origin.x
-        if (rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))|((bita.frame.minX > 10)&&(invrs<0))) {
+        if (rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
                 bita.frame.origin.x = CGFloat(al + invrs)
         }
-        if (leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))|((bita.frame.minX > 10)&&(invrs>0))) {
+        if (leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
                 bita.frame.origin.x = CGFloat(al - invrs)
         }
     }
@@ -132,7 +132,7 @@ class BallGame: NSViewController {
     func timefunc(sender: NSButton) {
         var t = sender.tag
         for i in 0...1 {
-            if (nr[i*10 + t])&&(n[i*10 + t] < 601) {
+            if (nr[i * 10 + t])&&(n[i * 10 + t] < 601) {
                 n[i*10 + t]++
                 switch t{
                 case 1:

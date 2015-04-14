@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< Updated upstream
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+=======
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+>>>>>>> Stashed changes
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -726,11 +730,11 @@
             <objects>
                 <viewController id="xwz-BI-wLB" customClass="SudokuHardness" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="CxX-lD-85s">
-                        <rect key="frame" x="0.0" y="0.0" width="471" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJG-Rq-r0R">
-                                <rect key="frame" x="98" y="223" width="256" height="40"/>
+                                <rect key="frame" x="98" y="293" width="256" height="40"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Choose hardness" id="VOa-Jf-PH5">
                                     <font key="font" metaFont="system" size="27"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -738,7 +742,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7M-BP-Zil">
-                                <rect key="frame" x="177" y="137" width="100" height="26"/>
+                                <rect key="frame" x="177" y="207" width="100" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Easy" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rCC-pL-ZEQ" id="Shu-zE-rKm">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -752,25 +756,15 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Iv-xXm">
-                                <rect key="frame" x="162" y="20" width="129" height="43"/>
-                                <buttonCell key="cell" type="square" title="Done" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jow-nt-Hm1">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="21"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="donePressed:" target="xwz-BI-wLB" id="hnb-3E-BXV"/>
-                                </connections>
-                            </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfl-kr-Zzy">
-                                <rect key="frame" x="159" y="90" width="135" height="18"/>
+                                <rect key="frame" x="159" y="160" width="135" height="18"/>
                                 <buttonCell key="cell" type="check" title="Highlight numbers" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iLR-QB-kmo">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJe-C7-86h">
-                                <rect key="frame" x="302" y="86" width="25" height="25"/>
+                                <rect key="frame" x="302" y="156" width="25" height="25"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7vr-G8-rqU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -780,7 +774,7 @@
                                 </connections>
                             </button>
                             <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0f-Xg-yZj">
-                                <rect key="frame" x="331" y="31" width="133" height="136"/>
+                                <rect key="frame" x="331" y="101" width="133" height="136"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="HxV-Ne-Wk9">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">All numbers you put on field will be highlighted with blue color and if you put all 9 same numbers on the field, they will be highlighted with green</string>
@@ -788,10 +782,33 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-bh-HYl">
+                                <rect key="frame" x="167" y="122" width="137" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Background color:" id="0tN-OU-8pI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJt-jL-PKO">
+                                <rect key="frame" x="192" y="91" width="87" height="23"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aot-Iv-xXm">
+                                <rect key="frame" x="171" y="20" width="129" height="43"/>
+                                <buttonCell key="cell" type="square" title="Done" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jow-nt-Hm1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="21"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="donePressed:" target="xwz-BI-wLB" id="hnb-3E-BXV"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="HardnessPopUp" destination="h7M-BP-Zil" id="hQ6-Lo-foo"/>
+                        <outlet property="colorPicker" destination="dJt-jL-PKO" id="Geh-Mq-fal"/>
                         <outlet property="hardnessInfo" destination="f0f-Xg-yZj" id="ItQ-6l-sMF"/>
                         <outlet property="highlight" destination="Jfl-kr-Zzy" id="EWg-od-mlK"/>
                         <segue destination="CPP-pk-4M8" kind="show" identifier="sudoku" id="zbf-b7-7lC"/>
@@ -799,7 +816,7 @@
                 </viewController>
                 <customObject id="4Ag-iS-xw3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903.5" y="227.5"/>
+            <point key="canvasLocation" x="903.5" y="262.5"/>
         </scene>
         <!--Sudoku Main-->
         <scene sceneID="VIb-b1-Vps">
@@ -812,7 +829,7 @@
                 </viewController>
                 <customObject id="YCS-ds-6do" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1451" y="229"/>
+            <point key="canvasLocation" x="1602" y="263"/>
         </scene>
         <!--Minesweeper Hardness-->
         <scene sceneID="rM5-bq-e1A">
@@ -944,6 +961,11 @@
                     <view key="view" id="AlH-nV-A4f">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="teO-qv-48R">
+                                <rect key="frame" x="278" y="172" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
                     </view>
                     <connections>
                         <segue destination="fQ5-eu-iXW" kind="show" identifier="changeHardness" id="tIe-UZ-lgm"/>

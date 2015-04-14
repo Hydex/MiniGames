@@ -35,7 +35,7 @@ class MinesweeperHardness : NSViewController {
     @IBOutlet weak var testLabel: NSTextField!
     
     func checkLabel(label : NSTextField, pattern : Int) -> Bool {
-        if countElements(label.stringValue) == 0 {
+        if count(label.stringValue) == 0 {
             return false
         }
         else {

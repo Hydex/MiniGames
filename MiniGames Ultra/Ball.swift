@@ -90,6 +90,7 @@ class BallGame: NSViewController {
     var rightDown = false
     
     override func keyDown(theEvent: NSEvent) {
+        println(1)
         switch theEvent.character {
         case NSRightArrowFunctionKey:
             rightDown = true
@@ -130,6 +131,7 @@ class BallGame: NSViewController {
     }
 
     func timefunc(sender: NSButton) {
+<<<<<<< Updated upstream
         var t = sender.tag
         for i in 0...1 {
             if (nr[i*10 + t])&&(n[i*10 + t] < 601) {
@@ -171,6 +173,40 @@ class BallGame: NSViewController {
                 default: break
                 }
                 }
+=======
+        var t = sender.tag, cg = -1
+        var sgn = -1
+        if (w == 1) {
+            sgn = 1
+        }
+        if (g > 0) {
+            cg = 1
+        }
+        if (nr[t])&&(n[t]<601) {
+            n[t]++
+            switch t {
+            case 1:
+                bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 175, height: bts[w].frame.height)
+            case 2:
+                bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 75, height: bts[w].frame.height)
+            case 3:
+                g = CGFloat(CGFloat(sgn) * g)
+                g = CGFloat(g + CGFloat(Double(sgn) * 0.1))
+            case 4:
+                g =  CGFloat(cg * 8)
+            case 7:
+                scr[w].integerValue -= 1
+                n[t] = 601
+            default:
+                break
+            }
+        } else {
+            if (t == 4)&&(el[4]) {
+                g = CGFloat(5)
+            }
+            if ((t == 1)&&(el[1]))||((t == 2)&&(el[2])) {
+                bts[w].frame = NSRect(x: bts[w].frame.origin.x, y: bts[w].frame.origin.y, width: 125, height: bts[w].frame.height)
+>>>>>>> Stashed changes
             }
         }
     }

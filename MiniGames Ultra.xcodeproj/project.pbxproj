@@ -321,35 +321,16 @@
 			files = (
 				54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */,
 				5430151F1AD2A2BC00C5922B /* Localizable.strings in Resources */,
-<<<<<<< Updated upstream
 				92092A821AD5B63200E824EA /* icon-heart.png in Resources */,
 				547009851AD1B084003C8E66 /* Button bomb.png in Resources */,
 				92092A861AD5B94000E824EA /* horizontal-line.png in Resources */,
 				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
-=======
-
-				92092A821AD5B63200E824EA /* icon-heart.png in Resources */,
-
-				545E92E51AD7B5030008C2A2 /* ball.png in Resources */,
-				545E92E71AD7B52B0008C2A2 /* metal.png in Resources */,
-
-				547009851AD1B084003C8E66 /* Button bomb.png in Resources */,
-				92092A861AD5B94000E824EA /* horizontal-line.png in Resources */,
-				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
-
->>>>>>> Stashed changes
 				92B996771ACC8CA5008CF329 /* desk.jpg in Resources */,
 				92B996751ACC8BFC008CF329 /* ball.png in Resources */,
 				92B996731ACC8BDD008CF329 /* metal.png in Resources */,
 				92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */,
 				92092A841AD5B68D00E824EA /* arrow_down.jpg in Resources */,
 				92092A801AD5B53C00E824EA /* green-arrows.gif in Resources */,
-<<<<<<< Updated upstream
-=======
-
-				545E92EB1AD7B55F0008C2A2 /* desk.jpg in Resources */,
-
->>>>>>> Stashed changes
 				2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */,
 				92092A881AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg in Resources */,
 				2432302F1AC865D600F2CCC3 /* Main.storyboard in Resources */,

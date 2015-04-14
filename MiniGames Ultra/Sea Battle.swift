@@ -48,7 +48,6 @@ class SeaBattle: NSViewController {
                 self.view.addSubview(lbl[q])
             }
             for j in 1...10 {
-                cship.append(0)
                 var btp = NSButton(frame: NSRect(x: x, y: y , width: 30, height: 32))
                 var btc = NSButton(frame: NSRect(x: x+400, y: y , width: 30, height: 32))
                 btp.action = selp
@@ -162,6 +161,7 @@ class SeaBattle: NSViewController {
         default: break
         }
     }
+
     }
 
     override func viewDidAppear() {

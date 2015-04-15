@@ -230,6 +230,7 @@ class BallGame: NSViewController {
                     scr[abs(i - 1)].integerValue = 5
                     result.stringValue = "WINNER: " + scr[abs(i - 1)+2].stringValue
                     sb.enabled = false
+                    stb.enabled = false
                 }
         }
         }

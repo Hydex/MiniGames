@@ -18,7 +18,10 @@ class SeaBattle: NSViewController {
     var i = 0
     var j = 0
     var q = 0
-    
+    var m = true
+    var b1 = NSButton(), b2 = NSButton()
+    var p = 0
+    var k = 0, k1 = 0, k2 = 0, k3 = 0
     var selp = Selector("ppress:"), selc = Selector("cpress:")
     var tr = false
     var rd = 0
@@ -26,7 +29,8 @@ class SeaBattle: NSViewController {
         super.viewDidLoad()
         fieldfunc()
     }
-    
+    var n1 = true, n2 = true, n3 = true, n4 = true
+    var t1 = 0, t2 = 0, t3 = 0
     func fieldfunc() {
         var x = 50
         var y = 50
@@ -52,9 +56,11 @@ class SeaBattle: NSViewController {
                 var btc = NSButton(frame: NSRect(x: x+400, y: y , width: 30, height: 32))
                 btp.action = selp
                 btc.action = selc
-                btp.title = String(btp.tag)
+                btp.title = ""
                 btc.title = ""
-                if (i == 1)|(j == 1)|(i == 10)|(j == 10) {
+                btc.image = NSImage.swatchWithColor(NSColor.whiteColor(), size: NSSize(width: 29, height: 29))
+                btp.image = NSImage.swatchWithColor(NSColor.whiteColor(), size: NSSize(width: 29, height: 29))
+                if (i == 1)||(j == 1)||(i == 10)||(j == 10) {
                     btc.tag = 1
                 } else {btc.tag = 0}
                 btc.bezelStyle = NSBezelStyle(rawValue: 10)!
@@ -86,10 +92,107 @@ class SeaBattle: NSViewController {
         }
         if (n == 9) {tr = true}
     }
+    func ppress (sender: NSButton) {
+        var nr = true
+        if (p == 0) {
+            sender.image = NSImage.swatchWithColor(NSColor.grayColor(), size: NSSize(width: 29, height: 29))
+            for i in 0...99 {
+                if (sender == btnp[i]) {
+                    k = (i - (i % 10))/10
+                    k1 = i % 10
+                }
+            }
+            p++
+        } else{
+            for i in 0...99 {
+                if (sender == btnp[i]) {
+                    k2 = (i - (i % 10))/10
+                    k3 = i % 10
+                }
+            }
+            if ((k1 == k3)&&(!((k != k2)&&(k1 != k3))))&&((n4&&(abs(k - k2) == 3))||(n3&&(abs(k - k2) == 2))||(n2&&(abs(k - k2) == 1))||(n1&&(abs(k - k2) == 0))) {
+                if (k <= k2) {
+                    for j in k...k2 {
+                        btnp[j*10 + k1].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
+                        btnp[j].tag = 5
+                    }
+                }
+                if (k2 < k) {
+                    for j in k2...k {
+                        btnp[j*10 + k1].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
+                        btnp[j].tag = 5
+                    }
+                }
+                nr = false
+                if (abs(k - k2) == 3) {
+                    n4 = false
+                }
+                if (abs(k - k2) == 2) {
+                    if (t3 > 0) {
+                        n3 = false
+                    } else {
+                        t3++
+                    }
+                }
+                if (abs(k - k2) == 1) {
+                    if (t2 > 1) {
+                        n2 = false
+                    } else {
+                        t2++
+                    }
+                }
+                if (abs(k - k2) == 0) {
+                    if (t1 > 2) {
+                        n1 = false
+                    } else {
+                        t1++
+                    }
+                }
+            }
+            if ((k == k2)&&(!((k != k2)&&(k1 != k3))))&&((n4&&(abs(k1 - k3) == 3))||(n3&&(abs(k1 - k3) == 2))||(n2&&(abs(k1 - k3) == 1))||(n1&&(abs(k1 - k3) == 0))) {
+                if (k1 <= k3) {
+                    for j in k1...k3 {
+                        btnp[k2*10 + j].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
+                        btnp[j].tag = 5
+                    }
+                }
+                if (k3 < k1) {
+                    for j in k3...k1 {
+                        btnp[k2*10 + j].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
+                        btnp[j].tag = 5
+                    }
+                }
+                nr = false
+                if (abs(k1 - k3) == 3) {
+                    n4 = false
+                }
+                if (abs(k1 - k3) == 2) {
+                    if (t3 > 0) {
+                        n3 = false
+                    } else {
+                        t3++
+                    }
+                }
+                if (abs(k1 - k3) == 1) {
+                    if (t2 > 1) {
+                        n2 = false
+                    } else {
+                        t2++
+                    }
+                }
+            }
+            if (nr) {
+                btnp[k*10 + k1].image = NSImage.swatchWithColor(NSColor.whiteColor(), size: NSSize(width: 29, height: 29))
+            }
+            p = 0
+        }
+    }
     func cpress(sender: NSButton) {
         sender.enabled = false
         if (sender.tag == 5) {
-            sender.title = "B"
+            sender.image = NSImage.swatchWithColor(NSColor.redColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
+        } else {
+             sender.image = NSImage.swatchWithColor(NSColor.blueColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
         }
     }
     func shipc() {
@@ -163,13 +266,12 @@ class SeaBattle: NSViewController {
         }
         
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()
         while (i < 4) {
             var rd = Int(arc4random_uniform(98) + 1)
-            println(rd)
             check(btnc[rd].tag, b: rd)
             if (tr) {
                 tr = false

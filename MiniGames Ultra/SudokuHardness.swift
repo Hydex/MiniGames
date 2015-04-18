@@ -25,12 +25,11 @@ class SudokuHardness: NSViewController {
     
     var storage = NSUserDefaults.standardUserDefaults()
     
-    ///TODO: - Add game continuation
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
-        if storage.boolForKey("continue") {
-            storage.setBool(false, forKey: "continue")
+        if storage.boolForKey("continueSudoku") {
+            storage.setBool(false, forKey: "continueSudoku")
             var al = NSAlert()
             al.showsHelp = false
             al.messageText = "You haven't finished previous game!"

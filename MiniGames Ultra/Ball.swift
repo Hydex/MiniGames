@@ -251,6 +251,7 @@ class BallGame: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activeGame = "ball"
         for i in 1...19 {
             n.append(0)
             btn.append(bigbita)
@@ -280,6 +281,11 @@ class BallGame: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        activeGame = ""
     }
     
     override var representedObject: AnyObject? {

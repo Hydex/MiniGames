@@ -60,8 +60,11 @@ class SeaBattle: NSViewController {
                 btc.action = selc
                 btp.title = ""
                 btc.title = ""
+<<<<<<< HEAD
+=======
                 btc.image = NSImage.swatchWithColor(NSColor.whiteColor(), size: NSSize(width: 29, height: 29))
                 btp.image = NSImage.swatchWithColor(NSColor.whiteColor(), size: NSSize(width: 29, height: 29))
+>>>>>>> origin/master
                 if (i == 1)||(j == 1)||(i == 10)||(j == 10) {
                     btc.tag = 1
                 } else {btc.tag = 0}

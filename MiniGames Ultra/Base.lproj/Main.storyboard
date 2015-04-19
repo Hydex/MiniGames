@@ -979,6 +979,19 @@
             </objects>
             <point key="canvasLocation" x="-340" y="855.5"/>
         </scene>
+        <!--StickMan-->
+        <scene sceneID="hbo-b1-jR2">
+            <objects>
+                <viewController title="StickMan" id="Iia-G6-brq" customClass="Stick" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fCi-6i-EKI">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="413"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="A4x-CQ-bpd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235.5" y="1022.5"/>
+        </scene>
         <!--Ball Game-->
         <scene sceneID="cTr-AH-ADo">
             <objects>
@@ -1175,7 +1188,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="1242"/>
+            <point key="canvasLocation" x="-410" y="975"/>
         </scene>
     </scenes>
     <resources>

@@ -36,6 +36,7 @@
 		922E32801ADF879300AF18B7 /* Ai1-standaard-snelheid.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E327F1ADF879300AF18B7 /* Ai1-standaard-snelheid.png */; };
 		922E32821ADF880500AF18B7 /* Ai1-standaard-snelheid.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E32811ADF880500AF18B7 /* Ai1-standaard-snelheid.png */; };
 		922E32841ADFB53200AF18B7 /* OTD62.gif in Resources */ = {isa = PBXBuildFile; fileRef = 922E32831ADFB53200AF18B7 /* OTD62.gif */; };
+		922E32861AE1993A00AF18B7 /* Stickman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922E32851AE1993A00AF18B7 /* Stickman.swift */; };
 		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
 		92B996731ACC8BDD008CF329 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B996721ACC8BDD008CF329 /* metal.png */; };
 		92B996751ACC8BFC008CF329 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B996741ACC8BFC008CF329 /* ball.png */; };
@@ -87,6 +88,7 @@
 		922E327F1ADF879300AF18B7 /* Ai1-standaard-snelheid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ai1-standaard-snelheid.png"; sourceTree = "<group>"; };
 		922E32811ADF880500AF18B7 /* Ai1-standaard-snelheid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ai1-standaard-snelheid.png"; sourceTree = "<group>"; };
 		922E32831ADFB53200AF18B7 /* OTD62.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OTD62.gif; sourceTree = "<group>"; };
+		922E32851AE1993A00AF18B7 /* Stickman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stickman.swift; sourceTree = "<group>"; };
 		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		92B996721ACC8BDD008CF329 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = ../metal.png; sourceTree = "<group>"; };
 		92B996741ACC8BFC008CF329 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball.png; path = ../ball.png; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				243230441AC868B400F2CCC3 /* MainController.swift */,
 				2432304A1AC869A800F2CCC3 /* Games */,
 				243230251AC865D600F2CCC3 /* Supporting Files */,
+				922E32871AE2544000AF18B7 /* Stickman */,
 			);
 			path = "MiniGames Ultra";
 			sourceTree = "<group>";
@@ -240,6 +243,14 @@
 				54704AF41AC9BAAD009C09ED /* Bomb.png */,
 			);
 			name = Minesweeper;
+			sourceTree = "<group>";
+		};
+		922E32871AE2544000AF18B7 /* Stickman */ = {
+			isa = PBXGroup;
+			children = (
+				922E32851AE1993A00AF18B7 /* Stickman.swift */,
+			);
+			name = Stickman;
 			sourceTree = "<group>";
 		};
 		92A46B341AC9591500B2050E /* BallGame */ = {
@@ -380,6 +391,7 @@
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 				54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */,
 				249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */,
+				922E32861AE1993A00AF18B7 /* Stickman.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

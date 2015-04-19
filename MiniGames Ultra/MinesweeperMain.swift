@@ -44,7 +44,7 @@ class MinesweeperMain: NSViewController {
             if name == "Minesweeper" {
                 lang = 2
             }
-            self.view.window?.title = name + " - "  + strLocal("left") + " \(bombsLeft) " + strLocal("bomb") + "\(ending(bombsLeft, lang))"
+            self.view.window?.title = name + " - \(bombsLeft) " + strLocal("bomb") + "\(ending(bombsLeft, lang)) " + strLocal("left")
         }
     }
     
@@ -293,7 +293,6 @@ class MinesweeperMain: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        activeGame = "bomb"
         self.view.window?.makeKeyAndOrderFront(nil)
         self.view.window?.title = strLocal("ms")
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
@@ -409,10 +408,5 @@ class MinesweeperMain: NSViewController {
         var ifThree = (but.tag == tag + width + 1 && tag % width != 0) || (but.tag == tag - width && tag > width)
         var ifFour = (but.tag == tag - width - 1 && tag % width != 1) || (but.tag == tag - width + 1 && tag % width != 0)
         return ifOne || ifTwo || ifThree || ifFour
-    }
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        activeGame = ""
     }
 }

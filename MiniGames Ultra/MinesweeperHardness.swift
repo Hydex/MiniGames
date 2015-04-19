@@ -65,7 +65,7 @@ class MinesweeperHardness : NSViewController {
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        if !checkLabel(heightLabel, pattern: 1) && !checkLabel(widthLabel, pattern: 2) && heightLabel.integerValue != 0 && widthLabel.integerValue != 0 {
+        if !checkLabel(heightLabel, pattern: 1) && !checkLabel(widthLabel, pattern: 2) {
             storage.setInteger(hardnessPopUp.indexOfSelectedItem, forKey: "mwHardness")
             storage.setInteger(heightLabel.integerValue, forKey: "mwHeight")
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")

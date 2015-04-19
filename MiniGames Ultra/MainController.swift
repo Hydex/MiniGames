@@ -23,8 +23,6 @@ class MainController : NSViewController {
             self.performSegueWithIdentifier("sudoku", sender: self)
         case 3:
             self.performSegueWithIdentifier("SeaBattle", sender: self)
-        case 4:
-            self.performSegueWithIdentifier("2048", sender: self)
         default:
             break
         }

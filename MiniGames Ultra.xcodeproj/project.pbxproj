@@ -22,7 +22,6 @@
 		547009851AD1B084003C8E66 /* Button bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 547009841AD1B084003C8E66 /* Button bomb.png */; };
 		54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 54704AF41AC9BAAD009C09ED /* Bomb.png */; };
 		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
-		54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB1D61ADFBF64007BC829 /* 2048Main.swift */; };
 		54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */; };
 		54D3F5BD1ACD7C9B000D8214 /* Yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54D3F5BC1ACD7C9B000D8214 /* Yellow.jpg */; };
 		92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */; };
@@ -67,15 +66,14 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		247A2F0C1AD302E000A516AA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		249D28421AD2CABE00693797 /* SudokuHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuHardness.swift; sourceTree = "<group>"; };
 		249D28441AD2CACD00693797 /* SudokuMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuMain.swift; sourceTree = "<group>"; };
-		54046CD81ADE7ACE001AAA5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		543015201AD2A2BC00C5922B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		544646701ACC5F6B003F1B25 /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		547009841AD1B084003C8E66 /* Button bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button bomb.png"; sourceTree = "<group>"; };
 		54704AF41AC9BAAD009C09ED /* Bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb.png; sourceTree = "<group>"; };
 		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
-		54AEB1D61ADFBF64007BC829 /* 2048Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2048Main.swift; sourceTree = "<group>"; };
 		54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Classes, functions and extensions.swift"; sourceTree = "<group>"; };
 		54D3F5BC1ACD7C9B000D8214 /* Yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yellow.jpg; sourceTree = "<group>"; };
 		92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40px-Lightning_Bolt_on_Circle.svg.png"; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 				92A46B341AC9591500B2050E /* BallGame */,
 				2432304B1AC869B300F2CCC3 /* Minesweeper */,
 				5405A8A01ADD68AD001C2A42 /* SeaBattle */,
-				54AEB1DA1ADFBF72007BC829 /* 2048 */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -248,21 +245,12 @@
 			name = Minesweeper;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		922E32871AE2544000AF18B7 /* Stickman */ = {
 			isa = PBXGroup;
 			children = (
 				922E32851AE1993A00AF18B7 /* Stickman.swift */,
 			);
 			name = Stickman;
-=======
-		54AEB1DA1ADFBF72007BC829 /* 2048 */ = {
-			isa = PBXGroup;
-			children = (
-				54AEB1D61ADFBF64007BC829 /* 2048Main.swift */,
-			);
-			name = 2048;
->>>>>>> origin/master
 			sourceTree = "<group>";
 		};
 		92A46B341AC9591500B2050E /* BallGame */ = {
@@ -400,7 +388,6 @@
 				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
 				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
 				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,
-				54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */,
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 				54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */,
 				249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */,
@@ -439,7 +426,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				543015201AD2A2BC00C5922B /* en */,
-				54046CD81ADE7ACE001AAA5A /* ru */,
+				247A2F0C1AD302E000A516AA /* ru */,
 			);
 			name = Localizable.strings;
 			path = ..;

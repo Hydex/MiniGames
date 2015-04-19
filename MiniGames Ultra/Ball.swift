@@ -25,15 +25,27 @@ class BallGame: NSViewController {
     var rand = 0, kt = false, tf = false, tr = false
     var n : Array<Int> = [], nr : Array<Bool> = [], btn: Array<NSButton> = [], bts: Array<NSButton> = [], lns: Array<NSBox> = [], scr: Array<NSTextField!> = []
     var incer = 0
+    var techn = false
+    var cr1 = false, cr2 = false
 
 
 
     @IBOutlet weak var rstart: NSButton!
     @IBAction func rstart(sender: AnyObject) {
         result.stringValue = ""
-        comp.integerValue = 0
-        player.integerValue = 0
+        comp.integerValue = 3
+        player.integerValue = 3
         sb.enabled = true
+        g = CGFloat(0)
+        k = CGFloat(0)
+        for i in 1...8 {
+            n[10 + i] = 601
+            n[i] = 601
+        }
+        timefunc(bts[0])
+        ball.frame.origin.x = CGFloat(10)
+        ball.frame.origin.y = CGFloat(450)
+
     }
 
     @IBOutlet weak var you: NSTextField!
@@ -62,18 +74,20 @@ class BallGame: NSViewController {
         if (stb.title == "Stop") {
             pg = CGFloat(g)
             pk = CGFloat(k)
-            pgr = n[3]
             stb.title = "Resume"
             g = 0
             k = 0
-            n[3] = 601
+            cr1 = nr[3]
+            cr2 = nr[13]
+            nr[3] = false
+            nr[13] = false
         }
         else {
             stb.title = "Stop"
             g = pg
             k = pk
-            n[3] = pgr
-            nr[3] = true
+            nr[3] = cr1
+            nr[13] = cr2
         }
     }
     
@@ -84,6 +98,7 @@ class BallGame: NSViewController {
         ball.frame.origin.y = CGFloat(450)
         stb.title = "Stop"
         sb.enabled = false
+        stb.enabled = true
     }
 
     var leftDown = false
@@ -114,10 +129,10 @@ class BallGame: NSViewController {
 
     func bmovefunc(sender : AnyObject) {
         var al = bita.frame.origin.x
-        if (rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
+        if (!techn)&&(rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
                 bita.frame.origin.x = CGFloat(al + invrs)
         }
-        if (leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
+        if (!techn)&&(leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
                 bita.frame.origin.x = CGFloat(al - invrs)
         }
     }
@@ -136,40 +151,55 @@ class BallGame: NSViewController {
                 n[i*10 + t]++
                 switch t{
                 case 1:
-                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 175, height: bts[i].frame.height)
+                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 175, height: CGFloat(19))
+                    bts[i].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 175, height: 15))
                 case 2:
-                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 75, height: bts[i].frame.height)
+                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 75, height: CGFloat(19))
+                    bts[i].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 75, height: 15))
                 case 3:
                     g = CGFloat(g + (0.35 * ((CGFloat(i) * 2) - 1)))
                 case 4:
                     cg = CGFloat(13)
                 case 5:
-                    bts[i].frame.origin.x = CGFloat(ball.frame.origin.x - 50)
+                    if (bts[i].frame.maxX < ball.frame.midX) {
+                        bts[i].frame.origin.x += 20
+                    }
+                    if (bts[i].frame.minX > ball.frame.midX) {
+                        bts[i].frame.origin.x -= 20
+                    }
+                    if (i == 0) {
+                        techn = true
+                    }
                 case 6:
                     if (i == 0) {
                         invrs = CGFloat(-10)
                     }
                 case 7:
-                    if (scr[abs(i - 1)].integerValue > 0)&&(n[i*10 + 7] < 3) {
-                        scr[abs(i - 1)].integerValue -= 1
+                    if (n[i*10 + 7] == 2) {
+                        scr[i].integerValue += 1
+                        n[i*10 + 7] = 1
+                        nr[i*10 + 7] = false
                     }
                 case 8:
-                    if (n[i*10 + t] < 2) {
+                    if (n[i*10 + t] == 3) {
                         ball.frame = NSRect(x: ball.frame.origin.x, y: ball.frame.origin.y, width: ball.frame.width * 1.5, height: ball.frame.height * 1.5)
                     }
                 default: break
                 }
             } else {
                 if (n[i*10 + t] > 600) {
-                n[i*10 + t] = 1
-                nr[i*10 + t] = false
                 switch t {
-                case 1...2: bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 125, height: bts[i].frame.height)
+                case 1...2:
+                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 125, height: bts[i].frame.height)
+                    bts[i].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
                 case 4: cg = CGFloat(0)
+                case 5: techn = false
                 case 6: invrs = CGFloat(10)
                 case 8: ball.frame = NSRect(x: ball.frame.origin.x, y: ball.frame.origin.y, width: CGFloat(25), height: CGFloat(25))
                 default: break
                 }
+                n[i*10 + t] = 1
+                nr[i*10 + t] = false
                 }
             }
         }
@@ -200,6 +230,9 @@ class BallGame: NSViewController {
             btn[i].frame.origin.y = CGFloat(11)
             tr = false
             nr[w*10 + i] = true
+                if (i == 8) {
+                    n[w*10 + 8] = 2
+                }
             }
             timefunc(btn[i])
         }
@@ -224,12 +257,13 @@ class BallGame: NSViewController {
                 k = 0
                 g = 0
                 sb.enabled = true
-                if (scr[abs(i - 1)].integerValue < 4) {
-                    scr[abs(i - 1)].integerValue += 1
+                if (scr[i].integerValue > 1) {
+                    scr[i].integerValue -= 1
                 } else {
-                    scr[abs(i - 1)].integerValue = 5
+                    scr[i].integerValue = 0
                     result.stringValue = "WINNER: " + scr[abs(i - 1)+2].stringValue
                     sb.enabled = false
+                    stb.enabled = false
                 }
         }
         }
@@ -272,15 +306,18 @@ class BallGame: NSViewController {
         scr.append(comp)
         scr.append(you)
         scr.append(computer)
-        cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0009, target: self, selector: cbsel, userInfo: nil, repeats: true)
+        cbitat = NSTimer.scheduledTimerWithTimeInterval(0.0008, target: self, selector: cbsel, userInfo: nil, repeats: true)
         fly = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: sel, userInfo: nil, repeats: true)
         bon = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: select, userInfo: nil, repeats: true)
         bmove = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: bsel, userInfo: nil, repeats: true)
+        bts[0].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
+        bts[1].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
+        self.view.window?.backgroundColor = NSColor.darkGrayColor()
     }
     
     override func viewWillDisappear() {

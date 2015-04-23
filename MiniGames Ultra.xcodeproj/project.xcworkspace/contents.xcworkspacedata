@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "group:monster.png">
+   </FileRef>
+   <FileRef
+      location = "self:MiniGames Ultra.xcodeproj">
    </FileRef>
 </Workspace>

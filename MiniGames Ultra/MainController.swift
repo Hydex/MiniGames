@@ -24,13 +24,10 @@ class MainController : NSViewController {
             self.performSegueWithIdentifier("sudoku", sender: self)
         case 3:
             self.performSegueWithIdentifier("SeaBattle", sender: self)
-<<<<<<< HEAD
         case 4:
             self.performSegueWithIdentifier("2048", sender: self)
         case 5:
             self.performSegueWithIdentifier("arcadeGame", sender: self)
-=======
->>>>>>> origin/master
         default:
             break
         }

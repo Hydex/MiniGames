@@ -32,7 +32,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES"
-      language = "ru-RU">
+      language = "ru">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference

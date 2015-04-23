@@ -22,14 +22,12 @@ class SeaBattle: NSViewController {
     var b1 = NSButton(), b2 = NSButton()
     var p = 0
     var k = 0, k1 = 0, k2 = 0, k3 = 0
-    var selp = Selector("ppress:"), selc = Selector("cpress:"), chksel = Selector("chkf:")
+    var selp = Selector("ppress:"), selc = Selector("cpress:")
     var tr = false
     var rd = 0
-    var chk = NSTimer()
     override func viewDidLoad() {
         super.viewDidLoad()
         fieldfunc()
-        chk = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: chksel, userInfo: nil, repeats: true)
     }
     var n1 = true, n2 = true, n3 = true, n4 = true
     var t1 = 0, t2 = 0, t3 = 0
@@ -192,12 +190,10 @@ class SeaBattle: NSViewController {
     func cpress(sender: NSButton) {
         sender.enabled = false
         if (sender.tag == 5) {
-            sender.tag = 3
             sender.image = NSImage.swatchWithColor(NSColor.redColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
         } else {
              sender.image = NSImage.swatchWithColor(NSColor.blueColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
         }
-        sender.enabled = false
     }
     func shipc() {
         rand = Int(arc4random_uniform(4) + 1)
@@ -270,24 +266,7 @@ class SeaBattle: NSViewController {
         }
         
     }
-    func chkf(sender: NSTimer) {
-        var b = 0
-        for i in 0...99 {
-            if (btnc[i].tag == 3) {
-                b++
-            }
-        }
-        if (b == 20) {
-            println(1)
-            var al = NSAlert()
-            al.showsHelp = false
-            al.messageText = strLocal("Congratulations! You won")
-            al.informativeText = strLocal("You can change hardness or choose another game.")
-            var responseTag = NSModalResponse()
-            responseTag = al.runModal()
-            chk.invalidate()
-        }
-    }
+
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()

@@ -15,6 +15,9 @@
 		243230451AC868B400F2CCC3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230441AC868B400F2CCC3 /* MainController.swift */; };
 		243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230461AC8696400F2CCC3 /* MinesweeperMain.swift */; };
 		243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */; };
+		247D17B51AE976F600614E01 /* GhostMedium.png in Resources */ = {isa = PBXBuildFile; fileRef = 247D17B21AE976F600614E01 /* GhostMedium.png */; };
+		247D17B61AE976F600614E01 /* GhostSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 247D17B31AE976F600614E01 /* GhostSmall.png */; };
+		247D17B71AE976F600614E01 /* GhostBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 247D17B41AE976F600614E01 /* GhostBig.png */; };
 		249D28431AD2CABE00693797 /* SudokuHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D28421AD2CABE00693797 /* SudokuHardness.swift */; };
 		249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D28441AD2CACD00693797 /* SudokuMain.swift */; };
 		5430151F1AD2A2BC00C5922B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 543015211AD2A2BC00C5922B /* Localizable.strings */; };
@@ -70,6 +73,9 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		247D17B21AE976F600614E01 /* GhostMedium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GhostMedium.png; sourceTree = "<group>"; };
+		247D17B31AE976F600614E01 /* GhostSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GhostSmall.png; sourceTree = "<group>"; };
+		247D17B41AE976F600614E01 /* GhostBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GhostBig.png; sourceTree = "<group>"; };
 		249D28421AD2CABE00693797 /* SudokuHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuHardness.swift; sourceTree = "<group>"; };
 		249D28441AD2CACD00693797 /* SudokuMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuMain.swift; sourceTree = "<group>"; };
 		54046CD81ADE7ACE001AAA5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 		548A0B8D1AE61F4500B34037 /* ArcadeGame */ = {
 			isa = PBXGroup;
 			children = (
+				247D17B21AE976F600614E01 /* GhostMedium.png */,
+				247D17B31AE976F600614E01 /* GhostSmall.png */,
+				247D17B41AE976F600614E01 /* GhostBig.png */,
 				54D90B221AE66AA800BB448C /* monster.png */,
 				548A0BC11AE62DB000B34037 /* projectile.png */,
 				548A0BBD1AE62A9B00B34037 /* player.png */,
@@ -370,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247D17B71AE976F600614E01 /* GhostBig.png in Resources */,
 				54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */,
 				5430151F1AD2A2BC00C5922B /* Localizable.strings in Resources */,
 				92092A821AD5B63200E824EA /* icon-heart.png in Resources */,
@@ -377,11 +387,13 @@
 				548A0BC21AE62DB000B34037 /* projectile.png in Resources */,
 				547009851AD1B084003C8E66 /* Button bomb.png in Resources */,
 				54D90B231AE66AA800BB448C /* monster.png in Resources */,
+				247D17B61AE976F600614E01 /* GhostSmall.png in Resources */,
 				92092A861AD5B94000E824EA /* horizontal-line.png in Resources */,
 				548A0BBE1AE62A9B00B34037 /* player.png in Resources */,
 				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
 				92B996771ACC8CA5008CF329 /* desk.jpg in Resources */,
 				92B996751ACC8BFC008CF329 /* ball.png in Resources */,
+				247D17B51AE976F600614E01 /* GhostMedium.png in Resources */,
 				92B996731ACC8BDD008CF329 /* metal.png in Resources */,
 				92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */,
 				922E32821ADF880500AF18B7 /* Ai1-standaard-snelheid.png in Resources */,

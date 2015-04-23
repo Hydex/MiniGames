@@ -25,6 +25,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var lives = 3
     var storage = NSUserDefaults.standardUserDefaults()
     var stage = 0
+    var nOfMon = 0
+    var durat : (min: CGFloat, max: CGFloat) = (0, 0)
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -42,6 +44,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         storage.setInteger(storage.integerForKey("stage") + 1, forKey: "stage")
         stage = storage.integerForKey("stage")
         storage.synchronize()
+        nOfMon = 10 + stage * 5
         
         physicsWorld.gravity = CGVectorMake(0.0, -10)
         physicsWorld.contactDelegate = self
@@ -116,7 +119,22 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createMonster() {
-        let monster = SKSpriteNode(imageNamed: "monster.png")
+        
+        var n = arc4random_uniform(100)
+        var s = ""
+        switch n {
+        case 0...59:
+            durat = (3 - 0.25 * CGFloat(stage - 1), 3.5 - 0.25 * CGFloat(stage - 1))
+            s = "GhostSmall.png"
+        case 60...85:
+            durat = (3.5 - 0.25 * CGFloat(stage - 1), 4 - 0.25 * CGFloat(stage - 1))
+            s = "GhostMedium.png"
+        default:
+            durat = (4.5 - 0.25 * CGFloat(stage - 1), 5 - 0.25 * CGFloat(stage - 1))
+            s = "GhostBig.png"
+        }
+        
+        let monster = SKSpriteNode(imageNamed: s)
         
         let y = random(min: monster.size.height / 2, size.height - monster.size.height)
         monster.position = CGPoint(x: self.size.width + monster.size.width / 2, y: y)
@@ -129,7 +147,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         monster.physicsBody?.dynamic = true
         addChild(monster)
         
-        let duration = random(min: 2.0, 4.0)
+        let duration = random(min: durat.min, durat.max)
         let move = SKAction.moveTo(CGPoint(x: -monster.size.width / 2, y: y), duration: NSTimeInterval(duration))
         let done = SKAction.removeFromParent()
         let lose = SKAction.runBlock() {

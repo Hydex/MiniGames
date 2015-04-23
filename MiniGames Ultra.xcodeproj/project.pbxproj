@@ -419,11 +419,11 @@
 				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
 				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
 				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,
-<<<<<<< HEAD
+
 				548A0B8F1AE6238600B34037 /* GameOverScene.swift in Sources */,
 				54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */,
-=======
->>>>>>> origin/master
+
+
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 				54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */,
 				249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */,

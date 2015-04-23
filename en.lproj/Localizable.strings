@@ -7,6 +7,7 @@
 */
 "ms" = "Minesweeper";
 "sudoku" = "Sudoku";
+
 "time" = "second";
 "bomb" = "bomb";
 "left" = "left";
@@ -21,5 +22,3 @@
 "changeHardness" = "Change hardness";
 "quit" = "Exit app";
 "anGame" = "Play another game";
-"elapsed" = "time elapsed:";
-"moves" = "move";

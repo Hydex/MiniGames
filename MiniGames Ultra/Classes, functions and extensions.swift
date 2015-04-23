@@ -166,7 +166,7 @@ func strLocal(key : String) -> String {
 
 func ending(num : Int, lang : Int) -> String {
     if lang == 1 {
-        if num % 10 == 0 || num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
+        if num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
             return ""
         }
         else {
@@ -187,6 +187,7 @@ func ending(num : Int, lang : Int) -> String {
         }
     }
 }
+<<<<<<< HEAD
 
 func endingMale(num : Int, lang : Int) -> String {
     if lang == 1 {
@@ -249,3 +250,5 @@ extension CGPoint {
         return self / length()
     }
 }
+=======
+>>>>>>> origin/master

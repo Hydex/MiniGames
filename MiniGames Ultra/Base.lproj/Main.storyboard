@@ -623,18 +623,14 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="NewObject" id="wpr-3q-Mcd">
+                            <menuItem title="Help" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="NewObject" id="X2e-Yr-IuZ">
+                                <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Pause" id="YEl-iw-Fz0">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Item 2" id="hue-eh-58D">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem title="Item 3" id="gcD-hg-qP8">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="MiniGames Ultra Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -648,6 +644,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MiniGames_Ultra" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="-310" y="-137"/>
         </scene>
         <!--Arcade Game Controller-->
@@ -727,6 +724,9 @@
                 <customObject id="CbK-k5-R9d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="850" y="272"/>
+=======
+            <point key="canvasLocation" x="175" y="22"/>
+>>>>>>> origin/master
         </scene>
         <!--Main Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -736,22 +736,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="613" height="412"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-uk-GlF">
-                                <rect key="frame" x="237" y="298" width="138" height="33"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Choose game:" id="y0R-Sw-a8W">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-uk-GlF">
+                                <rect key="frame" x="237" y="314" width="138" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Choose game:" id="y0R-Sw-a8W">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmS-6I-qKq">
                                 <rect key="frame" x="246" y="256" width="122" height="26"/>
+<<<<<<< HEAD
                                 <popUpButtonCell key="cell" type="push" title="Arcade Game" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="x1U-FL-rSS" id="523-G8-apn">
+=======
+                                <popUpButtonCell key="cell" type="push" title="Minesweeper" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cDd-fH-8hD" id="523-G8-apn">
+>>>>>>> origin/master
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="5nB-fY-Si1">
                                         <items>
-                                            <menuItem title="Minesweeper" id="cDd-fH-8hD"/>
+                                            <menuItem title="Minesweeper" state="on" id="cDd-fH-8hD"/>
                                             <menuItem title="Ball Game" id="P9d-Ih-Rjn"/>
                                             <menuItem title="Sudoku" id="cdf-9A-nGb">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -759,12 +763,15 @@
                                             <menuItem title="SeaBattle" id="Zre-sx-Fe3">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
+<<<<<<< HEAD
                                             <menuItem title="2048" state="on" id="IDr-UG-k62">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="Arcade Game" state="on" id="x1U-FL-rSS">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
+=======
+>>>>>>> origin/master
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -803,8 +810,11 @@
                         <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="6S3-Sb-WOm"/>
                         <segue destination="xwz-BI-wLB" kind="modal" identifier="sudoku" id="F8H-dt-lYf"/>
                         <segue destination="HGg-dz-qo3" kind="show" identifier="SeaBattle" id="xCP-Zj-yk8"/>
+<<<<<<< HEAD
                         <segue destination="vDt-Ss-612" kind="show" identifier="2048" id="iSm-5Z-RFO"/>
                         <segue destination="k9q-V6-nsc" kind="modal" identifier="arcadeGame" id="0wE-II-Xep"/>
+=======
+>>>>>>> origin/master
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -915,7 +925,7 @@
                 </viewController>
                 <customObject id="YCS-ds-6do" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914" y="272"/>
+            <point key="canvasLocation" x="1451" y="229"/>
         </scene>
         <!--Minesweeper Hardness-->
         <scene sceneID="rM5-bq-e1A">
@@ -978,7 +988,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhR-Wi-Hci">
                                 <rect key="frame" x="229" y="148" width="60" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="12" placeholderString="" drawsBackground="YES" id="w04-fP-x3f">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="w04-fP-x3f">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -986,7 +996,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-Vx-UQb">
                                 <rect key="frame" x="229" y="77" width="60" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="12" drawsBackground="YES" id="VaG-3q-X04">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VaG-3q-X04">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1054,7 +1064,11 @@
                 </viewController>
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="883" y="398"/>
+=======
+            <point key="canvasLocation" x="1553" y="807"/>
+>>>>>>> origin/master
         </scene>
         <!--Sea Battle-->
         <scene sceneID="bw3-FC-IMZ">
@@ -1068,6 +1082,19 @@
                 <customObject id="YLq-y0-iYT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-340" y="855.5"/>
+        </scene>
+        <!--StickMan-->
+        <scene sceneID="hbo-b1-jR2">
+            <objects>
+                <viewController title="StickMan" id="Iia-G6-brq" customClass="Stick" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fCi-6i-EKI">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="413"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="A4x-CQ-bpd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235.5" y="1022.5"/>
         </scene>
         <!--Ball Game-->
         <scene sceneID="cTr-AH-ADo">
@@ -1265,7 +1292,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="1242"/>
+            <point key="canvasLocation" x="-410" y="975"/>
         </scene>
     </scenes>
     <resources>

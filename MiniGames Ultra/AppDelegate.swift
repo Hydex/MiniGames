@@ -8,23 +8,13 @@
 
 import Cocoa
 
-var activeGame = ""
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    var timer = NSTimer()
-    var sudAct = false
 
-    @IBAction func PausePressed(sender: NSMenuItem) {
-        
-    }
+
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("testFunc:"), userInfo: nil, repeats: true)
-    }
-    
-    func testFunc(sender : AnyObject?) {
+        // Insert code here to initialize your application
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

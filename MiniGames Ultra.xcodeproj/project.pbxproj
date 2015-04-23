@@ -27,7 +27,6 @@
 		548A0BBE1AE62A9B00B34037 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 548A0BBD1AE62A9B00B34037 /* player.png */; };
 		548A0BC21AE62DB000B34037 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 548A0BC11AE62DB000B34037 /* projectile.png */; };
 		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
-		54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB1D61ADFBF64007BC829 /* 2048Main.swift */; };
 		54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */; };
 		54D90B231AE66AA800BB448C /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D90B221AE66AA800BB448C /* monster.png */; };
 		92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */; };
@@ -41,6 +40,7 @@
 		922E327C1ADF83BB00AF18B7 /* ball-green-e1407162219342.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E327B1ADF83BB00AF18B7 /* ball-green-e1407162219342.png */; };
 		922E32821ADF880500AF18B7 /* Ai1-standaard-snelheid.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E32811ADF880500AF18B7 /* Ai1-standaard-snelheid.png */; };
 		922E32841ADFB53200AF18B7 /* OTD62.gif in Resources */ = {isa = PBXBuildFile; fileRef = 922E32831ADFB53200AF18B7 /* OTD62.gif */; };
+		922E32861AE1993A00AF18B7 /* Stickman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922E32851AE1993A00AF18B7 /* Stickman.swift */; };
 		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
 		92B996731ACC8BDD008CF329 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B996721ACC8BDD008CF329 /* metal.png */; };
 		92B996751ACC8BFC008CF329 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B996741ACC8BFC008CF329 /* ball.png */; };
@@ -70,9 +70,9 @@
 		243230441AC868B400F2CCC3 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		243230461AC8696400F2CCC3 /* MinesweeperMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperMain.swift; sourceTree = "<group>"; };
 		243230481AC869A000F2CCC3 /* MinesweeperHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesweeperHardness.swift; sourceTree = "<group>"; };
+		247A2F0C1AD302E000A516AA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		249D28421AD2CABE00693797 /* SudokuHardness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuHardness.swift; sourceTree = "<group>"; };
 		249D28441AD2CACD00693797 /* SudokuMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuMain.swift; sourceTree = "<group>"; };
-		54046CD81ADE7ACE001AAA5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		543015201AD2A2BC00C5922B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		544646701ACC5F6B003F1B25 /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		547009841AD1B084003C8E66 /* Button bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button bomb.png"; sourceTree = "<group>"; };
@@ -83,7 +83,6 @@
 		548A0BBD1AE62A9B00B34037 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = ../player.png; sourceTree = "<group>"; };
 		548A0BC11AE62DB000B34037 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
 		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
-		54AEB1D61ADFBF64007BC829 /* 2048Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2048Main.swift; sourceTree = "<group>"; };
 		54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Classes, functions and extensions.swift"; sourceTree = "<group>"; };
 		54D90B221AE66AA800BB448C /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 		92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40px-Lightning_Bolt_on_Circle.svg.png"; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		922E327B1ADF83BB00AF18B7 /* ball-green-e1407162219342.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-green-e1407162219342.png"; sourceTree = "<group>"; };
 		922E32811ADF880500AF18B7 /* Ai1-standaard-snelheid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ai1-standaard-snelheid.png"; sourceTree = "<group>"; };
 		922E32831ADFB53200AF18B7 /* OTD62.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OTD62.gif; sourceTree = "<group>"; };
+		922E32851AE1993A00AF18B7 /* Stickman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stickman.swift; sourceTree = "<group>"; };
 		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		92B996721ACC8BDD008CF329 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = ../metal.png; sourceTree = "<group>"; };
 		92B996741ACC8BFC008CF329 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball.png; path = ../ball.png; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 				243230441AC868B400F2CCC3 /* MainController.swift */,
 				2432304A1AC869A800F2CCC3 /* Games */,
 				243230251AC865D600F2CCC3 /* Supporting Files */,
+				922E32871AE2544000AF18B7 /* Stickman */,
 			);
 			path = "MiniGames Ultra";
 			sourceTree = "<group>";
@@ -192,7 +193,6 @@
 				92A46B341AC9591500B2050E /* BallGame */,
 				2432304B1AC869B300F2CCC3 /* Minesweeper */,
 				5405A8A01ADD68AD001C2A42 /* SeaBattle */,
-				54AEB1DA1ADFBF72007BC829 /* 2048 */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -273,12 +273,12 @@
 			name = Minesweeper;
 			sourceTree = "<group>";
 		};
-		54AEB1DA1ADFBF72007BC829 /* 2048 */ = {
+		922E32871AE2544000AF18B7 /* Stickman */ = {
 			isa = PBXGroup;
 			children = (
-				54AEB1D61ADFBF64007BC829 /* 2048Main.swift */,
+				922E32851AE1993A00AF18B7 /* Stickman.swift */,
 			);
-			name = 2048;
+			name = Stickman;
 			sourceTree = "<group>";
 		};
 		92A46B341AC9591500B2050E /* BallGame */ = {
@@ -419,11 +419,15 @@
 				243230491AC869A000F2CCC3 /* MinesweeperHardness.swift in Sources */,
 				243230471AC8696400F2CCC3 /* MinesweeperMain.swift in Sources */,
 				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,
+<<<<<<< HEAD
 				548A0B8F1AE6238600B34037 /* GameOverScene.swift in Sources */,
 				54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */,
+=======
+>>>>>>> origin/master
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 				54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */,
 				249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */,
+				922E32861AE1993A00AF18B7 /* Stickman.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +462,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				543015201AD2A2BC00C5922B /* en */,
-				54046CD81ADE7ACE001AAA5A /* ru */,
+				247A2F0C1AD302E000A516AA /* ru */,
 			);
 			name = Localizable.strings;
 			path = ..;

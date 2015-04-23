@@ -22,6 +22,7 @@ class SudokuMain: NSViewController {
     var interval : Double = 5
     var time = 0
     var elapsedTime = 0
+    var won = true
     
     override func viewDidAppear() {
         super.viewWillAppear()
@@ -40,6 +41,7 @@ class SudokuMain: NSViewController {
             }
         }
         self.view.window?.backgroundColor = color
+        self.view.window?.center()
     }
     
     override func viewDidLoad() {
@@ -50,6 +52,7 @@ class SudokuMain: NSViewController {
         var tag = 0
         var b = 0
         elapsedTime = 0
+        won = true
         
         if storage.boolForKey("isContinuation") {
             storage.setBool(false, forKey: "continueSudoku")
@@ -116,7 +119,6 @@ class SudokuMain: NSViewController {
         but.target = self
         self.view.addSubview(but)
         if !storage.boolForKey("isContinuation") {
-            storage.setBool(false, forKey: "isContinuation")
         
             var r = Int(arc4random_uniform(120)) + 200
             for var i = 0; i < r; i++ {
@@ -201,6 +203,9 @@ class SudokuMain: NSViewController {
             }
         }
         
+        if storage.boolForKey("isContinuation") {
+            storage.setBool(false, forKey: "isContinuation")
+        }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("checkForWin:"), userInfo: nil, repeats: true)
     }
     
@@ -293,6 +298,9 @@ class SudokuMain: NSViewController {
             }
         }
         if m {
+            timer.invalidate()
+            println(storage.boolForKey("isContinuation"))
+            won = false
             var al = NSAlert()
             al.showsHelp = false
             al.messageText = strLocal("won")
@@ -324,6 +332,7 @@ class SudokuMain: NSViewController {
                 }
             }
             sender.title = "New game"
+            won = false
         }
         else {
             for each in ar {
@@ -341,21 +350,27 @@ class SudokuMain: NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         activeGame = ""
-        var al = NSAlert()
-        al.showsHelp = false
-        al.messageText = "Do you want to save game?"
-        al.informativeText = "You'll be able to continue this game the next time you'll open Sudoku"
-        al.addButtonWithTitle("Save and exit")
-        al.addButtonWithTitle("Quit without saving")
-        var response = al.runModal()
-        if response == NSAlertFirstButtonReturn {
-            var curAr = NSArchiver.archivedDataWithRootObject(ar)
-            var solAr = NSArchiver.archivedDataWithRootObject(solution)
-            storage.setObject(curAr, forKey: "sudokuArray")
-            storage.setObject(solAr, forKey: "sudokuSolution")
-            storage.setInteger(time, forKey: "sudokuTime")
-            storage.setBool(true, forKey: "continueSudoku")
-            storage.synchronize()
+        if won {
+            var al = NSAlert()
+            al.showsHelp = false
+            al.messageText = "Do you want to save game?"
+            al.informativeText = "You'll be able to continue this game the next time you'll open Sudoku"
+            al.addButtonWithTitle("Save and exit")
+            al.addButtonWithTitle("Quit without saving")
+            var response = al.runModal()
+            if response == NSAlertFirstButtonReturn {
+                var curAr = NSArchiver.archivedDataWithRootObject(ar)
+                var solAr = NSArchiver.archivedDataWithRootObject(solution)
+                storage.setObject(curAr, forKey: "sudokuArray")
+                storage.setObject(solAr, forKey: "sudokuSolution")
+                storage.setInteger(time, forKey: "sudokuTime")
+                storage.setBool(true, forKey: "continueSudoku")
+            }
         }
+        else {
+            storage.setBool(false, forKey: "isContinuation")
+            storage.setBool(false, forKey: "continueSudoku")
+        }
+        storage.synchronize()
     }
 }

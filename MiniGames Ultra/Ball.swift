@@ -318,6 +318,7 @@ class BallGame: NSViewController {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
         self.view.window?.backgroundColor = NSColor.darkGrayColor()
+        self.view.window?.center()
     }
     
     override func viewWillDisappear() {

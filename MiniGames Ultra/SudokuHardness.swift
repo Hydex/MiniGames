@@ -27,6 +27,7 @@ class SudokuHardness: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.view.window?.title = strLocal("sudoku")
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
         if storage.boolForKey("continueSudoku") {
             storage.setBool(false, forKey: "continueSudoku")
@@ -56,6 +57,7 @@ class SudokuHardness: NSViewController {
             }
         }
         colorPicker.color = color
+        self.view.window?.center()
     }
     @IBAction func donePressed(sender: AnyObject) {
         var data = NSArchiver.archivedDataWithRootObject(colorPicker.color)

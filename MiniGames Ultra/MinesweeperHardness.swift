@@ -78,6 +78,7 @@ class MinesweeperHardness : NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         self.dismissController(MinesweeperHardness)
+        self.view.window?.close()
     }
     
     override func viewDidAppear() {
@@ -88,6 +89,7 @@ class MinesweeperHardness : NSViewController {
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("check:"), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        self.view.window?.center()
     }
     
     

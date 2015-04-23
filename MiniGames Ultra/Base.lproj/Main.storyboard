@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
@@ -650,6 +650,19 @@
             </objects>
             <point key="canvasLocation" x="-310" y="-137"/>
         </scene>
+        <!--Arcade Game Controller-->
+        <scene sceneID="14A-Sz-3Uw">
+            <objects>
+                <viewController id="k9q-V6-nsc" customClass="ArcadeGameController" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="6Aw-9d-Eiq">
+                        <rect key="frame" x="0.0" y="0.0" width="710" height="533"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="kO7-P2-QW4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-181.5"/>
+        </scene>
         <!--Main-->
         <scene sceneID="xaa-1l-gUD">
             <objects>
@@ -713,7 +726,7 @@
                 </viewController>
                 <customObject id="CbK-k5-R9d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407" y="-112"/>
+            <point key="canvasLocation" x="850" y="272"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -733,7 +746,7 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmS-6I-qKq">
                                 <rect key="frame" x="246" y="256" width="122" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="2048" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IDr-UG-k62" id="523-G8-apn">
+                                <popUpButtonCell key="cell" type="push" title="Arcade Game" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="x1U-FL-rSS" id="523-G8-apn">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="5nB-fY-Si1">
@@ -747,6 +760,9 @@
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="2048" state="on" id="IDr-UG-k62">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Arcade Game" state="on" id="x1U-FL-rSS">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
@@ -788,6 +804,7 @@
                         <segue destination="xwz-BI-wLB" kind="modal" identifier="sudoku" id="F8H-dt-lYf"/>
                         <segue destination="HGg-dz-qo3" kind="show" identifier="SeaBattle" id="xCP-Zj-yk8"/>
                         <segue destination="vDt-Ss-612" kind="show" identifier="2048" id="iSm-5Z-RFO"/>
+                        <segue destination="k9q-V6-nsc" kind="modal" identifier="arcadeGame" id="0wE-II-Xep"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1021,7 +1038,7 @@
                 </viewController>
                 <customObject id="ubz-RP-Ww0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.5" y="807"/>
+            <point key="canvasLocation" x="889.5" y="312"/>
         </scene>
         <!--Minesweeper Main-->
         <scene sceneID="j2A-Pa-LtX">
@@ -1037,7 +1054,7 @@
                 </viewController>
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="807"/>
+            <point key="canvasLocation" x="883" y="398"/>
         </scene>
         <!--Sea Battle-->
         <scene sceneID="bw3-FC-IMZ">

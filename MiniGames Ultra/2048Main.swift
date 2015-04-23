@@ -233,5 +233,6 @@ class _048Main: NSViewController {
         self.view.window?.setFrame(frame!, display: true)
         self.view.window?.backgroundColor = NSColor.darkGrayColor()
         self.view.window?.title = "2048"
+        self.view.window?.center()
     }
 }

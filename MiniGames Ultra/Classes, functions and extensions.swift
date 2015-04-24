@@ -249,3 +249,12 @@ extension CGPoint {
         return self / length()
     }
 }
+
+func abs(n : CGFloat) -> CGFloat {
+    if n <= 0 {
+        return n
+    }
+    else {
+        return -n
+    }
+}

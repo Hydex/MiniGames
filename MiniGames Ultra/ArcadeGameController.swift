@@ -27,6 +27,8 @@ extension SKNode {
 
 class ArcadeGameController: NSViewController {
     
+    let storage = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
@@ -42,6 +44,10 @@ class ArcadeGameController: NSViewController {
         scene.scaleMode = .AspectFit
         skView.presentScene(scene)
         self.view.addSubview(skView)
+    }
+    
+    override func viewDidDisappear() {
+        storage.setInteger(0, forKey: "stage")
     }
     
 }

@@ -32,6 +32,7 @@ class ArcadeGameController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
+        self.view.window?.title = "Ninja fight"
     }
 
     override func viewDidLoad() {
@@ -46,8 +47,13 @@ class ArcadeGameController: NSViewController {
         self.view.addSubview(skView)
     }
     
-    override func viewDidDisappear() {
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
         storage.setInteger(0, forKey: "stage")
+        storage.synchronize()
+        for i in self.view.subviews {
+            i.removeFromSuperview()
+        }
     }
     
 }

@@ -655,13 +655,13 @@
             <objects>
                 <viewController id="k9q-V6-nsc" customClass="ArcadeGameController" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6Aw-9d-Eiq">
-                        <rect key="frame" x="0.0" y="0.0" width="710" height="533"/>
+                        <rect key="frame" x="0.0" y="0.0" width="959" height="603"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="kO7-P2-QW4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="-181.5"/>
+            <point key="canvasLocation" x="472.5" y="-216.5"/>
         </scene>
         <!--Main-->
         <scene sceneID="xaa-1l-gUD">
@@ -759,7 +759,7 @@
                                             <menuItem title="SeaBattle" id="Zre-sx-Fe3">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem title="2048" state="on" id="IDr-UG-k62">
+                                            <menuItem title="2048" id="IDr-UG-k62">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="Arcade Game" state="on" id="x1U-FL-rSS">

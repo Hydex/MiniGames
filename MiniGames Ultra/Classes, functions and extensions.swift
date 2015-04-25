@@ -258,3 +258,55 @@ func abs(n : CGFloat) -> CGFloat {
         return -n
     }
 }
+
+extension NSBezierPath {
+    
+//    var CGPath: CGPathRef {
+//        
+//        get {
+//            return self.transformToCGPath()
+//        }
+//    }
+    
+    func CGPath(scale : CGFloat) -> CGPathRef {
+        return self.transformToCGPath(scale)
+    }
+    
+    private func transformToCGPath(scale : CGFloat) -> CGPathRef {
+        
+        // Create path
+        var path = CGPathCreateMutable()
+        var points = UnsafeMutablePointer<NSPoint>.alloc(3)
+        let numElements = self.elementCount
+        
+        if numElements > 0 {
+            
+            var didClosePath = true
+            
+            for index in 0..<numElements {
+                
+                let pathType = self.elementAtIndex(index, associatedPoints: points)
+                
+                switch pathType {
+                    
+                case .MoveToBezierPathElement:
+                    CGPathMoveToPoint(path, nil, points[0].x * scale, points[0].y * scale)
+                case .LineToBezierPathElement:
+                    CGPathAddLineToPoint(path, nil, points[0].x * scale, points[0].y * scale)
+                    didClosePath = false
+                case .CurveToBezierPathElement:
+                    CGPathAddCurveToPoint(path, nil, points[0].x * scale, points[0].y * scale, points[1].x * scale, points[1].y * scale, points[2].x * scale, points[2].y * scale)
+                    didClosePath = false
+                case .ClosePathBezierPathElement:
+                    CGPathCloseSubpath(path)
+                    didClosePath = true
+                }
+            }
+            
+            if !didClosePath { CGPathCloseSubpath(path) }
+        }
+        
+        points.dealloc(3)
+        return path
+    }
+}

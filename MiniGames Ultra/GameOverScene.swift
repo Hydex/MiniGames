@@ -27,6 +27,8 @@ class GameOverScene: SKScene {
         self.runAction(SKAction.sequence([SKAction.waitForDuration(2.0), SKAction.runBlock() {
             self.view?.presentScene(ArcadeGameScene(size: self.size), transition: SKTransition.flipVerticalWithDuration(0.5))
             }]))
+        NSUserDefaults.standardUserDefaults().setInteger(500, forKey: "ninjaLives")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     override func mouseDown(theEvent: NSEvent) {

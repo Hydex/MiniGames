@@ -10,10 +10,11 @@ import Foundation
 import SpriteKit
 
 class MonsterNode : SKSpriteNode {
-    init (imageNamed : String, lives : Int) {
+    init (imageNamed : String, lives : Int, damage : Int) {
         let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: nil, size: texture.size())
         self.lives = lives
+        self.damage = damage
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -21,6 +22,7 @@ class MonsterNode : SKSpriteNode {
     }
     
     lazy var lives = 0
+    lazy var damage = 0
 }
 
 class Shuriken : SKSpriteNode {
@@ -53,7 +55,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     let lifeLabel = SKLabelNode(fontNamed: "Helvetica")
     let stageLabel = SKLabelNode(fontNamed: "Helvetica")
     
-    var lives = 3
+    var lives = 0
     var storage = NSUserDefaults.standardUserDefaults()
     var stage = 0
     var nOfMon = 0
@@ -71,16 +73,20 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         backgroundColor = SKColor.lightGrayColor()
-        lives = 3
+        lives = storage.integerForKey("ninjaLives")
         storage.setInteger(storage.integerForKey("stage") + 1, forKey: "stage")
         stage = storage.integerForKey("stage")
+        if stage % 5 == 0 {
+            lives += 50
+            storage.setInteger(lives, forKey: "ninjaLives")
+        }
         storage.synchronize()
         
-        let field = SKFieldNode.turbulenceFieldWithSmoothness(5, animationSpeed: 1)
+        let field = SKFieldNode.turbulenceFieldWithSmoothness(10, animationSpeed: 1)
         field.position = CGPoint(x: self.size.width * 0.55, y: size.height / 2)
         field.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width * 0.45, height: size.height))
         field.physicsBody?.categoryBitMask = Detection.field
-        field.strength = 0.9
+        field.strength = 2
         addChild(field)
         
         physicsWorld.gravity = CGVectorMake(0.0, -10)
@@ -203,9 +209,11 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             suricHit(first.node as? MonsterNode, suric: second.node as? Shuriken)
         }
         else if second.categoryBitMask == 8 && first.categoryBitMask == 2 {
-            first.node?.removeFromParent()
             nOfMon--
-            lose(2)
+            if let monster = first.node as? MonsterNode {
+                lose(monster.damage * 2)
+            }
+            first.node?.removeFromParent()
             detonate(contact.contactPoint)
         }
     }
@@ -257,7 +265,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             l = 300
         }
         
-        let monster = MonsterNode(imageNamed: s, lives : l)
+        let monster = MonsterNode(imageNamed: s, lives : l, damage: l / 2)
         monster.setScale(scale)
         let y = random(min: monster.size.height / 2 + size.height * 0.04 + 25, size.height - monster.size.height)
         monster.position = CGPoint(x: self.size.width + monster.size.width / 2, y: y)
@@ -279,6 +287,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     
     func lose(n : Int) {
         lives -= n
+        storage.setInteger(lives, forKey: "ninjaLives")
         if lives <= 0 {
             runAction(SKAction.sequence([SKAction.waitForDuration(1.0), SKAction.runBlock() {
                 self.storage.setInteger(0, forKey: "stage")
@@ -297,7 +306,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
                 if monster.position.x < monster.size.width / 2 {
                     detonate(monster.position)
                     nOfMon--
-                    lose(1)
+                    lose(monster.damage)
                     monster.removeFromParent()
                 }
                 else if monster.physicsBody?.velocity.dx >= 0 {

@@ -50,6 +50,7 @@ class ArcadeGameController: NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         storage.setInteger(0, forKey: "stage")
+        storage.setInteger(500, forKey: "ninjaLives")
         storage.synchronize()
         for i in self.view.subviews {
             i.removeFromSuperview()

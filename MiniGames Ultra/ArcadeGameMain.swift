@@ -60,6 +60,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var stage = 0
     var nOfMon = 0
     var t : CGFloat = 0.0
+    var finish = false
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -139,9 +140,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         
         let action = SKAction.repeatAction(SKAction.sequence([SKAction.runBlock(createMonster), SKAction.waitForDuration(NSTimeInterval(dur))]), count: 10 + stage * 5)
         runAction(SKAction.sequence([action, SKAction.runBlock() {
-            if self.nOfMon == 0 {
-                self.runAction(win)
-            }
+            self.finish = true
             }]))
     }
     
@@ -187,6 +186,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             monster!.lives -= suric!.damage
             suric?.removeFromParent()
             if monster!.lives <= 0 {
+                destroyMonster(monster!.position, monster: monster!)
                 monster?.removeFromParent()
                 nOfMon--
             }
@@ -225,6 +225,14 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.waitForDuration(1.0), completion: {
             explosion.removeFromParent()
         })
+    }
+    
+    func destroyMonster(pos : CGPoint, monster : MonsterNode) {
+        let effect = SKEmitterNode(fileNamed: "MonsterDestroy.sks")
+        effect.particlePositionRange = CGVector(dx: monster.size.width, dy: monster.size.height)
+        effect.particlePosition = pos
+        addChild(effect)
+        runAction(SKAction.waitForDuration(12.0), completion: {effect.removeFromParent()})
     }
     
     func createMonster() {
@@ -297,6 +305,13 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(currentTime: NSTimeInterval) {
+        if finish {
+            runAction(SKAction.sequence([SKAction.waitForDuration(2.0), SKAction.runBlock() {
+                self.storage.setInteger(self.lives, forKey: "ninjaLives")
+                self.storage.synchronize()
+                self.view?.presentScene(GameOverScene(size: self.size, won: true, stage: self.stage))
+                }]))
+        }
         if lives < 0 {
             lives = 0
         }

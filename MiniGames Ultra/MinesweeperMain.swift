@@ -31,6 +31,7 @@ class MinesweeperMain: NSViewController {
     ///Label that show current time
     var curTime = NSTextField()
     var locale = NSBundle.mainBundle()
+    var indicator = NSProgressIndicator()
     
     /// Main timer function
     func incTime(sender : AnyObject) {
@@ -193,7 +194,11 @@ class MinesweeperMain: NSViewController {
             butToPress.image = NSImage.swatchWithColor(color, size: NSSize(width: 30, height: 30))
             butToPress.title = butToPress.alternateTitle
             if butToPress.title == "" {
+                self.view.addSubview(indicator)
+                indicator.startAnimation(nil)
                 recOpen(butToPress)
+                indicator.stopAnimation(nil)
+                indicator.removeFromSuperview() 
             }
         }
     }
@@ -361,6 +366,11 @@ class MinesweeperMain: NSViewController {
         curTime.bordered = false
         self.view.addSubview(curTime)
         
+        indicator = NSProgressIndicator(frame: NSRect(x: self.view.frame.size.width / 2 - 25, y: self.view.frame.size.height / 2 - 25, width: 50, height: 50))
+        indicator.style = NSProgressIndicatorStyle.SpinningStyle
+        indicator.usesThreadedAnimation = true
+        indicator.bezeled = true
+        indicator.controlTint = NSControlTint.BlueControlTint
         placeBombs()
         bombsLeft = bombAmount
         
@@ -369,6 +379,8 @@ class MinesweeperMain: NSViewController {
     
     /// Place bombs on field
     func placeBombs() {
+        self.view.addSubview(indicator)
+        indicator.startAnimation(nil)
         var test = 0
         while test < bombAmount {
             var pos = Int(arc4random_uniform(UInt32(width * height)))
@@ -379,6 +391,8 @@ class MinesweeperMain: NSViewController {
             loadMines(ar[pos], desk: false, butToDesk: nil)
             test++
         }
+        indicator.stopAnimation(nil)
+        indicator.removeFromSuperview()
     }
     
     ///Load number of bombs to all buttons around `button`

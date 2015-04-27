@@ -37,6 +37,7 @@ class ArcadeGameController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        storage.setInteger(500, forKey: "ninjaLives")
         let scene = ArcadeGameScene(size : self.view.bounds.size)
         let skView = SKView(frame: NSRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         skView.showsFPS = true
@@ -45,6 +46,7 @@ class ArcadeGameController: NSViewController {
         scene.scaleMode = .AspectFit
         skView.presentScene(scene)
         self.view.addSubview(skView)
+        storage.synchronize()
     }
     
     override func viewWillDisappear() {

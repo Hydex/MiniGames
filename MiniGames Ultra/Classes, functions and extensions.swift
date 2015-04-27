@@ -261,13 +261,6 @@ func abs(n : CGFloat) -> CGFloat {
 
 extension NSBezierPath {
     
-//    var CGPath: CGPathRef {
-//        
-//        get {
-//            return self.transformToCGPath()
-//        }
-//    }
-    
     func CGPath(scale : CGFloat) -> CGPathRef {
         return self.transformToCGPath(scale)
     }

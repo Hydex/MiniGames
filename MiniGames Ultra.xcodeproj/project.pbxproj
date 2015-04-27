@@ -24,6 +24,7 @@
 		544646711ACC5F6B003F1B25 /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544646701ACC5F6B003F1B25 /* GameClass.swift */; };
 		547009851AD1B084003C8E66 /* Button bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 547009841AD1B084003C8E66 /* Button bomb.png */; };
 		54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 54704AF41AC9BAAD009C09ED /* Bomb.png */; };
+		5473DA061AEE715600FB05E6 /* MonsterDestroy.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5473DA051AEE715600FB05E6 /* MonsterDestroy.sks */; };
 		548A0B801AE61E4100B34037 /* ArcadeGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548A0B7F1AE61E4100B34037 /* ArcadeGameController.swift */; };
 		548A0B8F1AE6238600B34037 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548A0B8E1AE6238600B34037 /* GameOverScene.swift */; };
 		54A07A391AC9BF9A00217F0F /* Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A07A381AC9BF9A00217F0F /* Flag.png */; };
@@ -87,6 +88,7 @@
 		544646701ACC5F6B003F1B25 /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		547009841AD1B084003C8E66 /* Button bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button bomb.png"; sourceTree = "<group>"; };
 		54704AF41AC9BAAD009C09ED /* Bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb.png; sourceTree = "<group>"; };
+		5473DA051AEE715600FB05E6 /* MonsterDestroy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MonsterDestroy.sks; sourceTree = "<group>"; };
 		548A0B7F1AE61E4100B34037 /* ArcadeGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcadeGameController.swift; sourceTree = "<group>"; };
 		548A0B8E1AE6238600B34037 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		54A07A381AC9BF9A00217F0F /* Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag.png; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				548A0B7F1AE61E4100B34037 /* ArcadeGameController.swift */,
 				54C0F81D1AEBD3CE004451C9 /* ExplosionParticle.sks */,
 				54C0F81E1AEBD3CE004451C9 /* spark.png */,
+				5473DA051AEE715600FB05E6 /* MonsterDestroy.sks */,
 			);
 			name = ArcadeGame;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				54AE99621AEA9BB400053BD6 /* ball.png in Resources */,
 				547009851AD1B084003C8E66 /* Button bomb.png in Resources */,
 				54AE99751AEAAA1400053BD6 /* starDragon.png in Resources */,
+				5473DA061AEE715600FB05E6 /* MonsterDestroy.sks in Resources */,
 				247D17B61AE976F600614E01 /* GhostSmall.png in Resources */,
 				92092A861AD5B94000E824EA /* horizontal-line.png in Resources */,
 				54AE996C1AEA9D0600053BD6 /* starBlack.png in Resources */,

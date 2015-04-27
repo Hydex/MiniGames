@@ -28,17 +28,13 @@ class SeaBattle: NSViewController {
     var j = 0
     var q = 0, g = 0, gs = false
     var b1 = NSButton(), b2 = NSButton()
-    var p = 0
-    var k1 = 0, k2 = 0
+    var p = 0self	MiniGames_Ultra.SeaBattle	0x0000000100b15800	0x0000000100b15800
     var selp = Selector("ppress:"), selc = Selector("cpress:"), chksel = Selector("chkf:")
-    var tr = false
     var rd = 0
     var kr = true
     var chk = NSTimer()
     var k = 0, k1 = 0, k2 = 0, k3 = 0
-    var selp = Selector("ppress:"), selc = Selector("cpress:")
     var tr = false
-    var rd = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
@@ -220,18 +216,18 @@ class SeaBattle: NSViewController {
             if (k1 != 0)&&(k2 != 0)&&((p1&&(k1 == k2))||(p2&&((x == 1)||(y == 1)))||(p3&&((x == 2)||(y == 2)))||(p4&&((x == 3)||(y == 3)))) {
                 scheck(1, b: k1, a: k2)
                 if ((k2 - k1) % 12 == 0) {
-                for i in 0...((k2 - k1)/12) {
-                    if ((k2 - k1) % 12 == 0) {
-                        btnp[k1 + i*12].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
-                        btnp[k1 + i*12].tag = 5
-                        btnp[k1 + i*12 + 1].tag = 6
-                        btnp[k1 + i*12 - 1].tag = 6
+                    for i in 0...((k2 - k1)/12) {
+                        if ((k2 - k1) % 12 == 0) {
+                            btnp[k1 + i*12].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
+                            btnp[k1 + i*12].tag = 5
+                            btnp[k1 + i*12 + 1].tag = 6
+                            btnp[k1 + i*12 - 1].tag = 6
+                        }
+                        for j in -1...1 {
+                            btnp[k1 - 12 - j].tag = 6
+                            btnp[k2 + 12 - j].tag = 6
+                        }
                     }
-                    for j in -1...1 {
-                        btnp[k1 - 12 - j].tag = 6
-                        btnp[k2 + 12 - j].tag = 6
-                    }
-                }
                 } else{
                     for i in 0...(k2 - k1) {
                         btnp[k1 + i].image = NSImage.swatchWithColor(NSColor.darkGrayColor(), size: NSSize(width: 29, height: 29))
@@ -288,11 +284,11 @@ class SeaBattle: NSViewController {
                 }
             }
         }   else {
-                sender.image = NSImage(named: "dot.png")
-                sender.enabled = false
-                ai()
+            sender.image = NSImage(named: "dot.png")
+            sender.enabled = false
+            ai()
             sender.image = NSImage.swatchWithColor(NSColor.redColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
-        } 
+        }
     }
     func scheck(r : Int, b : Int, a : Int) {
         if ((a - b) % 12 != 0) {
@@ -303,45 +299,45 @@ class SeaBattle: NSViewController {
                 p4 = false
             }
             if (r == 1) {
-            switch (a - b) {
-            case 0:
-                c1++
-                if (c1 == 4) {
-                    p1 = false
+                switch (a - b) {
+                case 0:
+                    c1++
+                    if (c1 == 4) {
+                        p1 = false
+                    }
+                case 1:
+                    c2++
+                    if (c2 == 3) {
+                        p2 = false
+                    }
+                case 2:
+                    c3++
+                    if (c3 == 2) {
+                        p3 = false
+                    }
+                default: break
                 }
-            case 1:
-                c2++
-                if (c2 == 3) {
-                    p2 = false
-                }
-            case 2:
-                c3++
-                if (c3 == 2) {
-                    p3 = false
-                }
-            default: break
-            }
             }
         } else{
             if (r == 1) {
-            switch (a - b)/12 {
-            case 0:
-                c1++
-                if (c1 == 4)&&(r == 1) {
-                    p1 = false
+                switch (a - b)/12 {
+                case 0:
+                    c1++
+                    if (c1 == 4)&&(r == 1) {
+                        p1 = false
+                    }
+                case 1:
+                    c2++
+                    if (c2 == 3)&&(r == 1) {
+                        p2 = false
+                    }
+                case 2:
+                    c3++
+                    if (c3 == 2)&&(r == 1) {
+                        p3 = false
+                    }
+                default: break
                 }
-            case 1:
-                c2++
-                if (c2 == 3)&&(r == 1) {
-                    p2 = false
-                }
-            case 2:
-                c3++
-                if (c3 == 2)&&(r == 1) {
-                    p3 = false
-                }
-            default: break
-            }
             }
             for i in 0...((a - b)/12) {
                 sh[r][(a-b)/12].append(bt[r][b + i*12])
@@ -355,40 +351,40 @@ class SeaBattle: NSViewController {
                 n = i
             }
         }
-            if (bt[r][n + 1].tag == 3) {
-                for i in -1...1 {
-                    bt[r][n - 1 + i*12].image = NSImage(named: "dot.png")
-                    bt[r][n - 1 + i*12].tag = 2
-                    bt[r][n - 1 + i*12].enabled = false
-                    bt[r][n + r1 + i*12].image = NSImage(named: "dot.png")
-                    bt[r][n + r1 + i*12].tag = 2
-                    bt[r][n + r1 + i*12].enabled = false
-                }
-                for i in 0...(r1 - 1) {
-                    bt[r][n + i + 12].image = NSImage(named: "dot.png")
-                    bt[r][n + i - 12].image = NSImage(named: "dot.png")
-                    bt[r][n + i + 12].tag = 2
-                    bt[r][n + i - 12].tag = 2
-                    bt[r][n + i + 12].enabled = false
-                    bt[r][n + i - 12].enabled = false
-                }
-            } else {
-                for i in -1...1 {
-                    bt[r][n - 12 + i].image = NSImage(named: "dot.png")
-                    bt[r][n - 12 + i].tag = 2
-                    bt[r][n - 12 + i].enabled = false
-                    bt[r][n + r1*12 + i].image = NSImage(named: "dot.png")
-                    bt[r][n + r1*12 + i].tag = 2
-                    bt[r][n + r1*12 + i].enabled = false
-                }
-                for i in 0...(r1 - 1) {
-                    bt[r][n + i*12 + 1].image = NSImage(named: "dot.png")
-                    bt[r][n + i*12 - 1].image = NSImage(named: "dot.png")
-                    bt[r][n + i*12 + 1].tag = 2
-                    bt[r][n + i*12 - 1].tag = 2
-                    bt[r][n + i*12 + 1].enabled = false
-                    bt[r][n + i*12 - 1].enabled = false
-                }
+        if (bt[r][n + 1].tag == 3) {
+            for i in -1...1 {
+                bt[r][n - 1 + i*12].image = NSImage(named: "dot.png")
+                bt[r][n - 1 + i*12].tag = 2
+                bt[r][n - 1 + i*12].enabled = false
+                bt[r][n + r1 + i*12].image = NSImage(named: "dot.png")
+                bt[r][n + r1 + i*12].tag = 2
+                bt[r][n + r1 + i*12].enabled = false
+            }
+            for i in 0...(r1 - 1) {
+                bt[r][n + i + 12].image = NSImage(named: "dot.png")
+                bt[r][n + i - 12].image = NSImage(named: "dot.png")
+                bt[r][n + i + 12].tag = 2
+                bt[r][n + i - 12].tag = 2
+                bt[r][n + i + 12].enabled = false
+                bt[r][n + i - 12].enabled = false
+            }
+        } else {
+            for i in -1...1 {
+                bt[r][n - 12 + i].image = NSImage(named: "dot.png")
+                bt[r][n - 12 + i].tag = 2
+                bt[r][n - 12 + i].enabled = false
+                bt[r][n + r1*12 + i].image = NSImage(named: "dot.png")
+                bt[r][n + r1*12 + i].tag = 2
+                bt[r][n + r1*12 + i].enabled = false
+            }
+            for i in 0...(r1 - 1) {
+                bt[r][n + i*12 + 1].image = NSImage(named: "dot.png")
+                bt[r][n + i*12 - 1].image = NSImage(named: "dot.png")
+                bt[r][n + i*12 + 1].tag = 2
+                bt[r][n + i*12 - 1].tag = 2
+                bt[r][n + i*12 + 1].enabled = false
+                bt[r][n + i*12 - 1].enabled = false
+            }
 
         }
     }
@@ -400,59 +396,58 @@ class SeaBattle: NSViewController {
 
         k = 0
         if (gs) {
-        for q in 0...1 {
-            for i in 0...3 {
-                if (gs)&&(sh[q][3][i].tag == 3) {
-                    k++
-                }
-            }
-            if (k == 4) {
-                around(q, r1: 4, r2: 0)
-                k = 0
+            for q in 0...1 {
                 for i in 0...3 {
-                    sh[q][3][i].image = NSImage(named: "cross-2.png")
-                }
-            }
-            k = 0
-        }
-
-
-        for q in 0...1 {
-            for j in 0...1 {
-            for i in 0...2 {
-                if (gs)&&(sh[q][2][i + j*3].tag == 3) {
-                    k++
-                }
-            }
-            if (k == 3) {
-                around(q, r1: 3, r2: j*3)
-                k = 0
-                for i in 0...2 {
-                    sh[q][2][i + j*3].image = NSImage(named: "cross-2.png")
-                }
-            }
-            k = 0
-            }
-        }
-
-        for q in 0...1 {
-            for j in 0...2 {
-                for i in 0...1 {
-                    if (gs)&&(sh[q][1][i + j*2].tag == 3) {
+                    if (gs)&&(sh[q][3][i].tag == 3) {
                         k++
                     }
                 }
-                if (k == 2) {
-                    around(q, r1: 2, r2: j*2)
+                if (k == 4) {
+                    around(q, r1: 4, r2: 0)
                     k = 0
-                    for i in 0...1 {
-                        sh[q][1][i + j*2].image = NSImage(named: "cross-2.png")
+                    for i in 0...3 {
+                        sh[q][3][i].image = NSImage(named: "cross-2.png")
                     }
                 }
                 k = 0
             }
-        }
-<<<<<<< HEAD
+
+
+            for q in 0...1 {
+                for j in 0...1 {
+                    for i in 0...2 {
+                        if (gs)&&(sh[q][2][i + j*3].tag == 3) {
+                            k++
+                        }
+                    }
+                    if (k == 3) {
+                        around(q, r1: 3, r2: j*3)
+                        k = 0
+                        for i in 0...2 {
+                            sh[q][2][i + j*3].image = NSImage(named: "cross-2.png")
+                        }
+                    }
+                    k = 0
+                }
+            }
+
+            for q in 0...1 {
+                for j in 0...2 {
+                    for i in 0...1 {
+                        if (gs)&&(sh[q][1][i + j*2].tag == 3) {
+                            k++
+                        }
+                    }
+                    if (k == 2) {
+                        around(q, r1: 2, r2: j*2)
+                        k = 0
+                        for i in 0...1 {
+                            sh[q][1][i + j*2].image = NSImage(named: "cross-2.png")
+                        }
+                    }
+                    k = 0
+                }
+            }
         }
 
         for i in 0...143 {
@@ -493,23 +488,37 @@ class SeaBattle: NSViewController {
             default:
                 self.view.window?.close()
             }
+        }
+
     }
-
-}
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        shipc()
-=======
-        
+    func check(b : Int) {
+        var t = 0
+        for i in -1...1 {
+            if (btnc[b+12+i].tag != 5) {
+                t++
+            }
+        }
+        for i in -1...1 {
+            if (btnc[b-12+i].tag != 5) {
+                t++
+            }
+        }
+        if (btnc[b-1].tag != 5) {
+            t++
+        }
+        if (btnc[b+1].tag != 5) {
+            t++
+        }
+        if (t == 8) {
+            tr = true
+        }
     }
-
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()
         while (i < 4) {
-            var rd = Int(arc4random_uniform(98) + 1)
-            check(btnc[rd].tag, b: rd)
+            var rd = Int(arc4random_uniform(143) + 1)
+            check(rd)
             if (tr) {
                 tr = false
                 btnc[rd].tag = 5
@@ -517,6 +526,5 @@ class SeaBattle: NSViewController {
             }
         }
         self.view.window?.center()
->>>>>>> origin/master
     }
 }

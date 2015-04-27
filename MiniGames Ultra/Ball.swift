@@ -27,7 +27,6 @@ class BallGame: NSViewController {
     var incer = 0
     var techn = false
     var cr1 = false, cr2 = false
-    var mr = true
 
 
 
@@ -82,10 +81,8 @@ class BallGame: NSViewController {
             cr2 = nr[13]
             nr[3] = false
             nr[13] = false
-            mr = false
         }
         else {
-            mr = true
             stb.title = "Stop"
             g = pg
             k = pk
@@ -132,10 +129,10 @@ class BallGame: NSViewController {
 
     func bmovefunc(sender : AnyObject) {
         var al = bita.frame.origin.x
-        if (mr)&&(!techn)&&(rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
+        if (!techn)&&(rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
                 bita.frame.origin.x = CGFloat(al + invrs)
         }
-        if (mr)&&(!techn)&&(leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
+        if (!techn)&&(leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
                 bita.frame.origin.x = CGFloat(al - invrs)
         }
     }
@@ -225,7 +222,6 @@ class BallGame: NSViewController {
     }
 
     func flyfunc(timer : NSTimer) {
-        g = CGFloat(g*1.002)
         for i in 1...8 {
             checkobj(btn[i])
             if (tr) {

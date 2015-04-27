@@ -795,16 +795,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-bJ-9rt">
-                                <rect key="frame" x="56" y="189" width="96" height="32"/>
-                                <buttonCell key="cell" type="push" title="stickman" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uT7-oU-F9W">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="Iia-G6-brq" kind="show" id="Sad-Na-WXc"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1071,13 +1061,13 @@
             <objects>
                 <viewController id="HGg-dz-qo3" customClass="SeaBattle" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="mMA-Lg-bzW">
-                        <rect key="frame" x="0.0" y="0.0" width="816" height="411"/>
+                        <rect key="frame" x="0.0" y="0.0" width="816" height="421"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="YLq-y0-iYT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-340" y="850.5"/>
+            <point key="canvasLocation" x="-340" y="855.5"/>
         </scene>
         <!--Ball Game-->
         <scene sceneID="cTr-AH-ADo">
@@ -1275,11 +1265,7 @@
                 </viewController>
                 <customObject id="e4a-o4-4Kz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
-            <point key="canvasLocation" x="-419" y="1077"/>
-=======
             <point key="canvasLocation" x="-351" y="1242"/>
->>>>>>> origin/master
         </scene>
     </scenes>
     <resources>

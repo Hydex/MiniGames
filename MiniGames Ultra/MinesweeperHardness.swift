@@ -65,7 +65,7 @@ class MinesweeperHardness : NSViewController {
     }
     
     @IBAction func donePressed(sender: AnyObject) {
-        if !checkLabel(heightLabel, pattern: 1) && !checkLabel(widthLabel, pattern: 2) {
+        if !checkLabel(heightLabel, pattern: 1) && !checkLabel(widthLabel, pattern: 2) && heightLabel.integerValue != 0 && widthLabel.integerValue != 0 {
             storage.setInteger(hardnessPopUp.indexOfSelectedItem, forKey: "mwHardness")
             storage.setInteger(heightLabel.integerValue, forKey: "mwHeight")
             storage.setInteger(widthLabel.integerValue, forKey: "mwWidth")
@@ -78,6 +78,7 @@ class MinesweeperHardness : NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         self.dismissController(MinesweeperHardness)
+        self.view.window?.close()
     }
     
     override func viewDidAppear() {
@@ -88,6 +89,7 @@ class MinesweeperHardness : NSViewController {
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("check:"), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        self.view.window?.center()
     }
     
     

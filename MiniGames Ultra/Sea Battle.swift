@@ -29,18 +29,26 @@ class SeaBattle: NSViewController {
     var q = 0, g = 0, gs = false
     var b1 = NSButton(), b2 = NSButton()
     var p = 0
+<<<<<<< HEAD
     var k1 = 0, k2 = 0
     var selp = Selector("ppress:"), selc = Selector("cpress:"), chksel = Selector("chkf:")
     var tr = false
     var rd = 0
     var kr = true
     var chk = NSTimer()
+=======
+    var k = 0, k1 = 0, k2 = 0, k3 = 0
+    var selp = Selector("ppress:"), selc = Selector("cpress:")
+    var tr = false
+    var rd = 0
+>>>>>>> origin/master
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
     }
     func start() {
         fieldfunc()
+<<<<<<< HEAD
         cship.append(pc1)
         cship.append(pc2)
         cship.append(pc3)
@@ -122,6 +130,8 @@ class SeaBattle: NSViewController {
             btnc[rd + 1].tag = 6
             btnc[rd - 1].tag = 6
         }
+=======
+>>>>>>> origin/master
     }
     var n1 = true, n2 = true, n3 = true, n4 = true
     var t1 = 0, t2 = 0, t3 = 0
@@ -275,6 +285,7 @@ class SeaBattle: NSViewController {
         var n = 0
         sender.enabled = false
         if (sender.tag == 5) {
+<<<<<<< HEAD
             sender.tag = 3
             sender.image = NSImage(named: "cross.png")
             for i in 0...3 {
@@ -287,6 +298,11 @@ class SeaBattle: NSViewController {
                 sender.image = NSImage(named: "dot.png")
                 sender.enabled = false
                 ai()
+=======
+            sender.image = NSImage.swatchWithColor(NSColor.redColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
+        } else {
+             sender.image = NSImage.swatchWithColor(NSColor.blueColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
+>>>>>>> origin/master
         }
     }
     func scheck(r : Int, b : Int, a : Int) {
@@ -447,6 +463,7 @@ class SeaBattle: NSViewController {
                 k = 0
             }
         }
+<<<<<<< HEAD
         }
 
         for i in 0...143 {
@@ -494,5 +511,23 @@ class SeaBattle: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()
+=======
+        
+    }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        shipc()
+        while (i < 4) {
+            var rd = Int(arc4random_uniform(98) + 1)
+            check(btnc[rd].tag, b: rd)
+            if (tr) {
+                tr = false
+                btnc[rd].tag = 5
+                i++
+            }
+        }
+        self.view.window?.center()
+>>>>>>> origin/master
     }
 }

@@ -9,6 +9,8 @@
 import Foundation
 import Cocoa
 import AppKit
+import SpriteKit
+
 
 class File {
     
@@ -164,7 +166,7 @@ func strLocal(key : String) -> String {
 
 func ending(num : Int, lang : Int) -> String {
     if lang == 1 {
-        if num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
+        if num % 10 == 0 || num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
             return ""
         }
         else {
@@ -183,5 +185,121 @@ func ending(num : Int, lang : Int) -> String {
         else {
             return "s"
         }
+    }
+}
+
+func endingMale(num : Int, lang : Int) -> String {
+    if lang == 1 {
+        if num % 10 == 0 || num ~~ 10 % 10 == 1 || (num % 10 <= 9 && num % 10 > 4) {
+            return "ов"
+        }
+        else {
+            if num % 10 == 1 {
+                return ""
+            }
+            else {
+                return "а"
+            }
+        }
+    }
+    else {
+        if num == 1 {
+            return ""
+        }
+        else {
+            return "s"
+        }
+    }
+}
+
+func random() -> CGFloat {
+    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+}
+
+func random(#min: CGFloat, max: CGFloat) -> CGFloat {
+    return random() * (max - min) + min
+}
+
+func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
+}
+
+func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: point.x * scalar, y: point.y * scalar)
+}
+
+func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: point.x / scalar, y: point.y / scalar)
+}
+
+func sqrt(a: CGFloat) -> CGFloat {
+    return CGFloat(sqrtf(Float(a)))
+}
+
+extension CGPoint {
+    func length() -> CGFloat {
+        return sqrt(x*x + y*y)
+    }
+    
+    func normalized() -> CGPoint {
+        return self / length()
+    }
+}
+
+func abs(n : CGFloat) -> CGFloat {
+    if n <= 0 {
+        return n
+    }
+    else {
+        return -n
+    }
+}
+
+extension NSBezierPath {
+    
+    func CGPath(scale : CGFloat) -> CGPathRef {
+        return self.transformToCGPath(scale)
+    }
+    
+    private func transformToCGPath(scale : CGFloat) -> CGPathRef {
+        
+        // Create path
+        var path = CGPathCreateMutable()
+        var points = UnsafeMutablePointer<NSPoint>.alloc(3)
+        let numElements = self.elementCount
+        
+        if numElements > 0 {
+            
+            var didClosePath = true
+            
+            for index in 0..<numElements {
+                
+                let pathType = self.elementAtIndex(index, associatedPoints: points)
+                
+                switch pathType {
+                    
+                case .MoveToBezierPathElement:
+                    CGPathMoveToPoint(path, nil, points[0].x * scale, points[0].y * scale)
+                case .LineToBezierPathElement:
+                    CGPathAddLineToPoint(path, nil, points[0].x * scale, points[0].y * scale)
+                    didClosePath = false
+                case .CurveToBezierPathElement:
+                    CGPathAddCurveToPoint(path, nil, points[0].x * scale, points[0].y * scale, points[1].x * scale, points[1].y * scale, points[2].x * scale, points[2].y * scale)
+                    didClosePath = false
+                case .ClosePathBezierPathElement:
+                    CGPathCloseSubpath(path)
+                    didClosePath = true
+                }
+            }
+            
+            if !didClosePath { CGPathCloseSubpath(path) }
+        }
+        
+        points.dealloc(3)
+        return path
     }
 }

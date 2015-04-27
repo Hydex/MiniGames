@@ -22,9 +22,11 @@ class SudokuMain: NSViewController {
     var interval : Double = 5
     var time = 0
     var elapsedTime = 0
+    var won = true
     
     override func viewDidAppear() {
         super.viewWillAppear()
+        activeGame = "sudoku"
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
         var frame = self.view.window?.frame
         var newHeight = CGFloat(550)
@@ -39,6 +41,7 @@ class SudokuMain: NSViewController {
             }
         }
         self.view.window?.backgroundColor = color
+        self.view.window?.center()
     }
     
     override func viewDidLoad() {
@@ -48,9 +51,10 @@ class SudokuMain: NSViewController {
         var y = CGFloat(410)
         var tag = 0
         var b = 0
+        elapsedTime = 0
+        won = true
         
         if storage.boolForKey("isContinuation") {
-            storage.setBool(false, forKey: "isContinuation")
             storage.setBool(false, forKey: "continueSudoku")
             storage.synchronize()
             if let data = storage.objectForKey("sudokuArray") as? NSData {
@@ -73,7 +77,7 @@ class SudokuMain: NSViewController {
                 for var j = 0; j < 9; j++ {
                     c++
                     tag++
-                    var cell = NSTextField(frame: NSRect(x: x, y: y + 70, width: 50, height: 50))
+                    var cell = NSTextField(frame: NSRect(x: x, y: y + 69, width: 50, height: 50))
                     cell.selectable = false
                     cell.editable = false
                     cell.alignment = NSTextAlignment(rawValue: 2)!
@@ -105,7 +109,7 @@ class SudokuMain: NSViewController {
             }
         }
         
-        but = NSButton(frame: NSRect(x: 0, y: 0, width: 460, height: 70))
+        but = NSButton(frame: NSRect(x: 0, y: -0.5, width: 460, height: 70))
         but.action = Selector("solutionFunc:")
         but.alignment = NSTextAlignment(rawValue: 2)!
         but.font = NSFont(name: "Helvetica", size: 30)
@@ -114,89 +118,94 @@ class SudokuMain: NSViewController {
         but.title = "Solution"
         but.target = self
         self.view.addSubview(but)
+        if !storage.boolForKey("isContinuation") {
         
-        var r = Int(arc4random_uniform(120)) + 200
-        for var i = 0; i < r; i++ {
-            var a = Int(arc4random_uniform(4))
-            switch a {
+            var r = Int(arc4random_uniform(120)) + 200
+            for var i = 0; i < r; i++ {
+                var a = Int(arc4random_uniform(4))
+                switch a {
+                case 1:
+                    var bl = Int(arc4random_uniform(3))
+                    var n1 = Int(arc4random_uniform(3)) + 3 * bl
+                    var n2 = 3 * bl
+                    while n1 == n2 {
+                        n2 = Int(arc4random_uniform(3)) + 3 * bl
+                    }
+                    swapRowsSmall(n1, num2: n2)
+                case 2:
+                    var n1 = Int(arc4random_uniform(3))
+                    var n2 = 0
+                    while n1 == n2 {
+                        n2 = Int(arc4random_uniform(3))
+                    }
+                    swapRowsSmall(n1, num2: n2)
+                case 3:
+                    var bl = Int(arc4random_uniform(3))
+                    var n1 = Int(arc4random_uniform(3)) + 3 * bl
+                    var n2 = 3 * bl
+                    while n1 == n2 {
+                        n2 = Int(arc4random_uniform(3)) + 3 * bl
+                    }
+                    swapColsSmall(n1, num2: n2)
+                default:
+                    var n1 = Int(arc4random_uniform(3))
+                    var n2 = 0
+                    while n1 == n2 {
+                        n2 = Int(arc4random_uniform(3))
+                    }
+                    swapColsBig(n1, num2: n2)
+                }
+            }
+            
+            for var i = 0; i < 9; i++ {
+                var tmpAr : Array<Int> = []
+                for var j = 0; j < 9; j++ {
+                    tmpAr.append(ar[i][j].integerValue)
+                }
+                solution.append(tmpAr)
+            }
+        
+            var k = 0
+            switch storage.integerForKey("sudokuHardness") {
+            case 0:
+                level = "easy"
+                k = Int(arc4random_uniform(7)) + 38
             case 1:
-                var bl = Int(arc4random_uniform(3))
-                var n1 = Int(arc4random_uniform(3)) + 3 * bl
-                var n2 = 3 * bl
-                while n1 == n2 {
-                    n2 = Int(arc4random_uniform(3)) + 3 * bl
-                }
-                swapRowsSmall(n1, num2: n2)
+                level = "medium"
+                k = Int(arc4random_uniform(7)) + 45
             case 2:
-                var n1 = Int(arc4random_uniform(3))
-                var n2 = 0
-                while n1 == n2 {
-                    n2 = Int(arc4random_uniform(3))
-                }
-                swapRowsSmall(n1, num2: n2)
-            case 3:
-                var bl = Int(arc4random_uniform(3))
-                var n1 = Int(arc4random_uniform(3)) + 3 * bl
-                var n2 = 3 * bl
-                while n1 == n2 {
-                    n2 = Int(arc4random_uniform(3)) + 3 * bl
-                }
-                swapColsSmall(n1, num2: n2)
+                level = "hard"
+                k = Int(arc4random_uniform(7)) + 52
             default:
-                var n1 = Int(arc4random_uniform(3))
-                var n2 = 0
-                while n1 == n2 {
-                    n2 = Int(arc4random_uniform(3))
+                level = "extreme"
+                k = Int(arc4random_uniform(7)) + 59
+            }
+        
+            for var i = 0; i < k; i++ {
+                r = Int(arc4random_uniform(9))
+                tag = Int(arc4random_uniform(9))
+                while ar[r][tag].stringValue == "" {
+                    var tmp = Int(arc4random_uniform(2))
+                    if tmp == 1 {
+                        r = Int(arc4random_uniform(9))
+                    }
+                    else {
+                        tag = Int(arc4random_uniform(9))
+                    }
                 }
-                swapColsBig(n1, num2: n2)
-            }
-        }
-        
-        for var i = 0; i < 9; i++ {
-            var tmpAr : Array<Int> = []
-            for var j = 0; j < 9; j++ {
-                tmpAr.append(ar[i][j].integerValue)
-            }
-            solution.append(tmpAr)
-        }
-        
-        var k = 0
-        switch storage.integerForKey("sudokuHardness") {
-        case 0:
-            level = "easy"
-            k = Int(arc4random_uniform(7)) + 38
-        case 1:
-            level = "medium"
-            k = Int(arc4random_uniform(7)) + 45
-        case 2:
-            level = "hard"
-            k = Int(arc4random_uniform(7)) + 52
-        default:
-            level = "extreme"
-            k = Int(arc4random_uniform(7)) + 59
-        }
-        
-        for var i = 0; i < k; i++ {
-            r = Int(arc4random_uniform(9))
-            tag = Int(arc4random_uniform(9))
-            while ar[r][tag].stringValue == "" {
-                var tmp = Int(arc4random_uniform(2))
-                if tmp == 1 {
-                    r = Int(arc4random_uniform(9))
+                ar[r][tag].stringValue = ""
+                ar[r][tag].editable = true
+                ar[r][tag].backgroundColor = NSColor.whiteColor()
+                if storage.integerForKey("highlight") != 0 {
+                    ar[r][tag].textColor = NSColor.blueColor()
                 }
-                else {
-                    tag = Int(arc4random_uniform(9))
-                }
+                ar[r][tag].tag = 1
             }
-            ar[r][tag].stringValue = ""
-            ar[r][tag].editable = true
-            ar[r][tag].backgroundColor = NSColor.whiteColor()
-            if storage.integerForKey("highlight") != 0 {
-                ar[r][tag].textColor = NSColor.blueColor()
-            }
-            ar[r][tag].tag = 1
         }
         
+        if storage.boolForKey("isContinuation") {
+            storage.setBool(false, forKey: "isContinuation")
+        }
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("checkForWin:"), userInfo: nil, repeats: true)
     }
     
@@ -230,6 +239,13 @@ class SudokuMain: NSViewController {
     
     func checkForWin(sender : AnyObject?) {
         var m = true
+        elapsedTime++
+        var timeStr = strLocal("time")
+        var lang = 1
+        if timeStr == "second" {
+            lang = 2
+        }
+        self.view.window?.title = strLocal("sudoku") + " - " + strLocal("elapsed") + " \(time + (elapsedTime ~~ 2)) " + strLocal("time") + ending(time + (elapsedTime ~~ 2), lang)
         var opened = 0
         var nar = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         for var i = 0; i < 9; i++ {
@@ -282,6 +298,9 @@ class SudokuMain: NSViewController {
             }
         }
         if m {
+            timer.invalidate()
+            println(storage.boolForKey("isContinuation"))
+            won = false
             var al = NSAlert()
             al.showsHelp = false
             al.messageText = strLocal("won")
@@ -313,6 +332,7 @@ class SudokuMain: NSViewController {
                 }
             }
             sender.title = "New game"
+            won = false
         }
         else {
             for each in ar {
@@ -324,69 +344,33 @@ class SudokuMain: NSViewController {
             solution.removeAll(keepCapacity: false)
             but.removeFromSuperview()
             viewDidLoad()
-            
         }
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        var al = NSAlert()
-        al.showsHelp = false
-        al.messageText = "Do you want to save game?"
-        al.informativeText = "You'll be able to continue this game the next time you'll open Sudoku"
-        al.addButtonWithTitle("Save and exit")
-        al.addButtonWithTitle("Quit without saving")
-        var response = al.runModal()
-        if response == NSAlertFirstButtonReturn {
-            var curAr = NSArchiver.archivedDataWithRootObject(ar)
-            var solAr = NSArchiver.archivedDataWithRootObject(solution)
-            storage.setObject(curAr, forKey: "sudokuArray")
-            storage.setObject(solAr, forKey: "sudokuSolution")
-            storage.setInteger(time, forKey: "sudokuTime")
-            storage.setBool(true, forKey: "continueSudoku")
-            storage.synchronize()
+        activeGame = ""
+        if won {
+            var al = NSAlert()
+            al.showsHelp = false
+            al.messageText = "Do you want to save game?"
+            al.informativeText = "You'll be able to continue this game the next time you'll open Sudoku"
+            al.addButtonWithTitle("Save and exit")
+            al.addButtonWithTitle("Quit without saving")
+            var response = al.runModal()
+            if response == NSAlertFirstButtonReturn {
+                var curAr = NSArchiver.archivedDataWithRootObject(ar)
+                var solAr = NSArchiver.archivedDataWithRootObject(solution)
+                storage.setObject(curAr, forKey: "sudokuArray")
+                storage.setObject(solAr, forKey: "sudokuSolution")
+                storage.setInteger(time, forKey: "sudokuTime")
+                storage.setBool(true, forKey: "continueSudoku")
+            }
         }
+        else {
+            storage.setBool(false, forKey: "isContinuation")
+            storage.setBool(false, forKey: "continueSudoku")
+        }
+        storage.synchronize()
     }
-    
-    //    func moveGor(dir : Int) {
-    //        var tag = -90
-    //        var m = true
-    //        for e in ar {
-    //            for i in e {
-    ////                if (self.view.window?.firstResponder.isKindOfClass(NSTextField) != nil) && self.view.window?.fieldEditor(false, forObject: nil) != nil {
-    ////                    var field : NSTextField = self.view.window?.firstResponder.delegate
-    ////                }
-    //                if i.tag > tag && tag % 9 != 0 && i.editable {
-    //                    i.becomeFirstResponder()
-    //                    println(i.tag)
-    //                    m = false
-    //                    break
-    //                }
-    //            }
-    //            if !m {
-    //                break
-    //            }
-    //        }
-    //    }
-    //
-    //    func moveVert(dir : Int) {
-    //
-    //    }
-    //
-    //    override func keyUp(theEvent: NSEvent) {
-    //        switch theEvent.character {
-    //        case NSRightArrowFunctionKey:
-    //            println(1)
-    //            moveGor(NSRightArrowFunctionKey)
-    //        case NSLeftArrowFunctionKey:
-    //            moveGor(NSLeftArrowFunctionKey)
-    //        case NSUpArrowFunctionKey:
-    //            moveVert(NSUpArrowFunctionKey)
-    //        case NSDownArrowFunctionKey:
-    //            moveVert(NSDownArrowFunctionKey)
-    //        default:
-    //            super.mouseDown(theEvent)
-    //            println(2)
-    //        }
-    //    }
 }

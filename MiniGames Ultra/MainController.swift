@@ -8,6 +8,7 @@
 
 import Foundation
 import AppKit
+import SpriteKit
 
 class MainController : NSViewController {
     
@@ -23,16 +24,21 @@ class MainController : NSViewController {
             self.performSegueWithIdentifier("sudoku", sender: self)
         case 3:
             self.performSegueWithIdentifier("SeaBattle", sender: self)
+        case 4:
+            self.performSegueWithIdentifier("2048", sender: self)
+        case 5:
+            self.performSegueWithIdentifier("arcadeGame", sender: self)
         default:
             break
         }
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask
         self.view.window?.title = "MiniGames"
         self.view.window?.orderFront(self)
+        self.view.window?.center()
     }
     
     

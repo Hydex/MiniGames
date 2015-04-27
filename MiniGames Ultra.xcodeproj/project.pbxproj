@@ -31,6 +31,9 @@
 		92092A861AD5B94000E824EA /* horizontal-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A851AD5B94000E824EA /* horizontal-line.png */; };
 		92092A881AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */; };
 		92092A8A1AD702C900E824EA /* 10451792_1007012445979844_2330471086718529051_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A891AD702C900E824EA /* 10451792_1007012445979844_2330471086718529051_n.png */; };
+		921077D81AE3AA5A00E38DFA /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 921077D71AE3AA5A00E38DFA /* dot.png */; };
+		921077DA1AE3ABF300E38DFA /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 921077D91AE3ABF300E38DFA /* cross.png */; };
+		921077DC1AE3AD6400E38DFA /* cross-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 921077DB1AE3AD6400E38DFA /* cross-2.png */; };
 		921632D61AD414C500A61088 /* Sea Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921632D51AD414C500A61088 /* Sea Battle.swift */; };
 		922E327C1ADF83BB00AF18B7 /* ball-green-e1407162219342.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E327B1ADF83BB00AF18B7 /* ball-green-e1407162219342.png */; };
 		922E32801ADF879300AF18B7 /* Ai1-standaard-snelheid.png in Resources */ = {isa = PBXBuildFile; fileRef = 922E327F1ADF879300AF18B7 /* Ai1-standaard-snelheid.png */; };
@@ -83,6 +86,9 @@
 		92092A851AD5B94000E824EA /* horizontal-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizontal-line.png"; sourceTree = "<group>"; };
 		92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg"; sourceTree = "<group>"; };
 		92092A891AD702C900E824EA /* 10451792_1007012445979844_2330471086718529051_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10451792_1007012445979844_2330471086718529051_n.png; sourceTree = "<group>"; };
+		921077D71AE3AA5A00E38DFA /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
+		921077D91AE3ABF300E38DFA /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		921077DB1AE3AD6400E38DFA /* cross-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross-2.png"; sourceTree = "<group>"; };
 		921632D51AD414C500A61088 /* Sea Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sea Battle.swift"; sourceTree = "<group>"; };
 		922E327B1ADF83BB00AF18B7 /* ball-green-e1407162219342.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-green-e1407162219342.png"; sourceTree = "<group>"; };
 		922E327F1ADF879300AF18B7 /* Ai1-standaard-snelheid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ai1-standaard-snelheid.png"; sourceTree = "<group>"; };
@@ -220,6 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				921632D51AD414C500A61088 /* Sea Battle.swift */,
+				921077DB1AE3AD6400E38DFA /* cross-2.png */,
+				921077D91AE3ABF300E38DFA /* cross.png */,
+				921077D71AE3AA5A00E38DFA /* dot.png */,
 			);
 			name = SeaBattle;
 			sourceTree = "<group>";
@@ -352,9 +361,11 @@
 				54A07A391AC9BF9A00217F0F /* Flag.png in Resources */,
 				92B996771ACC8CA5008CF329 /* desk.jpg in Resources */,
 				92B996751ACC8BFC008CF329 /* ball.png in Resources */,
+				921077DA1AE3ABF300E38DFA /* cross.png in Resources */,
 				92B996731ACC8BDD008CF329 /* metal.png in Resources */,
 				92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */,
 				922E32821ADF880500AF18B7 /* Ai1-standaard-snelheid.png in Resources */,
+				921077D81AE3AA5A00E38DFA /* dot.png in Resources */,
 				92092A841AD5B68D00E824EA /* arrow_down.jpg in Resources */,
 				92092A801AD5B53C00E824EA /* green-arrows.gif in Resources */,
 				2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */,
@@ -363,6 +374,7 @@
 				922E32841ADFB53200AF18B7 /* OTD62.gif in Resources */,
 				92092A8A1AD702C900E824EA /* 10451792_1007012445979844_2330471086718529051_n.png in Resources */,
 				54D3F5BD1ACD7C9B000D8214 /* Yellow.jpg in Resources */,
+				921077DC1AE3AD6400E38DFA /* cross-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

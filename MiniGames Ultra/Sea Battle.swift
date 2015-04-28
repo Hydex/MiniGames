@@ -28,13 +28,13 @@ class SeaBattle: NSViewController {
     var j = 0
     var q = 0, g = 0, gs = false
     var b1 = NSButton(), b2 = NSButton()
-    var p = 0self	MiniGames_Ultra.SeaBattle	0x0000000100b15800	0x0000000100b15800
+    var p = 0
+    var k1 = 0, k2 = 0
     var selp = Selector("ppress:"), selc = Selector("cpress:"), chksel = Selector("chkf:")
+    var tr = false
     var rd = 0
     var kr = true
     var chk = NSTimer()
-    var k = 0, k1 = 0, k2 = 0, k3 = 0
-    var tr = false
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
@@ -287,7 +287,6 @@ class SeaBattle: NSViewController {
             sender.image = NSImage(named: "dot.png")
             sender.enabled = false
             ai()
-            sender.image = NSImage.swatchWithColor(NSColor.redColor(), size: NSSize(width: CGFloat(29), height: CGFloat(29)))
         }
     }
     func scheck(r : Int, b : Int, a : Int) {
@@ -489,42 +488,11 @@ class SeaBattle: NSViewController {
                 self.view.window?.close()
             }
         }
-
+        
     }
-    func check(b : Int) {
-        var t = 0
-        for i in -1...1 {
-            if (btnc[b+12+i].tag != 5) {
-                t++
-            }
-        }
-        for i in -1...1 {
-            if (btnc[b-12+i].tag != 5) {
-                t++
-            }
-        }
-        if (btnc[b-1].tag != 5) {
-            t++
-        }
-        if (btnc[b+1].tag != 5) {
-            t++
-        }
-        if (t == 8) {
-            tr = true
-        }
-    }
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         shipc()
-        while (i < 4) {
-            var rd = Int(arc4random_uniform(143) + 1)
-            check(rd)
-            if (tr) {
-                tr = false
-                btnc[rd].tag = 5
-                i++
-            }
-        }
-        self.view.window?.center()
     }
 }

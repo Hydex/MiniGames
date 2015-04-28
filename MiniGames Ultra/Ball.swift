@@ -70,7 +70,7 @@ class BallGame: NSViewController {
     @IBOutlet weak var result: NSTextField!
     @IBOutlet weak var player: NSTextField!
     @IBOutlet weak var comp: NSTextField!
-    
+
     @IBAction func stb(sender: AnyObject) {
         if (stb.title == "Stop") {
             pg = CGFloat(g)
@@ -93,7 +93,7 @@ class BallGame: NSViewController {
             nr[13] = cr2
         }
     }
-    
+
     @IBAction func sb(sender: AnyObject) {
         g = CGFloat(-6)
         k = CGFloat(3)
@@ -106,7 +106,7 @@ class BallGame: NSViewController {
 
     var leftDown = false
     var rightDown = false
-    
+
     override func keyDown(theEvent: NSEvent) {
         switch theEvent.character {
         case NSRightArrowFunctionKey:
@@ -133,10 +133,10 @@ class BallGame: NSViewController {
     func bmovefunc(sender : AnyObject) {
         var al = bita.frame.origin.x
         if (mr)&&(!techn)&&(rightDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs > 0))||((bita.frame.minX > 10)&&(invrs<0))) {
-                bita.frame.origin.x = CGFloat(al + invrs)
+            bita.frame.origin.x = CGFloat(al + invrs)
         }
         if (mr)&&(!techn)&&(leftDown)&&(((bita.frame.maxX < (self.view.frame.width - 10))&&(invrs < 0))||((bita.frame.minX > 10)&&(invrs>0))) {
-                bita.frame.origin.x = CGFloat(al - invrs)
+            bita.frame.origin.x = CGFloat(al - invrs)
         }
     }
 
@@ -191,18 +191,18 @@ class BallGame: NSViewController {
                 }
             } else {
                 if (n[i*10 + t] > 600) {
-                switch t {
-                case 1...2:
-                    bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 125, height: bts[i].frame.height)
-                    bts[i].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
-                case 4: cg = CGFloat(0)
-                case 5: techn = false
-                case 6: invrs = CGFloat(10)
-                case 8: ball.frame = NSRect(x: ball.frame.origin.x, y: ball.frame.origin.y, width: CGFloat(25), height: CGFloat(25))
-                default: break
-                }
-                n[i*10 + t] = 1
-                nr[i*10 + t] = false
+                    switch t {
+                    case 1...2:
+                        bts[i].frame = NSRect(x: bts[i].frame.origin.x, y: bts[i].frame.origin.y, width: 125, height: bts[i].frame.height)
+                        bts[i].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
+                    case 4: cg = CGFloat(0)
+                    case 5: techn = false
+                    case 6: invrs = CGFloat(10)
+                    case 8: ball.frame = NSRect(x: ball.frame.origin.x, y: ball.frame.origin.y, width: CGFloat(25), height: CGFloat(25))
+                    default: break
+                    }
+                    n[i*10 + t] = 1
+                    nr[i*10 + t] = false
                 }
             }
         }
@@ -229,11 +229,11 @@ class BallGame: NSViewController {
         for i in 1...8 {
             checkobj(btn[i])
             if (tr) {
-            btn[i].hidden = true
-            btn[i].frame.origin.x = CGFloat(100)
-            btn[i].frame.origin.y = CGFloat(11)
-            tr = false
-            nr[w*10 + i] = true
+                btn[i].hidden = true
+                btn[i].frame.origin.x = CGFloat(100)
+                btn[i].frame.origin.y = CGFloat(11)
+                tr = false
+                nr[w*10 + i] = true
                 if (i == 8) {
                     n[w*10 + 8] = 2
                 }
@@ -269,7 +269,7 @@ class BallGame: NSViewController {
                     sb.enabled = false
                     stb.enabled = false
                 }
-        }
+            }
         }
         if ((ball.frame.minX) <= 0)||((ball.frame.maxX) >= self.view.frame.width) {
             k = CGFloat(-k)
@@ -277,7 +277,7 @@ class BallGame: NSViewController {
         ball.frame.origin.y = ball.frame.origin.y + CGFloat(g)
         ball.frame.origin.x = ball.frame.origin.x + CGFloat(k)
     }
-    
+
 
 
 
@@ -289,7 +289,6 @@ class BallGame: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        activeGame = "ball"
         for i in 1...19 {
             n.append(0)
             btn.append(bigbita)
@@ -317,19 +316,13 @@ class BallGame: NSViewController {
         bts[0].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
         bts[1].image = NSImage.swatchWithColor(NSColor.greenColor(), size: NSSize(width: 125, height: 15))
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.styleMask = NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask
         self.view.window?.backgroundColor = NSColor.darkGrayColor()
-        self.view.window?.center()
     }
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        activeGame = ""
-    }
-    
+
     override var representedObject: AnyObject? {
         didSet {
             // Update the view, if already loaded.
@@ -338,3 +331,32 @@ class BallGame: NSViewController {
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

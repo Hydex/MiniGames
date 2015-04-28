@@ -248,6 +248,12 @@ extension CGPoint {
     func normalized() -> CGPoint {
         return self / length()
     }
+    
+    func distanseTo(dest : CGPoint) -> CGFloat {
+        var x = (self.x - dest.x) * (self.x - dest.x)
+        var y = (self.y - dest.y) * (self.y - dest.y)
+        return abs(sqrt(x + y))
+    }
 }
 
 func abs(n : CGFloat) -> CGFloat {

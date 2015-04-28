@@ -49,6 +49,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         static var ninja : UInt32 = 1 << 3
         static var world : UInt32 = 1 << 4
         static var field : UInt32 = 1 << 5
+        static var bomb : UInt32 = 1 << 6
     }
     
     let player = SKSpriteNode(imageNamed: "ninja.png")
@@ -144,6 +145,30 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             }]))
     }
     
+    override func rightMouseDown(theEvent: NSEvent) {
+        super.rightMouseDown(theEvent)
+        println(1)
+        let location = theEvent.locationInNode(self)
+        let x = player.position.distanseTo(location)
+        let y = x / size.width * 2
+        
+        let bomb = SKSpriteNode(imageNamed: "Bomb2.png")
+        bomb.setScale(0.5)
+        bomb.position = player.position
+        bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.size.width / 2)
+        bomb.physicsBody?.affectedByGravity = false
+        bomb.physicsBody?.fieldBitMask = Detection.no
+        bomb.zPosition = 10
+        bomb.physicsBody?.collisionBitMask = Detection.no
+        bomb.physicsBody?.contactTestBitMask = Detection.no
+        addChild(bomb)
+        let move = SKAction.moveTo(location, duration: NSTimeInterval((location.x - player.position.x) * 2 / size.width))
+        bomb.runAction(SKAction.sequence([move, SKAction.runBlock() {
+            self.bombDetonate(bomb.position)
+            bomb.removeFromParent()
+            }]))
+    }
+    
     override func mouseDown(theEvent: NSEvent) {
         let location = theEvent.locationInNode(self)
         var s = ""
@@ -235,6 +260,15 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.waitForDuration(12.0), completion: {effect.removeFromParent()})
     }
     
+    func bombDetonate(pos : CGPoint) {
+        let detonation = SKEmitterNode(fileNamed: "BombParticle.sks")
+        detonation.physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        detonation.position = pos
+        detonation.physicsBody = SKPhysicsBody(circleOfRadius: detonation.particleSize.width)
+        addChild(detonation)
+        runAction(SKAction.waitForDuration(1.0), completion: {detonation.removeFromParent()})
+    }
+    
     func createMonster() {
         var n = arc4random_uniform(100)
         var s = ""
@@ -280,7 +314,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         monster.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: s), alphaThreshold: 0.1, size: monster.size)
         monster.physicsBody?.usesPreciseCollisionDetection = true
         monster.physicsBody?.categoryBitMask = Detection.monster
-        monster.physicsBody?.contactTestBitMask = Detection.suric | Detection.world
+        monster.physicsBody?.contactTestBitMask = Detection.suric | Detection.world | Detection.bomb
         monster.physicsBody?.collisionBitMask = Detection.world
         monster.physicsBody?.fieldBitMask = Detection.field
         monster.physicsBody?.affectedByGravity = false

@@ -25,6 +25,12 @@ extension SKNode {
     }
 }
 
+class CustomView: SKView {
+    override func rightMouseDown(theEvent: NSEvent) {
+        self.scene?.rightMouseDown(theEvent)
+    }
+}
+
 class ArcadeGameController: NSViewController {
     
     let storage = NSUserDefaults.standardUserDefaults()
@@ -39,7 +45,7 @@ class ArcadeGameController: NSViewController {
         super.viewDidLoad()
         storage.setInteger(500, forKey: "ninjaLives")
         let scene = ArcadeGameScene(size : self.view.bounds.size)
-        let skView = SKView(frame: NSRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        let skView = CustomView(frame: NSRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true

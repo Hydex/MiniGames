@@ -41,6 +41,8 @@
 		54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */; };
 		54C0F81F1AEBD3CE004451C9 /* ExplosionParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54C0F81D1AEBD3CE004451C9 /* ExplosionParticle.sks */; };
 		54C0F8201AEBD3CE004451C9 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C0F81E1AEBD3CE004451C9 /* spark.png */; };
+		54E8B5921AEF5E380004FA8E /* BombParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54E8B5911AEF5E380004FA8E /* BombParticle.sks */; };
+		54F05D571AEEBAD8002DD512 /* Bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F05D561AEEBAD8002DD512 /* Bomb2.png */; };
 		92092A7E1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */; };
 		92092A801AD5B53C00E824EA /* green-arrows.gif in Resources */ = {isa = PBXBuildFile; fileRef = 92092A7F1AD5B53C00E824EA /* green-arrows.gif */; };
 		92092A821AD5B63200E824EA /* icon-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 92092A811AD5B63200E824EA /* icon-heart.png */; };
@@ -105,6 +107,8 @@
 		54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Classes, functions and extensions.swift"; sourceTree = "<group>"; };
 		54C0F81D1AEBD3CE004451C9 /* ExplosionParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticle.sks; sourceTree = "<group>"; };
 		54C0F81E1AEBD3CE004451C9 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		54E8B5911AEF5E380004FA8E /* BombParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BombParticle.sks; sourceTree = "<group>"; };
+		54F05D561AEEBAD8002DD512 /* Bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb2.png; sourceTree = "<group>"; };
 		92092A7D1AD5B48200E824EA /* 40px-Lightning_Bolt_on_Circle.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40px-Lightning_Bolt_on_Circle.svg.png"; sourceTree = "<group>"; };
 		92092A7F1AD5B53C00E824EA /* green-arrows.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "green-arrows.gif"; sourceTree = "<group>"; };
 		92092A811AD5B63200E824EA /* icon-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart.png"; sourceTree = "<group>"; };
@@ -245,9 +249,7 @@
 				54AE995A1AEA9BB400053BD6 /* ArcadeGameMain.swift */,
 				548A0B8E1AE6238600B34037 /* GameOverScene.swift */,
 				548A0B7F1AE61E4100B34037 /* ArcadeGameController.swift */,
-				54C0F81D1AEBD3CE004451C9 /* ExplosionParticle.sks */,
-				54C0F81E1AEBD3CE004451C9 /* spark.png */,
-				5473DA051AEE715600FB05E6 /* MonsterDestroy.sks */,
+				54E8B5931AEF5ECD0004FA8E /* Particles */,
 			);
 			name = ArcadeGame;
 			sourceTree = "<group>";
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				92092A871AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg */,
+				54F05D561AEEBAD8002DD512 /* Bomb2.png */,
 				922E32831ADFB53200AF18B7 /* OTD62.gif */,
 				922E327B1ADF83BB00AF18B7 /* ball-green-e1407162219342.png */,
 				92092A7F1AD5B53C00E824EA /* green-arrows.gif */,
@@ -319,6 +322,17 @@
 				54AEB1D61ADFBF64007BC829 /* 2048Main.swift */,
 			);
 			name = 2048;
+			sourceTree = "<group>";
+		};
+		54E8B5931AEF5ECD0004FA8E /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				54C0F81D1AEBD3CE004451C9 /* ExplosionParticle.sks */,
+				54E8B5911AEF5E380004FA8E /* BombParticle.sks */,
+				54C0F81E1AEBD3CE004451C9 /* spark.png */,
+				5473DA051AEE715600FB05E6 /* MonsterDestroy.sks */,
+			);
+			name = Particles;
 			sourceTree = "<group>";
 		};
 		92A46B341AC9591500B2050E /* BallGame */ = {
@@ -413,6 +427,7 @@
 				247D17B71AE976F600614E01 /* GhostBig.png in Resources */,
 				54704AF51AC9BAAE009C09ED /* Bomb.png in Resources */,
 				5430151F1AD2A2BC00C5922B /* Localizable.strings in Resources */,
+				54E8B5921AEF5E380004FA8E /* BombParticle.sks in Resources */,
 				54AE99641AEA9BB400053BD6 /* metal.png in Resources */,
 				92092A821AD5B63200E824EA /* icon-heart.png in Resources */,
 				54AE99731AEAAA1400053BD6 /* ninjaStar.png in Resources */,
@@ -435,6 +450,7 @@
 				2432302C1AC865D600F2CCC3 /* Images.xcassets in Resources */,
 				92092A881AD5BAD100E824EA /* red-letter-t-in-yellow-plastic-construction-kit-Download-Royalty-free-Vector-File-EPS-49842.jpg in Resources */,
 				54AE99631AEA9BB400053BD6 /* desk.jpg in Resources */,
+				54F05D571AEEBAD8002DD512 /* Bomb2.png in Resources */,
 				2432302F1AC865D600F2CCC3 /* Main.storyboard in Resources */,
 				54AE99651AEA9BB400053BD6 /* ninja.png in Resources */,
 				54C0F81F1AEBD3CE004451C9 /* ExplosionParticle.sks in Resources */,

@@ -461,7 +461,7 @@ class SeaBattle: NSViewController {
             }
         }
 
-        if (h == 20)&&(kr) {
+        if (h >= 20)&&(kr) {
             kr = false
             gs = true
             for i in 0...143 {
@@ -485,7 +485,7 @@ class SeaBattle: NSViewController {
             case NSAlertFirstButtonReturn:
                 exit(0)
             default:
-                self.view.window?.close()
+                self.dismissController(SeaBattle)
             }
         }
         

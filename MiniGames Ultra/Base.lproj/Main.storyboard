@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -802,7 +802,7 @@
                         <segue destination="fQ5-eu-iXW" kind="modal" identifier="minesweeper" id="9u8-oy-B35"/>
                         <segue destination="fRy-uY-dsn" kind="show" identifier="ballGame" id="6S3-Sb-WOm"/>
                         <segue destination="xwz-BI-wLB" kind="modal" identifier="sudoku" id="F8H-dt-lYf"/>
-                        <segue destination="HGg-dz-qo3" kind="show" identifier="SeaBattle" id="xCP-Zj-yk8"/>
+                        <segue destination="HGg-dz-qo3" kind="modal" identifier="SeaBattle" id="xCP-Zj-yk8"/>
                         <segue destination="vDt-Ss-612" kind="show" identifier="2048" id="iSm-5Z-RFO"/>
                         <segue destination="k9q-V6-nsc" kind="modal" identifier="arcadeGame" id="0wE-II-Xep"/>
                     </connections>

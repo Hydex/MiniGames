@@ -62,6 +62,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var nOfMon = 0
     var t : CGFloat = 0.0
     var finish = false
+    var posit = CGPointZero
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -147,7 +148,6 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     
     override func rightMouseDown(theEvent: NSEvent) {
         super.rightMouseDown(theEvent)
-        println(1)
         let location = theEvent.locationInNode(self)
         let x = player.position.distanseTo(location)
         let y = x / size.width * 2
@@ -161,12 +161,16 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         bomb.zPosition = 10
         bomb.physicsBody?.collisionBitMask = Detection.no
         bomb.physicsBody?.contactTestBitMask = Detection.no
+        bomb.physicsBody?.categoryBitMask = Detection.no
         addChild(bomb)
+        bomb.physicsBody?.applyTorque(-2.0)
+        posit = location
         let move = SKAction.moveTo(location, duration: NSTimeInterval((location.x - player.position.x) * 2 / size.width))
         bomb.runAction(SKAction.sequence([move, SKAction.runBlock() {
+            bomb.zPosition = -1
             self.bombDetonate(bomb.position)
-            bomb.removeFromParent()
-            }]))
+            bomb.texture = SKTexture(image: NSImage.swatchWithColor(SKColor.lightGrayColor(), size: bomb.size))
+            }, SKAction.scaleBy(10, duration: 1.0), SKAction.removeFromParent()]))
     }
     
     override func mouseDown(theEvent: NSEvent) {
@@ -241,11 +245,17 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             first.node?.removeFromParent()
             detonate(contact.contactPoint)
         }
+        else if second.categoryBitMask == Detection.bomb && first.categoryBitMask == Detection.monster {
+            if let mon = first.node as? MonsterNode {
+                destroyMonster(contact.contactPoint, monster: mon)
+                mon.removeFromParent()
+            }
+        }
     }
     
     func detonate(pos : CGPoint) {
         let explosion = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        explosion.particlePosition = pos
+        explosion.particlePosition = CGPoint(x: pos.x, y: pos.y + 100)
         addChild(explosion)
         runAction(SKAction.waitForDuration(1.0), completion: {
             explosion.removeFromParent()
@@ -256,17 +266,21 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         let effect = SKEmitterNode(fileNamed: "MonsterDestroy.sks")
         effect.particlePositionRange = CGVector(dx: monster.size.width, dy: monster.size.height)
         effect.particlePosition = pos
+        effect.zPosition = 13
         addChild(effect)
-        runAction(SKAction.waitForDuration(12.0), completion: {effect.removeFromParent()})
+        runAction(SKAction.waitForDuration(4.0), completion: {effect.removeFromParent()})
     }
     
     func bombDetonate(pos : CGPoint) {
         let detonation = SKEmitterNode(fileNamed: "BombParticle.sks")
         detonation.physicsBody = SKPhysicsBody(circleOfRadius: 50)
         detonation.position = pos
-        detonation.physicsBody = SKPhysicsBody(circleOfRadius: detonation.particleSize.width)
+        detonation.physicsBody = SKPhysicsBody(circleOfRadius: 150)
+        detonation.physicsBody?.dynamic = false
+        detonation.physicsBody?.categoryBitMask = Detection.bomb
+        detonation.physicsBody?.contactTestBitMask = Detection.monster
         addChild(detonation)
-        runAction(SKAction.waitForDuration(1.0), completion: {detonation.removeFromParent()})
+        runAction(SKAction.waitForDuration(0.5), completion: {detonation.removeFromParent()})
     }
     
     func createMonster() {
@@ -352,7 +366,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         lifeLabel.text = "lives: \(lives)"
         for node in self.children {
             if let monster = node as? MonsterNode {
-                if monster.position.x < monster.size.width / 2 {
+                if monster.position.x < monster.size.width / 2 - 5 {
                     detonate(monster.position)
                     nOfMon--
                     lose(monster.damage)

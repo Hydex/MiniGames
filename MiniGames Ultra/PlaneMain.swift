@@ -26,7 +26,7 @@ class PlaneMainScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity.dy = 0
         backgroundColor = NSColor(red: 0.3, green: 0.8, blue: 1, alpha: 1)
-        d = 4.5
+        d = 5
         tg = 0
 
         glabel = SKLabelNode(fontNamed: "Helvetica")

@@ -650,6 +650,19 @@
             </objects>
             <point key="canvasLocation" x="-310" y="-137"/>
         </scene>
+        <!--Stickman Controller-->
+        <scene sceneID="ehE-XV-Xvu">
+            <objects>
+                <viewController id="ixh-CW-mNN" customClass="StickmanController" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="5sI-D5-Sqg">
+                        <rect key="frame" x="0.0" y="0.0" width="553" height="379"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Kp0-eu-QYc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-369.5" y="1124.5"/>
+        </scene>
         <!--Arcade Game Controller-->
         <scene sceneID="14A-Sz-3Uw">
             <objects>
@@ -795,6 +808,26 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g34-xY-ocz">
+                                <rect key="frame" x="56" y="166" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="stickman" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mYu-cR-bW6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="ixh-CW-mNN" kind="show" id="1dj-m7-QZJ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gj5-Oq-iXX">
+                                <rect key="frame" x="205" y="166" width="75" height="32"/>
+                                <buttonCell key="cell" type="push" title="Plane" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YaF-Kx-vgp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="y4d-IL-wJL" kind="show" id="TFT-rP-vYA"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1055,6 +1088,19 @@
                 <customObject id="Hts-vZ-MQl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="883" y="398"/>
+        </scene>
+        <!--Plane Controller-->
+        <scene sceneID="IUn-Pe-WFu">
+            <objects>
+                <viewController id="y4d-IL-wJL" customClass="PlaneController" customModule="MiniGames_Ultra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wwg-sr-CYU">
+                        <rect key="frame" x="0.0" y="0.0" width="537" height="725"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="hxG-If-aXU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-377.5" y="327.5"/>
         </scene>
         <!--Sea Battle-->
         <scene sceneID="bw3-FC-IMZ">

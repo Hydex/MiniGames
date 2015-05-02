@@ -2,7 +2,7 @@
 //  GameOverScene.swift
 //  MiniGames Ultra
 //
-//  Created by Roman Nikitin on 21.04.15.
+//  Created by Mark Yankovskiy on 21.04.15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import SpriteKit
 class GameOverScene: SKScene {
     init(size: CGSize, won : Bool, stage : Int) {
         super.init(size: size)
-        
+
         var message = won ? "You completed stage \(stage)!" : "You lost!"
         
         backgroundColor = SKColor.lightGrayColor()

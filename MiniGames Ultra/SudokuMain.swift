@@ -12,11 +12,11 @@ import CoreWLAN
 class SudokuMain: NSViewController {
     
     var ar : Array<Array<NSTextField>> = []
-    var but = NSButton()
+    var but = NSB()
     var solution : Array<Array<Int>> = []
     var testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     var tarrr : Array<Array<NSTextField>> = []
-    var storage = NSUserDefaults.standardUserDefaults()
+    var storage = NSUD.standardUserDefaults()
     var level = ""
     var timer = NSTimer()
     var interval : Double = 5
@@ -77,7 +77,7 @@ class SudokuMain: NSViewController {
                 for var j = 0; j < 9; j++ {
                     c++
                     tag++
-                    var cell = NSTextField(frame: NSRect(x: x, y: y + 69, width: 50, height: 50))
+                    var cell = NSTextField(frame: NSRt(x: x, y: y + 69, width: 50, height: 50))
                     cell.selectable = false
                     cell.editable = false
                     cell.alignment = NSTextAlignment(rawValue: 2)!
@@ -109,7 +109,7 @@ class SudokuMain: NSViewController {
             }
         }
         
-        but = NSButton(frame: NSRect(x: 0, y: -0.5, width: 460, height: 70))
+        but = NSB(frame: NSRt(x: 0, y: -0.5, width: 460, height: 70))
         but.action = Selector("solutionFunc:")
         but.alignment = NSTextAlignment(rawValue: 2)!
         but.font = NSFont(name: "Helvetica", size: 30)
@@ -317,7 +317,7 @@ class SudokuMain: NSViewController {
         tarrr = ar
     }
     
-    func solutionFunc(sender : NSButton) {
+    func solutionFunc(sender : NSB) {
         if sender.title == "Solution" {
             timer.invalidate()
             for var i = 0; i < 9; i++ {

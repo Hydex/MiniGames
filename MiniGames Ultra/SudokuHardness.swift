@@ -23,7 +23,7 @@ class SudokuHardness: NSViewController {
         }
     }
     
-    var storage = NSUserDefaults.standardUserDefaults()
+    var storage = NSUD.standardUserDefaults()
     
     override func viewDidAppear() {
         super.viewDidAppear()

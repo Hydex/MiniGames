@@ -309,3 +309,15 @@ extension NSBezierPath {
         return path
     }
 }
+
+typealias SKSN = SKSpriteNode
+typealias SKPB = SKPhysicsBody
+typealias CGF = CGFloat
+typealias CGP = CGPoint
+typealias CGS = CGSize
+typealias NSSz = NSSize
+typealias NSRt = NSRect
+typealias Col = NSColor
+typealias NSUD = NSUserDefaults
+typealias SKLN = SKLabelNode
+typealias NSB = NSButton

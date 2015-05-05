@@ -33,7 +33,7 @@ class CustomView: SKView {
 
 class ArcadeGameController: NSViewController {
     
-    let storage = NSUserDefaults.standardUserDefaults()
+    let storage = NSUD.standardUserDefaults()
     
     override func viewDidAppear() {
         super.viewDidAppear()

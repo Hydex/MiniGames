@@ -10,15 +10,15 @@ import Foundation
 import SpriteKit
 
 class GameOverScene: SKScene {
-    init(size: CGSize, won : Bool, stage : Int) {
+    init(size: CGS, won : Bool, stage : Int) {
         super.init(size: size)
         
         var message = won ? "You completed stage \(stage)!" : "You lost!"
         
-        backgroundColor = SKColor.lightGrayColor()
+        backgroundColor = Col.lightGrayColor()
         
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.fontColor = SKColor.blackColor()
+        let label = SKLN(fontNamed: "Chalkduster")
+        label.fontColor = Col.blackColor()
         label.fontSize = 40.0
         label.text = message
         label.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -28,8 +28,8 @@ class GameOverScene: SKScene {
             self.view?.presentScene(ArcadeGameScene(size: self.size), transition: SKTransition.flipVerticalWithDuration(0.5))
             }]))
         if !won {
-            NSUserDefaults.standardUserDefaults().setInteger(500, forKey: "ninjaLives")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            NSUD.standardUserDefaults().setInteger(500, forKey: "ninjaLives")
+            NSUD.standardUserDefaults().synchronize()
         }
     }
     

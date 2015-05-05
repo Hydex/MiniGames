@@ -180,9 +180,9 @@
 			children = (
 				548A0B8D1AE61F4500B34037 /* ArcadeGame */,
 				549C839B1ACD72310091C132 /* BallGame */,
-				54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */,
 				549C839C1ACD723E0091C132 /* Minesweeper */,
 				243230261AC865D600F2CCC3 /* Info.plist */,
+				54B4F6551ACB101800788EAA /* Classes, functions and extensions.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

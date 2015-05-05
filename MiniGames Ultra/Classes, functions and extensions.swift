@@ -310,7 +310,6 @@ extension NSBezierPath {
     }
 }
 
-<<<<<<< HEAD
 typealias SKSN = SKSpriteNode
 typealias SKPB = SKPhysicsBody
 typealias CGF = CGFloat
@@ -322,5 +321,3 @@ typealias Col = NSColor
 typealias NSUD = NSUserDefaults
 typealias SKLN = SKLabelNode
 typealias NSB = NSButton
-=======
->>>>>>> origin/master

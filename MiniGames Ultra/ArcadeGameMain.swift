@@ -2,7 +2,7 @@
 //  ArcadeGameMain.swift
 //  MiniGames Ultra
 //
-//  Created by Mark Yankovskiy on 21.04.15.
+//  Created by Roman Nikitin on 21.04.15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 
@@ -308,17 +308,17 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             mass = 20
             s = "GhostSmall.png"
             scale = 0.3
-            l = 120
+            l = 100
         case 60...85:
             mass = 60
             s = "GhostMedium.png"
             scale = 0.19
-            l = 160
+            l = 150
         default:
             mass = 30
             s = "GhostBig.png"
             scale = 0.30
-            l = 310
+            l = 300
         }
         
         let monster = MonsterNode(imageNamed: s, lives : l, damage: l / 2)

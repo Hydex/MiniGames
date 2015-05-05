@@ -2,7 +2,7 @@
 //  GameOverScene.swift
 //  MiniGames Ultra
 //
-//  Created by Roman Nikitin on 21.04.15.
+//  Created by Mark Yankovskiy on 21.04.15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 
@@ -10,15 +10,15 @@ import Foundation
 import SpriteKit
 
 class GameOverScene: SKScene {
-    init(size: CGS, won : Bool, stage : Int) {
+    init(size: CGSize, won : Bool, stage : Int) {
         super.init(size: size)
-        
+
         var message = won ? "You completed stage \(stage)!" : "You lost!"
         
-        backgroundColor = Col.lightGrayColor()
+        backgroundColor = SKColor.lightGrayColor()
         
-        let label = SKLN(fontNamed: "Chalkduster")
-        label.fontColor = Col.blackColor()
+        let label = SKLabelNode(fontNamed: "Chalkduster")
+        label.fontColor = SKColor.blackColor()
         label.fontSize = 40.0
         label.text = message
         label.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -28,8 +28,8 @@ class GameOverScene: SKScene {
             self.view?.presentScene(ArcadeGameScene(size: self.size), transition: SKTransition.flipVerticalWithDuration(0.5))
             }]))
         if !won {
-            NSUD.standardUserDefaults().setInteger(500, forKey: "ninjaLives")
-            NSUD.standardUserDefaults().synchronize()
+            NSUserDefaults.standardUserDefaults().setInteger(500, forKey: "ninjaLives")
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     

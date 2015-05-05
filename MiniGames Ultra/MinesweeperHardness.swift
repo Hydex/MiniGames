@@ -13,7 +13,7 @@ class MinesweeperHardness : NSViewController {
     
     var timer = NSTimer()
     
-    var storage = NSUD.standardUserDefaults()
+    var storage = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var hardnessPopUp: NSPopUpButton!
     

@@ -2,7 +2,7 @@
 //  GameClass.swift
 //  MiniGames Ultra
 //
-//  Created by Roman Nikitin on 01.04.15.
+//  Created by Mark Yankovskiy on 01.04.15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 

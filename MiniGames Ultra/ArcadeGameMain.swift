@@ -2,14 +2,14 @@
 //  ArcadeGameMain.swift
 //  MiniGames Ultra
 //
-//  Created by Roman Nikitin on 21.04.15.
+//  Created by Mark Yankovskiy on 21.04.15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class MonsterNode : SKSN {
+class MonsterNode : SKSpriteNode {
     init (imageNamed : String, lives : Int, damage : Int) {
         let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: nil, size: texture.size())
@@ -25,7 +25,7 @@ class MonsterNode : SKSN {
     lazy var damage = 0
 }
 
-class Shuriken : SKSN {
+class Shuriken : SKSpriteNode {
     init (imageNamed : String, damag : Int) {
         let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: nil, size: texture.size())
@@ -52,19 +52,19 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         static var bomb : UInt32 = 1 << 6
     }
     
-    let player = SKSN(imageNamed: "ninja.png")
-    let lifeLabel = SKLN(fontNamed: "Helvetica")
-    let stageLabel = SKLN(fontNamed: "Helvetica")
+    let player = SKSpriteNode(imageNamed: "ninja.png")
+    let lifeLabel = SKLabelNode(fontNamed: "Helvetica")
+    let stageLabel = SKLabelNode(fontNamed: "Helvetica")
     
     var lives = 0
-    var storage = NSUD.standardUserDefaults()
+    var storage = NSUserDefaults.standardUserDefaults()
     var stage = 0
     var nOfMon = 0
-    var t : CGF = 0.0
+    var t : CGFloat = 0.0
     var finish = false
     var posit = CGPointZero
     
-    override init(size: CGS) {
+    override init(size: CGSize) {
         super.init(size: size)
         self.size = size
     }
@@ -75,7 +75,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         
-        backgroundColor = Col.lightGrayColor()
+        backgroundColor = SKColor.lightGrayColor()
         lives = storage.integerForKey("ninjaLives")
         storage.setInteger(storage.integerForKey("stage") + 1, forKey: "stage")
         stage = storage.integerForKey("stage")
@@ -86,8 +86,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         storage.synchronize()
         
         let field = SKFieldNode.turbulenceFieldWithSmoothness(10, animationSpeed: 1)
-        field.position = CGP(x: self.size.width * 0.55, y: size.height / 2)
-        field.physicsBody = SKPB(rectangleOfSize: CGS(width: size.width * 0.45, height: size.height))
+        field.position = CGPoint(x: self.size.width * 0.55, y: size.height / 2)
+        field.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width * 0.45, height: size.height))
         field.physicsBody?.categoryBitMask = Detection.field
         field.strength = 2
         addChild(field)
@@ -95,8 +95,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVectorMake(0.0, -10)
         physicsWorld.contactDelegate = self
         
-        player.position = CGP(x: self.size.width * 0.1, y: self.size.height / 2)
-        player.physicsBody = SKPB(rectangleOfSize: player.size)
+        player.position = CGPoint(x: self.size.width * 0.1, y: self.size.height / 2)
+        player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
         player.physicsBody?.dynamic = false
         player.physicsBody?.categoryBitMask = Detection.ninja
         player.physicsBody?.collisionBitMask = Detection.no
@@ -105,19 +105,19 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         player.setScale(0.25)
         addChild(player)
         
-        lifeLabel.position = CGP(x: self.size.width / 2 + 100, y: self.size.width * 0.05)
-        lifeLabel.fontColor = Col.blackColor()
+        lifeLabel.position = CGPoint(x: self.size.width / 2 + 100, y: self.size.width * 0.05)
+        lifeLabel.fontColor = SKColor.blackColor()
         lifeLabel.fontSize = 15
         lifeLabel.text = "lives: \(lives)"
         addChild(lifeLabel)
         
-        stageLabel.position = CGP(x: self.size.width / 2 - 100, y: self.size.width * 0.05)
+        stageLabel.position = CGPoint(x: self.size.width / 2 - 100, y: self.size.width * 0.05)
         stageLabel.fontSize = 15
-        stageLabel.fontColor = Col.blackColor()
+        stageLabel.fontColor = SKColor.blackColor()
         stageLabel.text = "stage: \(stage)"
         addChild(stageLabel)
         
-        physicsBody = SKPB(edgeLoopFromRect: CGRect(x: -500, y: size.height * 0.04 + 20, width: size.width + 1000, height: size.height - (size.height * 0.04 + 20)))
+        physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: -500, y: size.height * 0.04 + 20, width: size.width + 1000, height: size.height - (size.height * 0.04 + 20)))
         physicsBody?.categoryBitMask = Detection.world
         physicsBody?.collisionBitMask = Detection.monster
         
@@ -125,7 +125,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(GameOverScene(size: size, won: true, stage: stage))
         }
         
-        let dur : CGF
+        let dur : CGFloat
         
         switch stage {
         case 1...3:
@@ -152,10 +152,10 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         let x = player.position.distanseTo(location)
         let y = x / size.width * 2
         
-        let bomb = SKSN(imageNamed: "Bomb2.png")
+        let bomb = SKSpriteNode(imageNamed: "Bomb2.png")
         bomb.setScale(0.5)
         bomb.position = player.position
-        bomb.physicsBody = SKPB(circleOfRadius: bomb.size.width / 2)
+        bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.size.width / 2)
         bomb.physicsBody?.affectedByGravity = false
         bomb.physicsBody?.fieldBitMask = Detection.no
         bomb.zPosition = 10
@@ -169,7 +169,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         bomb.runAction(SKAction.sequence([move, SKAction.runBlock() {
             bomb.zPosition = -1
             self.bombDetonate(bomb.position)
-            bomb.texture = SKTexture(image: NSImage.swatchWithColor(Col.lightGrayColor(), size: bomb.size))
+            bomb.texture = SKTexture(image: NSImage.swatchWithColor(SKColor.lightGrayColor(), size: bomb.size))
             }, SKAction.scaleBy(10, duration: 1.0), SKAction.removeFromParent()]))
     }
     
@@ -193,14 +193,14 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         
         let suric = Shuriken(imageNamed: s, damag: damage)
         suric.position = player.position
-        suric.physicsBody = SKPB(circleOfRadius: suric.size.width / 2)
+        suric.physicsBody = SKPhysicsBody(circleOfRadius: suric.size.width / 2)
         suric.physicsBody?.categoryBitMask = Detection.suric
         suric.physicsBody?.collisionBitMask = Detection.no
         suric.physicsBody?.contactTestBitMask = Detection.monster
         suric.physicsBody?.usesPreciseCollisionDetection = true
         suric.physicsBody?.dynamic = true
         suric.physicsBody?.angularVelocity = -10.0
-        suric.physicsBody?.mass = 2.5 + CGF(abs(suric.size.width - 30) * 0.05)
+        suric.physicsBody?.mass = 2.5 + CGFloat(abs(suric.size.width - 30) * 0.05)
         suric.physicsBody?.fieldBitMask = Detection.no
         let offset = location - suric.position
         addChild(suric)
@@ -223,8 +223,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        var first : SKPB
-        var second : SKPB
+        var first : SKPhysicsBody
+        var second : SKPhysicsBody
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             first = contact.bodyA
             second = contact.bodyB
@@ -253,16 +253,16 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func detonate(pos : CGP) {
+    func detonate(pos : CGPoint) {
         let explosion = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        explosion.particlePosition = CGP(x: pos.x, y: pos.y + 100)
+        explosion.particlePosition = CGPoint(x: pos.x, y: pos.y + 100)
         addChild(explosion)
         runAction(SKAction.waitForDuration(1.0), completion: {
             explosion.removeFromParent()
         })
     }
     
-    func destroyMonster(pos : CGP, monster : MonsterNode) {
+    func destroyMonster(pos : CGPoint, monster : MonsterNode) {
         let effect = SKEmitterNode(fileNamed: "MonsterDestroy.sks")
         effect.particlePositionRange = CGVector(dx: monster.size.width, dy: monster.size.height)
         effect.particlePosition = pos
@@ -271,11 +271,11 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.waitForDuration(4.0), completion: {effect.removeFromParent()})
     }
     
-    func bombDetonate(pos : CGP) {
+    func bombDetonate(pos : CGPoint) {
         let detonation = SKEmitterNode(fileNamed: "BombParticle.sks")
-        detonation.physicsBody = SKPB(circleOfRadius: 50)
+        detonation.physicsBody = SKPhysicsBody(circleOfRadius: 50)
         detonation.position = pos
-        detonation.physicsBody = SKPB(circleOfRadius: 150)
+        detonation.physicsBody = SKPhysicsBody(circleOfRadius: 150)
         detonation.physicsBody?.dynamic = false
         detonation.physicsBody?.categoryBitMask = Detection.bomb
         detonation.physicsBody?.contactTestBitMask = Detection.monster
@@ -286,9 +286,9 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     func createMonster() {
         var n = arc4random_uniform(100)
         var s = ""
-        var scale : CGF
+        var scale : CGFloat
         var l : Int
-        var mass : CGF
+        var mass : CGFloat
         switch stage {
         case 1...4:
             t = 600
@@ -308,24 +308,24 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             mass = 20
             s = "GhostSmall.png"
             scale = 0.3
-            l = 100
+            l = 120
         case 60...85:
             mass = 60
             s = "GhostMedium.png"
             scale = 0.19
-            l = 150
+            l = 160
         default:
             mass = 30
             s = "GhostBig.png"
             scale = 0.30
-            l = 300
+            l = 310
         }
         
         let monster = MonsterNode(imageNamed: s, lives : l, damage: l / 2)
         monster.setScale(scale)
         let y = random(min: monster.size.height / 2 + size.height * 0.04 + 25, size.height - monster.size.height)
-        monster.position = CGP(x: self.size.width + monster.size.width / 2, y: y)
-        monster.physicsBody = SKPB(texture: SKTexture(imageNamed: s), alphaThreshold: 0.1, size: monster.size)
+        monster.position = CGPoint(x: self.size.width + monster.size.width / 2, y: y)
+        monster.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: s), alphaThreshold: 0.1, size: monster.size)
         monster.physicsBody?.usesPreciseCollisionDetection = true
         monster.physicsBody?.categoryBitMask = Detection.monster
         monster.physicsBody?.contactTestBitMask = Detection.suric | Detection.world | Detection.bomb

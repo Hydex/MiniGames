@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Ball
 //
-//  Created by Mark Yankovskiy on 27/03/15.
-//  Copyright (c) 2015 Mark Yankovskiy. All rights reserved.
+//  Created by Roman Nikitin on 27/03/15.
+//  Copyright (c) 2015 Roman Nikitin. All rights reserved.
 //
 
 import Cocoa

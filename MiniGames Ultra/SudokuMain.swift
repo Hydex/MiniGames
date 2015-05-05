@@ -34,9 +34,9 @@ class SudokuMain: NSViewController {
         frame?.size = NSMakeSize(newWidth, newHeight)
         self.view.window?.setFrame(frame!, display: true)
         self.view.window?.title = strLocal("sudoku")
-        var color = NSColor()
+        var color = Col()
         if let data = storage.objectForKey("sudokuColor") as? NSData {
-            if let col = NSUnarchiver.unarchiveObjectWithData(data) as? NSColor {
+            if let col = NSUnarchiver.unarchiveObjectWithData(data) as? Col {
                 color = col
             }
         }
@@ -113,7 +113,7 @@ class SudokuMain: NSViewController {
         but.action = Selector("solutionFunc:")
         but.alignment = NSTextAlignment(rawValue: 2)!
         but.font = NSFont(name: "Helvetica", size: 30)
-        but.image = NSImage.swatchWithColor(NSColor.whiteColor(), size: but.frame.size)
+        but.image = NSImage.swatchWithColor(Col.whiteColor(), size: but.frame.size)
         but.bezelStyle = NSBezelStyle(rawValue: 10)!
         but.title = "Solution"
         but.target = self
@@ -195,9 +195,9 @@ class SudokuMain: NSViewController {
                 }
                 ar[r][tag].stringValue = ""
                 ar[r][tag].editable = true
-                ar[r][tag].backgroundColor = NSColor.whiteColor()
+                ar[r][tag].backgroundColor = Col.whiteColor()
                 if storage.integerForKey("highlight") != 0 {
-                    ar[r][tag].textColor = NSColor.blueColor()
+                    ar[r][tag].textColor = Col.blueColor()
                 }
                 ar[r][tag].tag = 1
             }
@@ -275,7 +275,7 @@ class SudokuMain: NSViewController {
                     for e in ar {
                         for each in e {
                             if each.integerValue == k {
-                                each.textColor = NSColor.greenColor()
+                                each.textColor = Col.greenColor()
                             }
                         }
                     }
@@ -286,10 +286,10 @@ class SudokuMain: NSViewController {
                         for each in e {
                             if each.integerValue == k {
                                 if !each.editable {
-                                    each.textColor = NSColor.blackColor()
+                                    each.textColor = Col.blackColor()
                                 }
                                 else {
-                                    each.textColor = NSColor.blueColor()
+                                    each.textColor = Col.blueColor()
                                 }
                             }
                         }
@@ -324,10 +324,10 @@ class SudokuMain: NSViewController {
                 for var j = 0; j < 9; j++ {
                     ar[i][j].stringValue = "\(solution[i][j])"
                     if ar[i][j].editable {
-                        ar[i][j].textColor = NSColor.blueColor()
+                        ar[i][j].textColor = Col.blueColor()
                     }
                     else {
-                        ar[i][j].textColor = NSColor.blackColor()
+                        ar[i][j].textColor = Col.blackColor()
                     }
                 }
             }

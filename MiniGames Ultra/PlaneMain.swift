@@ -52,7 +52,7 @@ class PlaneMainScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(plane)
 
-        let actiong = SKAction.repeatAction(SKAction.sequence([SKAction.runBlock(teg), SKAction.waitForDuration(NSTimeInterval(0.5))]), count: 10000000)
+        let actiong = SKAction.repeatAction(SKAction.sequence([SKAction.runBlock(teg), SKAction.waitForDuration(NSTimeInterval(0.3))]), count: 10000000)
         let actionob = SKAction.repeatAction(SKAction.sequence([SKAction.runBlock(CrObstacle), SKAction.waitForDuration(NSTimeInterval(0.45))]), count: 10000000)
         let actionmove = SKAction.repeatAction(SKAction.sequence([SKAction.runBlock(movefunc), SKAction.waitForDuration(NSTimeInterval(0.01))]), count: 10000000)
         runAction(actiong)
@@ -214,7 +214,7 @@ class PlaneMainScene: SKScene, SKPhysicsContactDelegate {
         d = (d - 0.006)
         var r = Int(arc4random_uniform(470) + 30)
         var rc = UInt32(0), rfp = UInt32(0), rt = UInt32(0)
-        rc = arc4random_uniform(5)
+        rc = arc4random_uniform(10)
         rt = arc4random_uniform(20)
         if (rc == 2) {
             CrCloud()

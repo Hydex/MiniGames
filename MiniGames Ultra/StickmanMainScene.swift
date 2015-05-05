@@ -28,7 +28,7 @@ class StickmanMainScene: SKScene, SKPhysicsContactDelegate {
 
         physicsWorld.contactDelegate = self
         backgroundColor = NSColor.redColor()
-        physicsWorld.gravity = CGVectorMake(0.0, -30)
+        physicsWorld.gravity = CGVectorMake(0.0, -20)
 
         lifeLabel.position = CGPoint(x: size.width / 2, y: 320)
         lifeLabel.fontColor = SKColor.blackColor()
@@ -77,7 +77,7 @@ class StickmanMainScene: SKScene, SKPhysicsContactDelegate {
         switch theEvent.character {
         case NSUpArrowFunctionKey:
             if (letjump) {
-                man.physicsBody?.applyImpulse(CGVectorMake(0.0, 90))
+                man.physicsBody?.applyImpulse(CGVectorMake(0.0, 70))
                 letjump = false
                 letlie = false
             }

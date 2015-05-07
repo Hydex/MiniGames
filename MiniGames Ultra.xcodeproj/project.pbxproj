@@ -52,7 +52,9 @@
 		920CDAB41AF4945200151C40 /* plane-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 920CDAB31AF4945200151C40 /* plane-1.png */; };
 		921632D61AD414C500A61088 /* Sea Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921632D51AD414C500A61088 /* Sea Battle.swift */; };
 		922DB1091AF4B849000F30B6 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 922DB1081AF4B849000F30B6 /* cloud.png */; };
-		92A46B331AC958E400B2050E /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A46B321AC958E400B2050E /* Ball.swift */; };
+		928B22BF1AF89EEF00A42C1A /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B22BE1AF89EEF00A42C1A /* Parking.swift */; };
+		928B22C21AF89F8300A42C1A /* Football.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B22C11AF89F8300A42C1A /* Football.swift */; };
+		928B22C41AF8A02500A42C1A /* FootballController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B22C31AF8A02500A42C1A /* FootballController.swift */; };
 		92CB518E1AF3A989002FCF83 /* frontplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CB518D1AF3A989002FCF83 /* frontplane.png */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +119,9 @@
 		920CDAB31AF4945200151C40 /* plane-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plane-1.png"; path = "../plane-1.png"; sourceTree = "<group>"; };
 		921632D51AD414C500A61088 /* Sea Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sea Battle.swift"; sourceTree = "<group>"; };
 		922DB1081AF4B849000F30B6 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
-		92A46B321AC958E400B2050E /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		928B22BE1AF89EEF00A42C1A /* Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
+		928B22C11AF89F8300A42C1A /* Football.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Football.swift; sourceTree = "<group>"; };
+		928B22C31AF8A02500A42C1A /* FootballController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootballController.swift; sourceTree = "<group>"; };
 		92CB518D1AF3A989002FCF83 /* frontplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frontplane.png; path = ../frontplane.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -348,11 +352,11 @@
 		92736DE51AF67D5A00720252 /* MARK */ = {
 			isa = PBXGroup;
 			children = (
+				928B22C01AF89EF800A42C1A /* Parking */,
 				92736DE61AF67DF600720252 /* Football */,
 				920894E21AF2107D00828E2A /* Plane */,
 				920894DB1AF2102D00828E2A /* Stickman */,
 				5405A8A01ADD68AD001C2A42 /* SeaBattle */,
-				92A46B341AC9591500B2050E /* BallGame */,
 			);
 			name = MARK;
 			sourceTree = "<group>";
@@ -360,16 +364,18 @@
 		92736DE61AF67DF600720252 /* Football */ = {
 			isa = PBXGroup;
 			children = (
+				928B22C11AF89F8300A42C1A /* Football.swift */,
+				928B22C31AF8A02500A42C1A /* FootballController.swift */,
 			);
 			name = Football;
 			sourceTree = "<group>";
 		};
-		92A46B341AC9591500B2050E /* BallGame */ = {
+		928B22C01AF89EF800A42C1A /* Parking */ = {
 			isa = PBXGroup;
 			children = (
-				92A46B321AC958E400B2050E /* Ball.swift */,
+				928B22BE1AF89EEF00A42C1A /* Parking.swift */,
 			);
-			name = BallGame;
+			name = Parking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,7 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92A46B331AC958E400B2050E /* Ball.swift in Sources */,
+				928B22C41AF8A02500A42C1A /* FootballController.swift in Sources */,
 				920894E81AF21B6700828E2A /* PlaneMain.swift in Sources */,
 				2432302A1AC865D600F2CCC3 /* ViewController.swift in Sources */,
 				920894D91AF2102700828E2A /* StickmanController.swift in Sources */,
@@ -512,9 +518,11 @@
 				243230451AC868B400F2CCC3 /* MainController.swift in Sources */,
 				548A0B8F1AE6238600B34037 /* GameOverScene.swift in Sources */,
 				54AEB1D81ADFBF64007BC829 /* 2048Main.swift in Sources */,
+				928B22BF1AF89EEF00A42C1A /* Parking.swift in Sources */,
 				243230281AC865D600F2CCC3 /* AppDelegate.swift in Sources */,
 				54B4F6561ACB101800788EAA /* Classes, functions and extensions.swift in Sources */,
 				54AE99611AEA9BB400053BD6 /* ArcadeGameMain.swift in Sources */,
+				928B22C21AF89F8300A42C1A /* Football.swift in Sources */,
 				249D28461AD2CACD00693797 /* SudokuMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

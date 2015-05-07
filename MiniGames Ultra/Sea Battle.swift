@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 import Cocoa
+import SpriteKit
 
 class SeaBattle: NSViewController {
 

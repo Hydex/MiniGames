@@ -15,7 +15,7 @@ class _048Main: NSViewController {
     var ar : Array<NSTextField> = []
     var left = 0
     
-    var dict : Dictionary<Int, NSColor> = [:]
+    var dict : Dictionary<Int, Col> = [:]
     
     var timer = NSTimer()
     var moves = 0
@@ -26,18 +26,18 @@ class _048Main: NSViewController {
     @IBOutlet weak var downBut: NSButton!
     
     
-    var pic0 = NSColor.lightGrayColor()
-    var pic2 = NSColor.redColor()
-    var pic4 = NSColor.whiteColor()
-    var pic8 = NSColor.orangeColor()
-    var pic16 = NSColor.magentaColor()
-    var pic32 = NSColor.blueColor()
-    var pic64 = NSColor.purpleColor()
-    var pic128 = NSColor.yellowColor()
-    var pic256 = NSColor.brownColor()
-    var pic512 = NSColor.cyanColor()
-    var pic1024 = NSColor.greenColor()
-    var pic2048 = NSColor()
+    var pic0 = Col.lightGrayColor()
+    var pic2 = Col.redColor()
+    var pic4 = Col.whiteColor()
+    var pic8 = Col.orangeColor()
+    var pic16 = Col.magentaColor()
+    var pic32 = Col.blueColor()
+    var pic64 = Col.purpleColor()
+    var pic128 = Col.yellowColor()
+    var pic256 = Col.brownColor()
+    var pic512 = Col.cyanColor()
+    var pic1024 = Col.greenColor()
+    var pic2048 = Col()
     
     func moveTile(del : Int, down : Int, up : Int, mod : Int) {
         var tmp = ar;
@@ -53,7 +53,7 @@ class _048Main: NSViewController {
                             else {
                                 e.integerValue = each.integerValue * 2
                             }
-                            each.backgroundColor = NSColor.lightGrayColor()
+                            each.backgroundColor = Col.lightGrayColor()
                             each.stringValue = ""
                             if e.stringValue != "" {
                                 left++
@@ -73,7 +73,7 @@ class _048Main: NSViewController {
                             else {
                                 e.integerValue = each.integerValue
                             }
-                            each.backgroundColor = NSColor.lightGrayColor()
+                            each.backgroundColor = Col.lightGrayColor()
                             each.stringValue = ""
                             e.font = each.font
                             each.font = NSFont(name: "Helvetica", size: 75)
@@ -180,7 +180,7 @@ class _048Main: NSViewController {
                 tile.enabled = false
                 tile.stringValue = ""
                 tile.font = NSFont(name: "Helvetica", size: 75)
-                tile.backgroundColor = NSColor.lightGrayColor()
+                tile.backgroundColor = Col.lightGrayColor()
                 tile.editable = false
                 tile.selectable = false
                 tile.drawsBackground = true
@@ -231,7 +231,7 @@ class _048Main: NSViewController {
         var newWidth = CGFloat(415)
         frame?.size = NSMakeSize(newWidth, newHeight)
         self.view.window?.setFrame(frame!, display: true)
-        self.view.window?.backgroundColor = NSColor.darkGrayColor()
+        self.view.window?.backgroundColor = Col.darkGrayColor()
         self.view.window?.title = "2048"
         self.view.window?.center()
     }

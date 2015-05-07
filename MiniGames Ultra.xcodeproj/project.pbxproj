@@ -211,10 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				92736DE51AF67D5A00720252 /* MARK */,
-				249D28411AD2CA9E00693797 /* Sudoku */,
-				548A0B7E1AE61DF500B34037 /* ArcadeGame */,
-				2432304B1AC869B300F2CCC3 /* Minesweeper */,
-				54AEB1DA1ADFBF72007BC829 /* 2048 */,
+				540B19AA1AF91820004EB246 /* TheUnbelievable Creator */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -243,6 +240,17 @@
 				921632D51AD414C500A61088 /* Sea Battle.swift */,
 			);
 			name = SeaBattle;
+			sourceTree = "<group>";
+		};
+		540B19AA1AF91820004EB246 /* TheUnbelievable Creator */ = {
+			isa = PBXGroup;
+			children = (
+				249D28411AD2CA9E00693797 /* Sudoku */,
+				548A0B7E1AE61DF500B34037 /* ArcadeGame */,
+				2432304B1AC869B300F2CCC3 /* Minesweeper */,
+				54AEB1DA1ADFBF72007BC829 /* 2048 */,
+			);
+			name = "TheUnbelievable Creator";
 			sourceTree = "<group>";
 		};
 		548A0B7E1AE61DF500B34037 /* ArcadeGame */ = {

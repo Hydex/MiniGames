@@ -2,7 +2,7 @@
 //  Sea Battle.swift
 //  MiniGames Ultra
 //
-//  Created by Mark Yankovskiy on 07/04/15.
+//  Created by Roman Nikitin on 07/04/15.
 //  Copyright (c) 2015 TheUnbelievable. All rights reserved.
 //
 

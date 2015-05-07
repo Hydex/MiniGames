@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-class MinesweeperMain: NSViewController {
+class MinesweeperMain: NSViewController, NSSpeechRecognizerDelegate {
     var height = 0
     var width = 0
     var bombAmount = 0
@@ -24,14 +24,15 @@ class MinesweeperMain: NSViewController {
     var level = ""
     var timer = NSTimer()
     var flagTimer = NSTimer()
-    var storage = NSUserDefaults.standardUserDefaults()
+    var storage = NSUD.standardUserDefaults()
     var bombImage = NSImage(named: "Button bomb.png")!
     var flagImage = NSImage(named: "Flag.png")!
-    var ar : Array<NSButton> = []
+    var ar : Array<NSB> = []
     ///Label that show current time
     var curTime = NSTextField()
     var locale = NSBundle.mainBundle()
     var indicator = NSProgressIndicator()
+    var recognizer = NSSpeechRecognizer()
     
     /// Main timer function
     func incTime(sender : AnyObject) {
@@ -49,7 +50,7 @@ class MinesweeperMain: NSViewController {
         }
     }
     
-    func replaceBomb(button : NSButton) {
+    func replaceBomb(button : NSB) {
         button.alternateImage = nil
         var l = 0
         var pos = Int(arc4random_uniform(UInt32(width * height - bombAmount)))
@@ -66,7 +67,7 @@ class MinesweeperMain: NSViewController {
     }
     
     /// One of buttons was pressed with left mouse button
-    func buttonPressed(sender : NSButton) {
+    func buttonPressed(sender : NSB) {
         if sender.image != flagImage {
             curMoves++
             if curMoves == 1 && sender.alternateImage == bombImage {
@@ -167,7 +168,7 @@ class MinesweeperMain: NSViewController {
         timer.invalidate()
     }
     
-    func press(butToPress : NSButton) {
+    func press(butToPress : NSB) {
         if butToPress.enabled {
             butToPress.enabled = false
             var color = NSColor()
@@ -203,7 +204,7 @@ class MinesweeperMain: NSViewController {
         }
     }
     
-    func recOpen(button : NSButton) {
+    func recOpen(button : NSB) {
         var tag = button.tag
         for but in ar {
             if checkerUn(tag: tag, but: but) {
@@ -213,7 +214,7 @@ class MinesweeperMain: NSViewController {
     }
     
     func addFlag(sender : NSGestureRecognizer) {
-        if let but = sender.view as? NSButton {
+        if let but = sender.view as? NSB {
             if (delay > 1 || flagMoves == 0) && but.enabled {
                 if elapsedTime == 0 {
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("incTime:"), userInfo: nil, repeats: true)
@@ -232,14 +233,14 @@ class MinesweeperMain: NSViewController {
         
     }
     
-    func putFlag(but : NSButton) {
+    func putFlag(but : NSB) {
         if but.enabled {
             but.image = flagImage
             bombsLeft--
         }
     }
     
-    func deleteFlag(but : NSButton) {
+    func deleteFlag(but : NSB) {
         but.image = nil
         bombsLeft++
     }
@@ -335,7 +336,7 @@ class MinesweeperMain: NSViewController {
         k = 1
         for i in 1...height {
             for j in 1...width {
-                var but = NSButton(frame: NSRect(x: x, y: y + 78, width: 30, height: 32))
+                var but = NSB(frame: NSRect(x: x, y: y + 78, width: 30, height: 32))
                 but.tag = k
                 but.title = ""
                 but.action = Selector("buttonPressed:")
@@ -374,6 +375,15 @@ class MinesweeperMain: NSViewController {
         placeBombs()
         bombsLeft = bombAmount
         
+        var but = NSB(frame: NSRt(x: 0, y: 0, width: 0, height: 0))
+        but.keyEquivalent = " "
+        but.target = self
+        but.action = Selector("speechFunc:")
+        self.view.addSubview(but)
+        recognizer.commands = ["pause", "play", "exit", "пауза", "продолжить", "выйти"]
+        recognizer.blocksOtherRecognizers = true
+        recognizer.delegate = self
+        
         self.view.window?.center()
     }
     
@@ -396,7 +406,7 @@ class MinesweeperMain: NSViewController {
     }
     
     ///Load number of bombs to all buttons around `button`
-    func loadMines(button : NSButton, desk : Bool, butToDesk : NSButton?) {
+    func loadMines(button : NSB, desk : Bool, butToDesk : NSB?) {
         var tag = button.tag
         var deskTag = 0
         if desk {
@@ -417,7 +427,7 @@ class MinesweeperMain: NSViewController {
         }
     }
     
-    func checkerUn(#tag : Int, but : NSButton) -> Bool {
+    func checkerUn(#tag : Int, but : NSB) -> Bool {
         var ifOne = (but.tag == tag + 1 && tag % width != 0) || (but.tag == tag - 1 && tag % width != 1)
         var ifTwo = (but.tag == tag + width && tag <= width * (height - 1)) || (but.tag == tag + width - 1 && tag % width != 1)
         var ifThree = (but.tag == tag + width + 1 && tag % width != 0) || (but.tag == tag - width && tag > width)
@@ -428,5 +438,31 @@ class MinesweeperMain: NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         activeGame = ""
+    }
+    
+    var listening = false
+    
+    func speechFunc(sender : AnyObject) {
+        if !listening {
+            recognizer.startListening()
+            listening = true
+        }
+        else {
+            recognizer.stopListening()
+            listening = false
+        }
+    }
+    
+    func speechRecognizer(sender: NSSpeechRecognizer, didRecognizeCommand command: AnyObject?) {
+        let com = command as! String
+        if com == "pause" || com == "пауза" {
+            println("pause")
+        }
+        if com == "play" || com == "продолжить" {
+            println("play")
+        }
+        if com == "exit" || com == "выйти" {
+            println("exit")
+        }
     }
 }
